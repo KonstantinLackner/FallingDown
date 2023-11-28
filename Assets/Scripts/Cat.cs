@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cat : MonoBehaviour
@@ -8,10 +9,12 @@ public class Cat : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public List<Sprite> sprites;
+    public Transform spawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = spawnPoint.position;
         fallingDown = true;
     }
 
@@ -29,6 +32,13 @@ public class Cat : MonoBehaviour
         else
         {
             mySpriteRenderer.sprite = sprites[2];
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.position = spawnPoint.position;
+            myRigidbody.velocity = Vector2.zero;
+            myRigidbody.angularVelocity = 0f;
         }
     }
 }
