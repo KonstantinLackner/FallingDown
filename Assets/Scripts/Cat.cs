@@ -12,9 +12,13 @@ public class Cat : MonoBehaviour
     public List<Sprite> sprites;
     public Transform spawnPoint;
 
+    public GameObject starSpawner;
+    private Star starScript;
+    private bool starsInitiated = false;
     public TMP_Text timeAliveText;
     public TMP_Text starsCollectedText;
     public TMP_Text scoreText;
+    private float starTimer = 0f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
@@ -24,6 +28,7 @@ public class Cat : MonoBehaviour
     {
         transform.position = spawnPoint.position;
         fallingDown = true;
+        starScript = starSpawner.GetComponent<Star>();
     }
 
     // Update is called once per frame
@@ -47,6 +52,18 @@ public class Cat : MonoBehaviour
 
             timeAlive += Time.deltaTime;
             UpdateScore();
+
+
+            if (starTimer < 5)
+            {
+                starTimer += Time.deltaTime;
+            }
+            else
+            {
+                starTimer = 0;
+                starScript.SpawnNew();
+                starsInitiated = true;
+            }
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -62,6 +79,18 @@ public class Cat : MonoBehaviour
         {
             Debug.Log("Game over!");
             fallingDown = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Trigger entered!");
+        if (col.gameObject.CompareTag("Star"))
+        {
+            Debug.Log("Star touched!");
+            starTimer = 0;
+            starScript.SpawnNew();
+            starsCollected++;
         }
     }
 
@@ -84,6 +113,9 @@ public class Cat : MonoBehaviour
 
     private void ResetScore()
     {
+        starTimer = 0;
+        starScript.DestroyStar();
+
         timeAlive = 0;
         starsCollected = 0;
         UpdateScore();

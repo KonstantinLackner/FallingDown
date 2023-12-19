@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985a5779e526e43f2ad5209b1eaa931a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPrefab: {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
 --- !u!4 &248215456
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +902,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 87ccb245d181bcf468c9cf9c4634a8ba, type: 3}
   - {fileID: 21300000, guid: becd561be17d32942a70f7e123e4aa75, type: 3}
   spawnPoint: {fileID: 1038604547}
+  starSpawner: {fileID: 248215454}
   timeAliveText: {fileID: 524929990}
   starsCollectedText: {fileID: 1723823262}
   scoreText: {fileID: 490673926}
