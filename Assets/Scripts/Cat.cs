@@ -18,6 +18,7 @@ public class Cat : MonoBehaviour
     public TMP_Text timeAliveText;
     public TMP_Text starsCollectedText;
     public TMP_Text scoreText;
+    public TMP_Text bigText;
     private float starTimer = 0f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
@@ -77,8 +78,7 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
-            Debug.Log("Game over!");
-            fallingDown = false;
+            GameOver();
         }
     }
 
@@ -102,6 +102,14 @@ public class Cat : MonoBehaviour
         myRigidbody.angularVelocity = 0f;
     }
 
+    private void GameOver()
+    {
+        Debug.Log("Game over!");
+        bigText.text = "GAME OVER!";
+        scoreText.fontSize = 16;
+        fallingDown = false;
+    }
+
     private void UpdateScore()
     {
         double timeAliveRounded = System.Math.Round(timeAlive, 1);
@@ -113,6 +121,9 @@ public class Cat : MonoBehaviour
 
     private void ResetScore()
     {
+        bigText.text = "";
+        scoreText.fontSize = 8;
+
         starTimer = 0;
         starScript.DestroyStar();
 
