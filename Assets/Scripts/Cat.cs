@@ -24,6 +24,9 @@ public class Cat : MonoBehaviour
     private int starsCollected = 0;
     private int score = 0;
 
+    public float spriteChange1;
+    public float spriteChange2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +41,11 @@ public class Cat : MonoBehaviour
         if (fallingDown)
         {
             mySpriteRenderer.flipY = myRigidbody.velocity.y > 0;
-            if (Mathf.Abs(myRigidbody.velocity.y) <= 10.5)
+            if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChange1)
             {
                 mySpriteRenderer.sprite = sprites[0];
             }
-            else if (Mathf.Abs(myRigidbody.velocity.y) >= 10.5 && Mathf.Abs(myRigidbody.velocity.y) <= 15)
+            else if (Mathf.Abs(myRigidbody.velocity.y) >= spriteChange1 && Mathf.Abs(myRigidbody.velocity.y) <= spriteChange2)
             {
                 mySpriteRenderer.sprite = sprites[1];
             }
