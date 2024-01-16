@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +24,12 @@ public class Cat : MonoBehaviour
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
+    public int turboLines = 0;
+    private bool turboLineActive = false;
+    public LineDrawer lineDrawer;
+    public PhysicsMaterial2D bounceMaterial;
+    public PhysicsMaterial2D turboBounceMaterial;
+    public LineRenderer lineRenderer;
 
     public float spriteChange1;
     public float spriteChange2;
@@ -75,6 +82,16 @@ public class Cat : MonoBehaviour
             ResetScore();
             Respawn();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && turboLines > 0 && !turboLineActive)
+        {
+            turboLines--;
+            turboLineActive = true;
+            lineDrawer.bounceMaterial = turboBounceMaterial;
+            lineDrawer.GetComponent<EdgeCollider2D>().sharedMaterial = turboBounceMaterial;
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -82,6 +99,14 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Finish"))
         {
             GameOver();
+        }
+        if (collision.gameObject.CompareTag("Line") && turboLineActive)
+        {
+            lineDrawer.bounceMaterial = bounceMaterial;
+            lineDrawer.GetComponent<EdgeCollider2D>().sharedMaterial = bounceMaterial;
+            turboLineActive = false;
+            lineRenderer.startColor = Color.white;
+            lineRenderer.endColor = Color.white;
         }
     }
 
@@ -94,6 +119,7 @@ public class Cat : MonoBehaviour
             starTimer = 0;
             starScript.SpawnNew();
             starsCollected++;
+            turboLines += 2;
         }
     }
 

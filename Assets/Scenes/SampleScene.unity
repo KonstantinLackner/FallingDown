@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 114239840}
   m_Layer: 0
   m_Name: MightyLineDrawer
-  m_TagString: Untagged
+  m_TagString: Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,6 +907,11 @@ MonoBehaviour:
   starsCollectedText: {fileID: 1723823262}
   scoreText: {fileID: 490673926}
   bigText: {fileID: 1413105769}
+  turboLines: 1
+  lineDrawer: {fileID: 114239838}
+  bounceMaterial: {fileID: 6200000, guid: 7d9eec49f200b33428d14bf7485900e2, type: 2}
+  turboBounceMaterial: {fileID: 6200000, guid: 95e77eeba8713074da0b7bca95bd65de, type: 2}
+  lineRenderer: {fileID: 114239840}
   spriteChange1: 7
   spriteChange2: 11
 --- !u!1 &855158869
