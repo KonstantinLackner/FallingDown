@@ -9,9 +9,15 @@ public class Star : MonoBehaviour
 
     public void SpawnNew()
     {
+        Vector3 previousStarPosition = new Vector3(0,0,0);
+        if (currentStar)
+        {
+            previousStarPosition = currentStar.transform.localPosition;
+        }
         DestroyStar();
 
-        Vector3 spawnPosition = new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(-1.5f, 3.5f), 0);
+        float[] distances = new float[] {-1.5f, -2f, 1.5f, 2f};
+        Vector3 spawnPosition = new Vector3((previousStarPosition.x + distances[Random.Range(0,distances.Length)]) % 3, Random.Range(-1.5f, 3.5f), 0);
         currentStar = Instantiate(myPrefab, spawnPosition, Quaternion.identity);
     }
 
