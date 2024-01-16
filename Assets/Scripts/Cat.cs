@@ -16,7 +16,6 @@ public class Cat : MonoBehaviour
     public GameObject starSpawner;
     private Star starScript;
     private bool starsInitiated = false;
-    public TMP_Text timeAliveText;
     public TMP_Text starsCollectedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
@@ -60,7 +59,6 @@ public class Cat : MonoBehaviour
             {
                 mySpriteRenderer.sprite = sprites[2];
             }
-
             timeAlive += Time.deltaTime;
             UpdateScore();
 
@@ -141,10 +139,8 @@ public class Cat : MonoBehaviour
 
     private void UpdateScore()
     {
-        double timeAliveRounded = System.Math.Round(timeAlive, 1);
-        timeAliveText.text = "Time alive: " + timeAliveRounded + "s";
         starsCollectedText.text = "Stars collected: " + starsCollected.ToString();
-        score = ((int)timeAliveRounded * 10) + starsCollected * 50;
+        score = starsCollected * 50;
         scoreText.text = "Score: " + score;
     }
 
