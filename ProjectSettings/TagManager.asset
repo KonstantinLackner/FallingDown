@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Star
   - Line
+  - Bird
+  - Wall
+  - Cat
   layers:
   - Default
   - TransparentFX

@@ -29,6 +29,7 @@ public class Cat : MonoBehaviour
     public PhysicsMaterial2D bounceMaterial;
     public PhysicsMaterial2D turboBounceMaterial;
     public LineRenderer lineRenderer;
+    public int bounceHitThreshold;
 
     public float spriteChange1;
     public float spriteChange2;
@@ -106,6 +107,19 @@ public class Cat : MonoBehaviour
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
+        if (collision.gameObject.CompareTag("Bird"))
+        {
+                StartCoroutine(BounceUp());
+        }
+    }
+
+    private IEnumerator BounceUp()
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
+        gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 
     void OnTriggerEnter2D(Collider2D col)
