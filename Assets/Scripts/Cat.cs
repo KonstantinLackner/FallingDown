@@ -19,7 +19,7 @@ public class Cat : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text bigText;
     public GameObject menuButton;
-    private float starTimer = 0f;
+    private float starTimer = 3f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
@@ -60,7 +60,7 @@ public class Cat : MonoBehaviour
             UpdateScore();
 
 
-            if (starTimer < 5)
+            if (starTimer < 8)
             {
                 starTimer += Time.deltaTime;
             }
@@ -77,13 +77,6 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Finish"))
         {
             GameOver();
-        }
-        if (collision.gameObject.CompareTag("Line"))
-        {
-            lineDrawer.bounceMaterial = bounceMaterial;
-            lineDrawer.GetComponent<EdgeCollider2D>().sharedMaterial = bounceMaterial;
-            lineRenderer.startColor = Color.white;
-            lineRenderer.endColor = Color.white;
         }
         if (collision.gameObject.CompareTag("Bird"))
         {
@@ -103,7 +96,7 @@ public class Cat : MonoBehaviour
     private IEnumerator SpawnNewStar()
     {
         starScript.DestroyStar();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         starScript.SpawnNew();
     }
 
