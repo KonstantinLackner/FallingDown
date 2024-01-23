@@ -19,6 +19,7 @@ public class Cat : MonoBehaviour
     public TMP_Text starsCollectedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
+    public GameObject menuButton;
     private float starTimer = 0f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
@@ -34,7 +35,6 @@ public class Cat : MonoBehaviour
     public float spriteChange1;
     public float spriteChange2;
 
-    // Start is called before the first frame update
     void Start()
     {
         transform.position = spawnPoint.position;
@@ -42,7 +42,6 @@ public class Cat : MonoBehaviour
         starScript = starSpawner.GetComponent<Star>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fallingDown)
@@ -74,12 +73,6 @@ public class Cat : MonoBehaviour
                 starScript.SpawnNew();
                 starsInitiated = true;
             }
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            ResetScore();
-            Respawn();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && turboLines > 0 && !turboLineActive)
@@ -135,20 +128,13 @@ public class Cat : MonoBehaviour
         }
     }
 
-    private void Respawn()
-    {
-        fallingDown = true;
-        transform.position = spawnPoint.position;
-        myRigidbody.velocity = Vector2.zero;
-        myRigidbody.angularVelocity = 0f;
-    }
-
     private void GameOver()
     {
         Debug.Log("Game over!");
-        bigText.text = "GAME OVER!";
+        bigText.text = "GAME OVER";
         scoreText.fontSize = 16;
         fallingDown = false;
+        menuButton.SetActive(true);
     }
 
     private void UpdateScore()
@@ -156,18 +142,5 @@ public class Cat : MonoBehaviour
         starsCollectedText.text = "Stars collected: " + starsCollected.ToString();
         score = starsCollected * 50;
         scoreText.text = "Score: " + score;
-    }
-
-    private void ResetScore()
-    {
-        bigText.text = "";
-        scoreText.fontSize = 8;
-
-        starTimer = 0;
-        starScript.DestroyStar();
-
-        timeAlive = 0;
-        starsCollected = 0;
-        UpdateScore();
     }
 }
