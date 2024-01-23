@@ -11,12 +11,15 @@ public class LineDrawer : MonoBehaviour
     private List<int> pressedButtons = new List<int>();
     public List<Transform> points;
     private string sceneName;
+    private bool isExpertLevel;
     
     // Start is called before the first frame update
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         sceneName = SceneManager.GetActiveScene().name;
+        isExpertLevel = sceneName == "ExpertLevel";
+    
     }
 
     private void Update()
@@ -52,7 +55,7 @@ public class LineDrawer : MonoBehaviour
             pressedButtons.Add(3);
             if (button4Pressed) pressedButtons.Add(4);
         }
-        else if (isExpertLevel() && button4Pressed)
+        else if (isExpertLevel && button4Pressed)
         {
             pressedButtons.Add(4);
             if (button5Pressed) pressedButtons.Add(5);
@@ -84,17 +87,12 @@ public class LineDrawer : MonoBehaviour
 
             collider.points = linePoints;
             collider.sharedMaterial = bounceMaterial;
-            Debug.Log("Buttons " + pressedButtons[0] + " and " + pressedButtons[1] + " are pressed and adjacent.");
+            // Debug.Log("Buttons " + pressedButtons[0] + " and " + pressedButtons[1] + " are pressed and adjacent.");
         }
         else if (pressedButtons.Count > 2)
         {
             // More than two buttons are pressed
             Debug.Log("Error: More than two buttons are pressed.");
         }
-    }
-
-    private bool isExpertLevel()
-    {
-        return sceneName == "ExpertLevel";
     }
 }

@@ -19,7 +19,7 @@ public class Cat : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text bigText;
     public GameObject menuButton;
-    private float starTimer = 3f;
+    private float starTimer = 8f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
@@ -60,7 +60,7 @@ public class Cat : MonoBehaviour
             UpdateScore();
 
 
-            if (starTimer < 8)
+            if (starTimer < 10)
             {
                 starTimer += Time.deltaTime;
             }
@@ -78,25 +78,30 @@ public class Cat : MonoBehaviour
         {
             GameOver();
         }
-        if (collision.gameObject.CompareTag("Bird"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            StartCoroutine(BounceUp());
-        }
-    }
+            // StartCoroutine(BounceUp());
+            Vector2 velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+            float xVelocity = velocity.x;
+            float yVelocity = velocity.y;
+            Vector2 newVelocity = new Vector2(0,0);
+            
+            if (yVelocity > 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().simulated = false;
+                newVelocity = new Vector2(xVelocity, Mathf.Abs(yVelocity + Mathf.Max(xVelocity*0.5f, 0.5f)));
+                gameObject.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
-    private IEnumerator BounceUp()
-    {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        gameObject.GetComponent<Rigidbody2D>().simulated = false;
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
-        gameObject.GetComponent<Rigidbody2D>().simulated = true;
+                gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            }
+            Debug.Log("velocity: " + velocity + "| velocity after: " + newVelocity);
+        }
     }
 
     private IEnumerator SpawnNewStar()
     {
         starScript.DestroyStar();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         starScript.SpawnNew();
     }
 

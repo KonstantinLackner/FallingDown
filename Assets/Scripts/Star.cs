@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Star : MonoBehaviour
 {
     public GameObject myPrefab;
     private GameObject currentStar;
     private Vector3 previousStarPosition = new Vector3(0,0,0);
+    private bool isExpertLevel;
+
+    void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+		string sceneName = currentScene.name;
+        isExpertLevel = sceneName == "ExpertLevel";
+    }
 
     public void SpawnNew()
     {
