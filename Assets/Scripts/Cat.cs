@@ -15,7 +15,6 @@ public class Cat : MonoBehaviour
 
     public GameObject starSpawner;
     private Star starScript;
-    private bool starsInitiated = false;
     public TMP_Text starsCollectedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
@@ -24,8 +23,6 @@ public class Cat : MonoBehaviour
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
-    public int turboLines = 0;
-    private bool turboLineActive = false;
     public LineDrawer lineDrawer;
     public PhysicsMaterial2D bounceMaterial;
     public PhysicsMaterial2D turboBounceMaterial;
@@ -70,19 +67,8 @@ public class Cat : MonoBehaviour
             else
             {
                 starTimer = 0;
-                starScript.SpawnNew();
-                starsInitiated = true;
+                StartCoroutine(SpawnNewStar());
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && turboLines > 0 && !turboLineActive)
-        {
-            turboLines--;
-            turboLineActive = true;
-            lineDrawer.bounceMaterial = turboBounceMaterial;
-            lineDrawer.GetComponent<EdgeCollider2D>().sharedMaterial = turboBounceMaterial;
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
         }
     }
 
@@ -92,17 +78,16 @@ public class Cat : MonoBehaviour
         {
             GameOver();
         }
-        if (collision.gameObject.CompareTag("Line") && turboLineActive)
+        if (collision.gameObject.CompareTag("Line"))
         {
             lineDrawer.bounceMaterial = bounceMaterial;
             lineDrawer.GetComponent<EdgeCollider2D>().sharedMaterial = bounceMaterial;
-            turboLineActive = false;
             lineRenderer.startColor = Color.white;
             lineRenderer.endColor = Color.white;
         }
         if (collision.gameObject.CompareTag("Bird"))
         {
-                StartCoroutine(BounceUp());
+            StartCoroutine(BounceUp());
         }
     }
 
@@ -115,6 +100,13 @@ public class Cat : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 
+    private IEnumerator SpawnNewStar()
+    {
+        starScript.DestroyStar();
+        yield return new WaitForSeconds(1f);
+        starScript.SpawnNew();
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Trigger entered!");
@@ -122,9 +114,8 @@ public class Cat : MonoBehaviour
         {
             Debug.Log("Star touched!");
             starTimer = 0;
-            starScript.SpawnNew();
+            StartCoroutine(SpawnNewStar());
             starsCollected++;
-            turboLines += 2;
         }
     }
 

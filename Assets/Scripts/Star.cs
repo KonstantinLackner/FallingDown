@@ -6,14 +6,10 @@ public class Star : MonoBehaviour
 {
     public GameObject myPrefab;
     private GameObject currentStar;
+    private Vector3 previousStarPosition = new Vector3(0,0,0);
 
     public void SpawnNew()
     {
-        Vector3 previousStarPosition = new Vector3(0,0,0);
-        if (currentStar)
-        {
-            previousStarPosition = currentStar.transform.localPosition;
-        }
         DestroyStar();
 
         float[] distances = new float[] {-1.5f, -2f, 1.5f, 2f};
@@ -25,6 +21,7 @@ public class Star : MonoBehaviour
     {
         if (currentStar)
         {
+            previousStarPosition = currentStar.transform.localPosition;
             Destroy(currentStar);
         }
     }
