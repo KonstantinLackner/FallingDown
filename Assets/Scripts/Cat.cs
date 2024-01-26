@@ -43,7 +43,8 @@ public class Cat : MonoBehaviour
     {
         if (fallingDown)
         {
-            mySpriteRenderer.flipY = myRigidbody.velocity.y > 0;
+            float yFlip = 0.15 * myRigidbody.velocity.y > 0? 1 : -1;
+            transform.localScale = new Vector3(1, yFlip, 1);
             if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChange1)
             {
                 mySpriteRenderer.sprite = sprites[0];
