@@ -100,7 +100,7 @@ public class Cat : MonoBehaviour
             if (yVelocity > 0 && xVelocity != 0)
             {
                 gameObject.GetComponent<Rigidbody2D>().simulated = false;
-                newVelocity = new Vector2(xVelocity, Mathf.Abs(yVelocity + Mathf.Max(xVelocity*0.5f, 0.5f)));
+                newVelocity = new Vector2(xVelocity, Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity*0.5f, 2), 0.5f)));
                 gameObject.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                 gameObject.GetComponent<Rigidbody2D>().simulated = true;
