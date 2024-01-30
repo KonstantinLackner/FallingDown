@@ -16,12 +16,14 @@ public class Cat : MonoBehaviour
     public GameObject starSpawner;
     private Star starScript;
     public TMP_Text starsCollectedText;
+    public TMP_Text starsMissedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
     public GameObject menuButton;
     private float starTimer = 8f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
+    private int starsMissed = 0;
     private int score = 0;
     private bool starsInitiated = false;
     public AudioSource starCollectAudioSource;
@@ -73,6 +75,7 @@ public class Cat : MonoBehaviour
                 else 
                 {
                     starDisappearAudioSource.Play();
+                    starsMissed++;
                 }
                 starTimer = 0;
                 StartCoroutine(SpawnNewStar());
@@ -143,7 +146,8 @@ public class Cat : MonoBehaviour
     private void UpdateScore()
     {
         starsCollectedText.text = "Stars collected: " + starsCollected.ToString();
-        score = starsCollected * 50;
+        starsMissedText.text = "Stars missed: " + starsMissed.ToString();
+        score = starsCollected * 50 - starsMissed * 20;
         scoreText.text = "Score: " + score;
     }
 }
