@@ -23,11 +23,11 @@ public class Cat : MonoBehaviour
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int score = 0;
-    public LineDrawer lineDrawer;
-    public PhysicsMaterial2D bounceMaterial;
-    public PhysicsMaterial2D turboBounceMaterial;
-    public LineRenderer lineRenderer;
-    public int bounceHitThreshold;
+    private bool starsInitiated = false;
+    public AudioSource starCollectAudioSource;
+    public AudioSource gameOverAudioSource;
+    public AudioSource bounceAudioSource;
+    public AudioSource starDisappearAudioSource;
 
     public float spriteChange1;
     public float spriteChange2;
@@ -66,7 +66,14 @@ public class Cat : MonoBehaviour
                 starTimer += Time.deltaTime;
             }
             else
-            {
+            {   if (!starsInitiated) 
+                {
+                    starsInitiated = true;
+                }
+                else 
+                {
+                    starDisappearAudioSource.Play();
+                }
                 starTimer = 0;
                 StartCoroutine(SpawnNewStar());
             }
@@ -97,6 +104,10 @@ public class Cat : MonoBehaviour
             }
             Debug.Log("velocity: " + velocity + "| velocity after: " + newVelocity);
         }
+        if (collision.gameObject.CompareTag("Line"))
+        {
+            bounceAudioSource.Play();
+        }
     }
 
     private IEnumerator SpawnNewStar()
@@ -112,6 +123,7 @@ public class Cat : MonoBehaviour
         if (col.gameObject.CompareTag("Star"))
         {
             Debug.Log("Star touched!");
+            starCollectAudioSource.Play();
             starTimer = 0;
             StartCoroutine(SpawnNewStar());
             starsCollected++;
@@ -122,6 +134,7 @@ public class Cat : MonoBehaviour
     {
         Debug.Log("Game over!");
         bigText.text = "GAME OVER";
+        gameOverAudioSource.Play();
         scoreText.fontSize = 16;
         fallingDown = false;
         menuButton.SetActive(true);
