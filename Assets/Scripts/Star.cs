@@ -21,8 +21,9 @@ public class Star : MonoBehaviour
     {
         DestroyStar();
 
-        float[] distances = new float[] {-1.5f, -2f, 1.5f, 2f};
-        Vector3 spawnPosition = new Vector3((previousStarPosition.x + distances[Random.Range(0,distances.Length)]) % 3, Random.Range(-1.5f, 3.5f), 0);
+        float[] xPositions = isExpertLevel ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f} : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
+        Vector3 spawnPosition = new Vector3(xPositions[Random.Range(0,xPositions.Length)], Random.Range(-1.5f, 3.5f), 0);
+        Debug.Log("spawn position: " + spawnPosition);
         currentStar = Instantiate(myPrefab, spawnPosition, Quaternion.identity);
     }
 

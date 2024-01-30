@@ -87,7 +87,7 @@ public class Cat : MonoBehaviour
             float yVelocity = velocity.y;
             Vector2 newVelocity = new Vector2(0,0);
             
-            if (yVelocity > 0)
+            if (yVelocity > 0 && xVelocity != 0)
             {
                 gameObject.GetComponent<Rigidbody2D>().simulated = false;
                 newVelocity = new Vector2(xVelocity, Mathf.Abs(yVelocity + Mathf.Max(xVelocity*0.5f, 0.5f)));
@@ -102,7 +102,7 @@ public class Cat : MonoBehaviour
     private IEnumerator SpawnNewStar()
     {
         starScript.DestroyStar();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         starScript.SpawnNew();
     }
 
