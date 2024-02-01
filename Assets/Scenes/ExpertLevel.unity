@@ -1656,6 +1656,7 @@ MonoBehaviour:
   quipWindow: {fileID: 1579739232}
   quipWindowText: {fileID: 1440765498}
   quipWindowSprite: {fileID: 1066592363}
+  cat: {fileID: 1945877490}
   items:
   - ItemName: GravityBoots
     ItemSprite: {fileID: 0}

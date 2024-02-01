@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     public GameObject quipWindow;
     public TMP_Text quipWindowText;
     public Image quipWindowSprite;
+    public Rigidbody2D cat;
     
     [System.Serializable]
     public class Item
@@ -46,6 +47,7 @@ public class GameStateManager : MonoBehaviour
         quipWindow.SetActive(false);
         gameIsRunning = true;
         Time.timeScale = currentTimeScale;
+        cat.velocity = new Vector2(0, 3);
     }
 
     public void startQuip(string itemName)
