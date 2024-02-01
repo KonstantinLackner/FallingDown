@@ -1656,6 +1656,11 @@ MonoBehaviour:
   quipWindow: {fileID: 1579739232}
   quipWindowText: {fileID: 1440765498}
   quipWindowSprite: {fileID: 1066592363}
+  items:
+  - ItemName: GravityBoots
+    ItemSprite: {fileID: 0}
+    ItemText: These gravity boots will take some of that weight off your paws! ...
+      and they look fancy.
 --- !u!4 &1146102531
 Transform:
   m_ObjectHideFlags: 0

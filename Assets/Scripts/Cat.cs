@@ -144,7 +144,7 @@ public class Cat : MonoBehaviour
             starCollectAudioSource.Play();
             itemTimer = 0;
             StartCoroutine(SpawnNewItem());
-            GSM.startQuip("gravityBoots");
+            GSM.startQuip("GravityBoots");
         }
     }
 

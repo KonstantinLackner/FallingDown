@@ -14,25 +14,15 @@ public class GameStateManager : MonoBehaviour
     [System.Serializable]
     public class Item
     {
-        public Sprite ItemSprite { get; set; }
-        public string ItemText { get; set; }
-
-        public Item(Sprite sprite, string text)
-        {
-            ItemSprite = sprite;
-            ItemText = text;
-        }
+        public string ItemName;
+        public Sprite ItemSprite;
+        public string ItemText;
     }
     
-    private Dictionary<string, Item> items = new Dictionary<string, Item>();
+    public List<Item> items = new List<Item>();
 
     void Start()
     {
-        items.Add("gravityBoots", new Item(null, "These gravity boots will take some of that weight off your paws! ... and they look fancy."));
-        items.Add("parachute", new Item(null, "That's a parachute that slows down your fall ... 'Sie müssen nur den Nippel durch die Lasche zieh'n'"));
-        items.Add("claws", new Item(null, "Those claws look mighty sharp, try clawing that those walls, maybe."));
-        items.Add("starToLifeConverter", new Item(null, "This converts stars to extra lives! The price is subject to inflation though... Don't overuse it."));
-        
         quipWindow.SetActive(false);
     }
 
@@ -61,11 +51,18 @@ public class GameStateManager : MonoBehaviour
     public void startQuip(string itemName)
     {
         quipWindow.SetActive(true);
-        if (items.TryGetValue(itemName, out Item item))
+        foreach (var item in items)
         {
-            quipWindowText.text = item.ItemText;
-            quipWindowSprite.sprite = item.ItemSprite;
+            if (item.ItemName.Equals(itemName))
+            {
+                quipWindowText.text = item.ItemText;
+                quipWindowSprite.sprite = item.ItemSprite;
+                pauseGame();
+                return;
+            }
         }
-        pauseGame();
+
+        // Handle the case where the item is not found
+        Debug.Log("Item not found: " + itemName);
     }
 }
