@@ -13,14 +13,15 @@ public class Cat : MonoBehaviour
     public List<Sprite> sprites;
     public Transform spawnPoint;
 
+    public GameStateManager GSM;
     public GameObject starSpawner;
-    private Star starScript;
+    private StarSpawner starScript;
     public TMP_Text starsCollectedText;
     public TMP_Text starsMissedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
     public GameObject menuButton;
-    private float starTimer = 8f;
+    private float itemTimer = 8f;
     private float timeAlive = 0f;
     private int starsCollected = 0;
     private int starsMissed = 0;
@@ -38,20 +39,21 @@ public class Cat : MonoBehaviour
     {
         transform.position = spawnPoint.position;
         fallingDown = true;
-        starScript = starSpawner.GetComponent<Star>();
+        starScript = starSpawner.GetComponent<StarSpawner>();
     }
 
     void Update()
     {
         if (fallingDown)
         {
-            float yFlip = 0.15 * myRigidbody.velocity.y > 0? 1 : -1;
+            float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? 1 : -1;
             transform.localScale = new Vector3(1, yFlip, 1);
             if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChange1)
             {
                 mySpriteRenderer.sprite = sprites[0];
             }
-            else if (Mathf.Abs(myRigidbody.velocity.y) >= spriteChange1 && Mathf.Abs(myRigidbody.velocity.y) <= spriteChange2)
+            else if (Mathf.Abs(myRigidbody.velocity.y) >= spriteChange1 &&
+                     Mathf.Abs(myRigidbody.velocity.y) <= spriteChange2)
             {
                 mySpriteRenderer.sprite = sprites[1];
             }
@@ -59,26 +61,29 @@ public class Cat : MonoBehaviour
             {
                 mySpriteRenderer.sprite = sprites[2];
             }
+
             timeAlive += Time.deltaTime;
             UpdateScore();
 
 
-            if (starTimer < 10)
+            if (itemTimer < 10)
             {
-                starTimer += Time.deltaTime;
+                itemTimer += Time.deltaTime;
             }
             else
-            {   if (!starsInitiated) 
+            {
+                if (!starsInitiated)
                 {
                     starsInitiated = true;
                 }
-                else 
+                else
                 {
                     starDisappearAudioSource.Play();
                     starsMissed++;
                 }
-                starTimer = 0;
-                StartCoroutine(SpawnNewStar());
+
+                itemTimer = 0;
+                StartCoroutine(SpawnNewItem());
             }
         }
     }
@@ -89,31 +94,35 @@ public class Cat : MonoBehaviour
         {
             GameOver();
         }
+
         if (collision.gameObject.CompareTag("Wall"))
         {
             // StartCoroutine(BounceUp());
             Vector2 velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
             float xVelocity = velocity.x;
             float yVelocity = velocity.y;
-            Vector2 newVelocity = new Vector2(0,0);
-            
+            Vector2 newVelocity = new Vector2(0, 0);
+
             if (yVelocity > 0 && xVelocity != 0)
             {
                 gameObject.GetComponent<Rigidbody2D>().simulated = false;
-                newVelocity = new Vector2(xVelocity, Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity*0.5f, 2), 0.5f)));
+                newVelocity = new Vector2(xVelocity,
+                    Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity * 0.5f, 2), 0.5f)));
                 gameObject.GetComponent<Rigidbody2D>().velocity = newVelocity;
 
                 gameObject.GetComponent<Rigidbody2D>().simulated = true;
             }
+
             Debug.Log("velocity: " + velocity + "| velocity after: " + newVelocity);
         }
+
         if (collision.gameObject.CompareTag("Line"))
         {
             bounceAudioSource.Play();
         }
     }
 
-    private IEnumerator SpawnNewStar()
+    private IEnumerator SpawnNewItem()
     {
         starScript.DestroyStar();
         yield return new WaitForSeconds(2f);
@@ -122,14 +131,20 @@ public class Cat : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Trigger entered!");
         if (col.gameObject.CompareTag("Star"))
         {
-            Debug.Log("Star touched!");
             starCollectAudioSource.Play();
-            starTimer = 0;
-            StartCoroutine(SpawnNewStar());
+            itemTimer = 0;
+            StartCoroutine(SpawnNewItem());
             starsCollected++;
+        }
+
+        if (col.gameObject.CompareTag("gravityBoots"))
+        {
+            starCollectAudioSource.Play();
+            itemTimer = 0;
+            StartCoroutine(SpawnNewItem());
+            GSM.startQuip("gravityBoots");
         }
     }
 

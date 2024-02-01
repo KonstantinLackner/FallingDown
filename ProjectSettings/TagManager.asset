@@ -9,6 +9,7 @@ TagManager:
   - Bird
   - Wall
   - Cat
+  - gravityBoots
   layers:
   - Default
   - TransparentFX
