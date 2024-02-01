@@ -47,7 +47,7 @@ public class GameStateManager : MonoBehaviour
         quipWindow.SetActive(false);
         gameIsRunning = true;
         Time.timeScale = currentTimeScale;
-        cat.velocity = new Vector2(0, 3);
+        cat.velocity = new Vector2(0, 7);
     }
 
     public void startQuip(string itemName)
