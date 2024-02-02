@@ -98,19 +98,19 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             // StartCoroutine(BounceUp());
-            Vector2 velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+            Vector2 velocity = myRigidbody.velocity;
             float xVelocity = velocity.x;
             float yVelocity = velocity.y;
             Vector2 newVelocity = new Vector2(0, 0);
 
             if (yVelocity > 0 && xVelocity != 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().simulated = false;
+                myRigidbody.simulated = false;
                 newVelocity = new Vector2(xVelocity,
                     Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity * 0.5f, 2), 0.5f)));
-                gameObject.GetComponent<Rigidbody2D>().velocity = newVelocity;
+                myRigidbody.velocity = newVelocity;
 
-                gameObject.GetComponent<Rigidbody2D>().simulated = true;
+                myRigidbody.simulated = true;
             }
 
             Debug.Log("velocity: " + velocity + "| velocity after: " + newVelocity);
@@ -145,6 +145,11 @@ public class Cat : MonoBehaviour
             itemTimer = 0;
             StartCoroutine(SpawnNewItem());
             GSM.startQuip("GravityBoots");
+        }
+
+        if (col.gameObject.CompareTag("Cloud"))
+        {
+            myRigidbody.velocity += new Vector2(0, 2);
         }
     }
 
