@@ -149,7 +149,7 @@ public class Cat : MonoBehaviour
 
         if (col.gameObject.CompareTag("Cloud"))
         {
-            myRigidbody.velocity += new Vector2(0, 2);
+            myRigidbody.velocity += new Vector2(0, 10);
         }
     }
 
