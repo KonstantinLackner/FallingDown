@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Cat
   - gravityBoots
+  - Cloud
   layers:
   - Default
   - TransparentFX
