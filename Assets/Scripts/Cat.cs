@@ -7,6 +7,7 @@ public class Cat : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public ItemManager itemManager;
+    public ItemSpawner itemSpawner;
     public List<Sprite> sprites;
     public Transform spawnPoint;
 
@@ -93,8 +94,9 @@ public class Cat : MonoBehaviour
         if (col.gameObject.CompareTag("Item"))
         {
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
-            GSM.startQuip(itemToPickUp);
+            itemSpawner.DestroyCurrentItem();
             itemManager.PickupItem(itemToPickUp);
+            GSM.startQuip(itemToPickUp);
         }
 
         if (col.gameObject.CompareTag("Cloud"))

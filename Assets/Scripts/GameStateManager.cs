@@ -6,7 +6,7 @@ using Image = UnityEngine.UI.Image;
 public class GameStateManager : MonoBehaviour
 {
     private bool gameIsRunning = true;
-    private float currentTimeScale = 1; // I added this as the gravity boots could just slow down the time scale
+    public float currentTimeScale = 1; // I added this as the gravity boots could just slow down the time scale
     public GameObject quipWindow;
     public TMP_Text quipWindowText;
     public Image quipWindowSprite;
@@ -81,5 +81,10 @@ public class GameStateManager : MonoBehaviour
     {
         currentStars++;
         starCollectAudioSource.Play();
+    }
+
+    public void ApplyAllItemChanges()
+    {
+        Time.timeScale = currentTimeScale;
     }
 }

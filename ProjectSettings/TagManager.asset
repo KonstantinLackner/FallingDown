@@ -9,8 +9,8 @@ TagManager:
   - Bird
   - Wall
   - Cat
-  - gravityBoots
   - Cloud
+  - Item
   layers:
   - Default
   - TransparentFX

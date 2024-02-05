@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour
@@ -33,7 +30,7 @@ public class ItemSpawner : MonoBehaviour
             if (currentItem != null)
             {
                 // If the item wasn't collected by the player in time
-                Destroy(currentItem);
+                DestroyCurrentItem();
                 starDisappearAudioSource.Play();
                 GSM.starsMissed++;
             }
@@ -66,8 +63,13 @@ public class ItemSpawner : MonoBehaviour
             ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f}
             : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =
-            new Vector3(xPositions[Random.Range(0, xPositions.Length)], Random.Range(-1.5f, 3.5f), 0);
+            new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(- 1.5f, 3.5f), 0);
         Debug.Log("spawn position: " + spawnPosition);
         currentItem = Instantiate(GetRandomItem(), spawnPosition, Quaternion.identity);
+    }
+
+    public void DestroyCurrentItem()
+    {
+        Destroy(currentItem);
     }
 }

@@ -20,6 +20,8 @@ public class ItemManager : MonoBehaviour
 
         currentItems.Enqueue(item);
         Debug.Log($"Picked up {item.ItemName}");
+        
+        CheckCurrentItems();
     }
 
     public Item DropItem()
@@ -43,8 +45,18 @@ public class ItemManager : MonoBehaviour
         return false;
     }
     
-    bool ItemExistsInQueueByName(string itemNameToCheck)
+    private bool ItemExistsInQueueByName(string itemNameToCheck)
     {
         return Enumerable.Any(currentItems, item => item.ItemName == itemNameToCheck);
+    }
+
+    private void CheckCurrentItems()
+    {
+        if (ItemExistsInQueueByName("GravityBoots"))
+        {
+            GSM.currentTimeScale = 0.5f;
+        }
+        
+        GSM.ApplyAllItemChanges();
     }
 }
