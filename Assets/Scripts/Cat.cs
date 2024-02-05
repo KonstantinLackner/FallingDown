@@ -79,6 +79,17 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Line"))
         {
             bounceAudioSource.Play();
+
+            Vector2 velocity = myRigidbody.velocity;
+            float maxYVelocity = 14f;
+            float minYVelocity = 7f;
+
+            myRigidbody.simulated = false;
+            Vector2 newVelocity = new Vector2(velocity.x, Mathf.Max(Mathf.Min(velocity.y, maxYVelocity), minYVelocity));
+            myRigidbody.velocity = newVelocity;
+            myRigidbody.simulated = true;
+
+            Debug.Log("LINE BOUNCE velocity: " + velocity + "| velocity after: " + newVelocity);
         }
     }
 
