@@ -11,6 +11,16 @@ public class GameStateManager : MonoBehaviour
     public TMP_Text quipWindowText;
     public Image quipWindowSprite;
     public Rigidbody2D cat;
+    public TMP_Text starsCollectedText;
+    public TMP_Text starsMissedText;
+    public TMP_Text scoreText;
+    public TMP_Text bigText;
+    public GameObject menuButton;
+    public int currentStars = 0;
+    public int starsMissed = 0;
+    private int score = 0;
+    public AudioSource gameOverAudioSource;
+    public AudioSource starCollectAudioSource;
     
     [System.Serializable]
     public class Item
@@ -34,6 +44,8 @@ public class GameStateManager : MonoBehaviour
         {
             resumeGame();
         }
+
+        UpdateScore();
     }
 
     void pauseGame()
@@ -66,5 +78,27 @@ public class GameStateManager : MonoBehaviour
 
         // Handle the case where the item is not found
         Debug.Log("Item not found: " + itemName);
+    }
+    
+    public void GameOver()
+    {
+        bigText.text = "GAME OVER";
+        gameOverAudioSource.Play();
+        scoreText.fontSize = 16;
+        menuButton.SetActive(true);
+    }
+    
+    private void UpdateScore()
+    {
+        starsCollectedText.text = "Stars collected: " + currentStars.ToString();
+        starsMissedText.text = "Stars missed: " + starsMissed.ToString();
+        score = currentStars * 50 - starsMissed * 20;
+        scoreText.text = "Score: " + score;
+    }
+
+    public void CollectStar()
+    {
+        currentStars++;
+        starCollectAudioSource.Play();
     }
 }

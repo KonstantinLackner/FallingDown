@@ -4,87 +4,45 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class Cat : MonoBehaviour
 {
     private bool fallingDown;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
+    public ItemManager itemManager;
     public List<Sprite> sprites;
     public Transform spawnPoint;
 
     public GameStateManager GSM;
-    public GameObject starSpawner;
-    private StarSpawner starScript;
-    public TMP_Text starsCollectedText;
-    public TMP_Text starsMissedText;
-    public TMP_Text scoreText;
-    public TMP_Text bigText;
-    public GameObject menuButton;
-    private float itemTimer = 8f;
-    private float timeAlive = 0f;
-    private int starsCollected = 0;
-    private int starsMissed = 0;
-    private int score = 0;
-    private bool starsInitiated = false;
-    public AudioSource starCollectAudioSource;
-    public AudioSource gameOverAudioSource;
     public AudioSource bounceAudioSource;
-    public AudioSource starDisappearAudioSource;
 
-    public float spriteChange1;
-    public float spriteChange2;
+    public float spriteChangeSpeed1;
+    public float spriteChangeSpeed2;
 
     void Start()
     {
         transform.position = spawnPoint.position;
-        fallingDown = true;
-        starScript = starSpawner.GetComponent<StarSpawner>();
     }
 
     void Update()
     {
-        if (fallingDown)
+        // Sprite stuff
+        float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? 1 : -1;
+        transform.localScale = new Vector3(1, yFlip, 1);
+        if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChangeSpeed1)
         {
-            float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? 1 : -1;
-            transform.localScale = new Vector3(1, yFlip, 1);
-            if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChange1)
-            {
-                mySpriteRenderer.sprite = sprites[0];
-            }
-            else if (Mathf.Abs(myRigidbody.velocity.y) >= spriteChange1 &&
-                     Mathf.Abs(myRigidbody.velocity.y) <= spriteChange2)
-            {
-                mySpriteRenderer.sprite = sprites[1];
-            }
-            else
-            {
-                mySpriteRenderer.sprite = sprites[2];
-            }
-
-            timeAlive += Time.deltaTime;
-            UpdateScore();
-
-
-            if (itemTimer < 10)
-            {
-                itemTimer += Time.deltaTime;
-            }
-            else
-            {
-                if (!starsInitiated)
-                {
-                    starsInitiated = true;
-                }
-                else
-                {
-                    starDisappearAudioSource.Play();
-                    starsMissed++;
-                }
-
-                itemTimer = 0;
-                StartCoroutine(SpawnNewItem());
-            }
+            mySpriteRenderer.sprite = sprites[0];
+        }
+        else if (Mathf.Abs(myRigidbody.velocity.y) >= spriteChangeSpeed1 &&
+                 Mathf.Abs(myRigidbody.velocity.y) <= spriteChangeSpeed2)
+        {
+            mySpriteRenderer.sprite = sprites[1];
+        }
+        else
+        {
+            mySpriteRenderer.sprite = sprites[2];
         }
     }
 
@@ -92,12 +50,18 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
-            GameOver();
+            if (itemManager.CanRespawnWithConverter())
+            {
+                // TODO: RespawnMethod maybe with a timer and a nice animation or at least particle system with star sprite shooting out?
+            }
+            else
+            {
+                GSM.GameOver();
+            }
         }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            // StartCoroutine(BounceUp());
             Vector2 velocity = myRigidbody.velocity;
             float xVelocity = velocity.x;
             float yVelocity = velocity.y;
@@ -122,28 +86,17 @@ public class Cat : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnNewItem()
-    {
-        starScript.DestroyStar();
-        yield return new WaitForSeconds(2f);
-        starScript.SpawnNew();
-    }
+    
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Star"))
         {
-            starCollectAudioSource.Play();
-            itemTimer = 0;
-            StartCoroutine(SpawnNewItem());
-            starsCollected++;
+            GSM.CollectStar();
         }
 
         if (col.gameObject.CompareTag("gravityBoots"))
         {
-            starCollectAudioSource.Play();
-            itemTimer = 0;
-            StartCoroutine(SpawnNewItem());
             GSM.startQuip("GravityBoots");
         }
 
@@ -151,23 +104,5 @@ public class Cat : MonoBehaviour
         {
             myRigidbody.velocity += new Vector2(0, 10);
         }
-    }
-
-    private void GameOver()
-    {
-        Debug.Log("Game over!");
-        bigText.text = "GAME OVER";
-        gameOverAudioSource.Play();
-        scoreText.fontSize = 16;
-        fallingDown = false;
-        menuButton.SetActive(true);
-    }
-
-    private void UpdateScore()
-    {
-        starsCollectedText.text = "Stars collected: " + starsCollected.ToString();
-        starsMissedText.text = "Stars missed: " + starsMissed.ToString();
-        score = starsCollected * 50 - starsMissed * 20;
-        scoreText.text = "Score: " + score;
     }
 }
