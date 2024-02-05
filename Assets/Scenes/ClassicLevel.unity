@@ -1542,7 +1542,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 617227010}
   mySpriteRenderer: {fileID: 336088010}
   itemManager: {fileID: 1824664488}
-  itemSpawner: {fileID: 0}
+  itemSpawner: {fileID: 2002439776}
   sprites:
   - {fileID: 21300000, guid: f5e77bada67927d43864c41a9c75a225, type: 3}
   - {fileID: 21300000, guid: 87ccb245d181bcf468c9cf9c4634a8ba, type: 3}

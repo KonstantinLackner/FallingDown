@@ -64,12 +64,22 @@ public class ItemSpawner : MonoBehaviour
             : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =
             new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(- 1.5f, 3.5f), 0);
-        Debug.Log("spawn position: " + spawnPosition);
-        currentItem = Instantiate(GetRandomItem(), spawnPosition, Quaternion.identity);
+        GameObject newItem = GetRandomItem();
+        Debug.Log("Spawning " + newItem + "at position: " + spawnPosition);
+        currentItem = Instantiate(newItem, spawnPosition, Quaternion.identity);
     }
 
     public void DestroyCurrentItem()
     {
-        Destroy(currentItem);
+        if (currentItem != null) 
+        {
+            Debug.Log("Dstroying current item: " + currentItem);
+            Destroy(currentItem);
+            currentItem = null;
+        }
+        else 
+        {
+            Debug.Log("Instructed to destroy item, but there is none.");
+        }
     }
 }
