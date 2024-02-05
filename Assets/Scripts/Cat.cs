@@ -88,6 +88,7 @@ public class Cat : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Star"))
         {
+            itemSpawner.DestroyCurrentItem();
             GSM.CollectStar();
         }
 

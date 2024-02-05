@@ -21,7 +21,6 @@ public class GameStateManager : MonoBehaviour
     private int score = 0;
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
-    public ItemSpawner itemSpawner;
 
     void Start()
     {
@@ -79,7 +78,6 @@ public class GameStateManager : MonoBehaviour
 
     public void CollectStar()
     {
-        itemSpawner.DestroyCurrentItem();
         currentStars++;
         starCollectAudioSource.Play();
     }
