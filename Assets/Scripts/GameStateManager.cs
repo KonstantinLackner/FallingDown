@@ -21,16 +21,7 @@ public class GameStateManager : MonoBehaviour
     private int score = 0;
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
-    
-    [System.Serializable]
-    public class Item
-    {
-        public string ItemName;
-        public Sprite ItemSprite;
-        public string ItemText;
-    }
-    
-    public List<Item> items = new List<Item>();
+    public ItemManager itemManager;
 
     void Start()
     {
@@ -62,24 +53,14 @@ public class GameStateManager : MonoBehaviour
         cat.velocity = new Vector2(0, 7);
     }
 
-    public void startQuip(string itemName)
+    public void startQuip(Item item)
     {
         quipWindow.SetActive(true);
-        foreach (var item in items)
-        {
-            if (item.ItemName.Equals(itemName))
-            {
-                quipWindowText.text = item.ItemText;
-                quipWindowSprite.sprite = item.ItemSprite;
-                pauseGame();
-                return;
-            }
-        }
-
-        // Handle the case where the item is not found
-        Debug.Log("Item not found: " + itemName);
+        quipWindowText.text = item.ItemText;
+        quipWindowSprite.sprite = item.ItemSprite;
+        pauseGame();
     }
-    
+
     public void GameOver()
     {
         bigText.text = "GAME OVER";
@@ -87,7 +68,7 @@ public class GameStateManager : MonoBehaviour
         scoreText.fontSize = 16;
         menuButton.SetActive(true);
     }
-    
+
     private void UpdateScore()
     {
         starsCollectedText.text = "Stars collected: " + currentStars.ToString();

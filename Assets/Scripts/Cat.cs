@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
-using UnityEngine.Serialization;
 
 public class Cat : MonoBehaviour
 {
@@ -95,9 +90,11 @@ public class Cat : MonoBehaviour
             GSM.CollectStar();
         }
 
-        if (col.gameObject.CompareTag("gravityBoots"))
+        if (col.gameObject.CompareTag("Item"))
         {
-            GSM.startQuip("GravityBoots");
+            Item itemToPickUp = col.gameObject.GetComponent<Item>();
+            GSM.startQuip(itemToPickUp);
+            itemManager.PickupItem(itemToPickUp);
         }
 
         if (col.gameObject.CompareTag("Cloud"))

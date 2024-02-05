@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765009500120677103}
+  - component: {fileID: -5980075399196148825}
   - component: {fileID: 4030412672124157990}
   - component: {fileID: 1017332777107681653}
   m_Layer: 0
@@ -33,6 +34,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5980075399196148825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333158966950122511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91684f5702e920242a00b79f5724645e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemName: GravityBoots
+  ItemSprite: {fileID: -1766047397, guid: 25c2a9f63027c4db4b21abcf79d5aa15, type: 3}
+  ItemText: These wonderful boots should take some weight off your paws - and look
+    fabulous too!
 --- !u!212 &4030412672124157990
 SpriteRenderer:
   m_ObjectHideFlags: 0

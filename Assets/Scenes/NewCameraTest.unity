@@ -2127,6 +2127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 3
   GSM: {fileID: 957936823}
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &790345410
 Transform:
   m_ObjectHideFlags: 0
@@ -2430,23 +2433,7 @@ MonoBehaviour:
   starsMissed: 0
   gameOverAudioSource: {fileID: 588049539}
   starCollectAudioSource: {fileID: 626619264}
-  items:
-  - ItemName: GravityBoots
-    ItemSprite: {fileID: 0}
-    ItemText: These gravity boots will take some of that weight off your paws! ...
-      and they look fancy.
-  - ItemName: Parachute
-    ItemSprite: {fileID: 0}
-    ItemText: "That's a parachute that slows down your fall ... 'Sie m\xFCssen nur
-      den Nippel durch die Lasche zieh'n'"
-  - ItemName: EvenMoreClaws
-    ItemSprite: {fileID: 0}
-    ItemText: Those extra claws look mighty sharp, try clawing that those walls,
-      maybe.
-  - ItemName: EvenMoreClaws
-    ItemSprite: {fileID: 0}
-    ItemText: This converts stars to extra lives! The price is subject to inflation
-      though... Don't overuse it.
+  itemManager: {fileID: 790345409}
 --- !u!4 &957936824
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ public class ItemSpawner : MonoBehaviour
 {
     public List<GameObject> items = new List<GameObject>();
     private GameObject currentItem;
-    private Vector3 previousStarPosition = new Vector3(0, 0, 0);
     private bool isExpertLevel;
     private float timer = 8f;
     public AudioSource starDisappearAudioSource;
@@ -31,11 +30,14 @@ public class ItemSpawner : MonoBehaviour
         }
         else if (timer is >= 10 and <= 12)
         {
-            if (currentItem != null) { // If the item wasn't collected by the player in time
-                DestroyStar();
+            if (currentItem != null)
+            {
+                // If the item wasn't collected by the player in time
+                Destroy(currentItem);
                 starDisappearAudioSource.Play();
                 GSM.starsMissed++;
             }
+
             timer += Time.deltaTime;
         }
         else
@@ -57,21 +59,12 @@ public class ItemSpawner : MonoBehaviour
         int index = Random.Range(1, items.Count); // Random index among the remaining items
         return items[index];
     }
-    
-    private void DestroyStar()
-    {
-        if (currentItem)
-        {
-            previousStarPosition = currentItem.transform.localPosition;
-            Destroy(currentItem);
-        }
-    }
 
     private void SpawnNew()
     {
         float[] xPositions = isExpertLevel
-            ? new float[] { -3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f }
-            : new float[] { -3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f };
+            ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f}
+            : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =
             new Vector3(xPositions[Random.Range(0, xPositions.Length)], Random.Range(-1.5f, 3.5f), 0);
         Debug.Log("spawn position: " + spawnPosition);
