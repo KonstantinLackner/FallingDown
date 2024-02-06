@@ -44,18 +44,6 @@ public class Cat : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Finish"))
-        {
-            if (itemManager.CanRespawnWithConverter())
-            {
-                // TODO: RespawnMethod maybe with a timer and a nice animation or at least particle system with star sprite shooting out?
-            }
-            else
-            {
-                GSM.GameOver();
-            }
-        }
-
         if (collision.gameObject.CompareTag("Wall"))
         {
             Vector2 velocity = myRigidbody.velocity;
@@ -114,6 +102,18 @@ public class Cat : MonoBehaviour
         if (col.gameObject.CompareTag("Cloud"))
         {
             myRigidbody.velocity += new Vector2(0, 10);
+        }
+        
+        if (col.gameObject.CompareTag("KillBox"))
+        {
+            if (itemManager.CanRespawnWithConverter())
+            {
+                // TODO: RespawnMethod maybe with a timer and a nice animation or at least particle system with star sprite shooting out?
+            }
+            else
+            {
+                GSM.GameOver();
+            }
         }
     }
 }
