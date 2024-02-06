@@ -786,6 +786,13 @@ MonoBehaviour:
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
+  - {fileID: 8333158966950122511, guid: 5ea222c4e205abd479cce2922b72e881, type: 3}
+  - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
+  - {fileID: 8333158966950122511, guid: d459af9ad8799db4080a25080aa472ab, type: 3}
+  - {fileID: 8333158966950122511, guid: 66447273fa4d6d24ba733de51860ad58, type: 3}
+  - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
+  - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
+  - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
   starDisappearAudioSource: {fileID: 1439843704}
   GSM: {fileID: 957936823}
 --- !u!4 &248215456
@@ -2167,6 +2174,9 @@ MonoBehaviour:
   items:
   - {fileID: -5980075399196148825, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
   - {fileID: 0}
+  item1: {fileID: 1910181909}
+  item2: {fileID: 1746294421}
+  item3: {fileID: 751216201}
 --- !u!4 &790345410
 Transform:
   m_ObjectHideFlags: 0

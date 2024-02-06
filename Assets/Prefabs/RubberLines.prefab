@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4030412672124157990}
   - component: {fileID: 1017332777107681653}
   m_Layer: 0
-  m_Name: GravityBoots
+  m_Name: RubberLines
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,10 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91684f5702e920242a00b79f5724645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: GravityBoots
-  ItemSprite: {fileID: 21300000, guid: 2053b792ff5d31b47a7adc9cef486d4c, type: 3}
-  ItemText: These wonderful boots should take some weight off your paws - and look
-    fabulous too!
+  ItemName: RubberLines
+  ItemSprite: {fileID: 21300000, guid: 8266013a429e8794db4de47216066433, type: 3}
+  ItemText: Makes lines more bouncy.
 --- !u!212 &4030412672124157990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 1711906243
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2053b792ff5d31b47a7adc9cef486d4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8266013a429e8794db4de47216066433, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
