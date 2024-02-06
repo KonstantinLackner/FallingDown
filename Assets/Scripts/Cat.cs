@@ -30,7 +30,7 @@ public class Cat : MonoBehaviour
     void Update()
     {
         // Sprite stuff
-        float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? 1 : -1;
+        float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? -1 : 1;
         transform.localScale = new Vector3(1, yFlip, 1);
         if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChangeSpeed1)
         {
@@ -75,6 +75,10 @@ public class Cat : MonoBehaviour
 
             float currentSpeed = myRigidbody.velocity.magnitude;
             float multiplier = 1 + (maxMultiplier - 1) * (1 - Mathf.Clamp01(currentSpeed / maxSpeedForMultiplier));
+            if (multiplier > 1)
+            {
+                myRigidbody.velocity *= multiplier;
+            }
         }
     }
 
