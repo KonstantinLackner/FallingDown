@@ -11,6 +11,8 @@ public class ItemSpawner : MonoBehaviour
     private float timer = 8f;
     public AudioSource starDisappearAudioSource;
     public GameStateManager GSM;
+    public int secondsToSpawnNewItem = 0;
+    public int secondsForItemToVanish = 0;
 
     void Start()
     {
@@ -21,11 +23,11 @@ public class ItemSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (timer < 10)
+        if (timer < secondsToSpawnNewItem)
         {
             timer += Time.deltaTime;
         }
-        else if (timer is >= 10 and <= 12)
+        else if (timer >= secondsToSpawnNewItem && timer <= secondsForItemToVanish)
         {
             if (currentItem != null)
             {
@@ -48,7 +50,7 @@ public class ItemSpawner : MonoBehaviour
     {
         float randomNumber = Random.Range(0.0f, 1.0f);
 
-        if (randomNumber < 0.7f)
+        if (randomNumber < 0.1f)
         {
             return items[0]; // 70% chance to pick the first item
         }

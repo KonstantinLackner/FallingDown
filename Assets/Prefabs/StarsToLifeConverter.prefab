@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: StarsToLifeConverter
   ItemSprite: {fileID: 21300000, guid: 47beba6b836f5014aae65e64777d4521, type: 3}
-  ItemText: It does what the name says but don't overuse it! Inflation on this thing
-    is crayz! Starts at 10 stars per heart.
+  ItemText: It does what the name says - don't overuse it! Inflation is crayz! Starts
+    at 10 s/h.
 --- !u!212 &4030412672124157990
 SpriteRenderer:
   m_ObjectHideFlags: 0
