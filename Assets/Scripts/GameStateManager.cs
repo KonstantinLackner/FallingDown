@@ -30,7 +30,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameIsRunning && Input.GetKeyDown(KeyCode.Alpha1))
+        if (!gameIsRunning && Input.GetKeyDown(KeyCode.Space))
         {
             resumeGame();
         }
