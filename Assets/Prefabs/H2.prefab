@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7954710278074427156}
   - component: {fileID: 6484909278441486633}
+  - component: {fileID: 1747145978288549548}
   m_Layer: 0
   m_Name: H2
   m_TagString: Untagged
@@ -64,6 +65,19 @@ PolygonCollider2D:
       - {x: -8.480608, y: -29.99589}
       - {x: -0.026759475, y: -29.992733}
       - {x: -0.027935386, y: -4.462367}
+--- !u!114 &1747145978288549548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005002595262122753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f9135bea521684da5d920359d8e690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  houseSpriteRenderer: {fileID: 4243234488005509962}
 --- !u!1 &4243234488005509956
 GameObject:
   m_ObjectHideFlags: 0

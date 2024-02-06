@@ -47,7 +47,7 @@ public class ItemSpawner : MonoBehaviour
         }
     }
 
-    public GameObject GetRandomItem()
+    private GameObject GetRandomItem()
     {
         float randomNumber = Random.Range(0.0f, 1.0f);
 
