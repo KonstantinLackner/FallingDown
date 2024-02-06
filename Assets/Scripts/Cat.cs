@@ -16,6 +16,11 @@ public class Cat : MonoBehaviour
 
     public float spriteChangeSpeed1;
     public float spriteChangeSpeed2;
+    
+    public float maxMultiplier = 3f; // The maximum velocity multiplier at low speeds
+    public float maxSpeedForMultiplier = 15f; // Speed at which the multiplier becomes 1
+
+
 
     void Start()
     {
@@ -68,16 +73,8 @@ public class Cat : MonoBehaviour
         {
             bounceAudioSource.Play();
 
-            Vector2 velocity = myRigidbody.velocity;
-            float maxYVelocity = 14f;
-            float minYVelocity = 7f;
-
-            myRigidbody.simulated = false;
-            Vector2 newVelocity = new Vector2(velocity.x, Mathf.Max(Mathf.Min(velocity.y, maxYVelocity), minYVelocity));
-            myRigidbody.velocity = newVelocity;
-            myRigidbody.simulated = true;
-
-            Debug.Log("LINE BOUNCE velocity: " + velocity + "| velocity after: " + newVelocity);
+            float currentSpeed = myRigidbody.velocity.magnitude;
+            float multiplier = 1 + (maxMultiplier - 1) * (1 - Mathf.Clamp01(currentSpeed / maxSpeedForMultiplier));
         }
     }
 

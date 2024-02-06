@@ -1572,6 +1572,8 @@ MonoBehaviour:
   bounceAudioSource: {fileID: 1955906326}
   spriteChangeSpeed1: 7
   spriteChangeSpeed2: 11
+  maxMultiplier: 5
+  maxSpeedForMultiplier: 15
 --- !u!50 &611573646
 Rigidbody2D:
   serializedVersion: 4
