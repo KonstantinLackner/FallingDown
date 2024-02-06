@@ -13,6 +13,7 @@ public class ItemSpawner : MonoBehaviour
     public GameStateManager GSM;
     public int secondsToSpawnNewItem = 0;
     public int secondsForItemToVanish = 0;
+    public float chanceForStars;
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class ItemSpawner : MonoBehaviour
     {
         float randomNumber = Random.Range(0.0f, 1.0f);
 
-        if (randomNumber < 0.1f)
+        if (randomNumber < chanceForStars)
         {
             return items[0]; // 70% chance to pick the first item
         }
