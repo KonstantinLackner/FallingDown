@@ -15,7 +15,9 @@ public class GameStateManager : MonoBehaviour
     public TMP_Text starsMissedText;
     public TMP_Text scoreText;
     public TMP_Text bigText;
+    public TMP_Text heightScore;
     public GameObject menuButton;
+    public GameObject camera;
     public int currentStars = 0;
     public int starsMissed = 0;
     private int score = 0;
@@ -74,6 +76,8 @@ public class GameStateManager : MonoBehaviour
         starsMissedText.text = "Stars missed: " + starsMissed.ToString();
         score = currentStars * 50 - starsMissed * 20;
         scoreText.text = "Score: " + score;
+        int height = (int) (camera.transform.position.y / 2);
+        heightScore.text = height + " meters";
     }
 
     public void CollectStar()
