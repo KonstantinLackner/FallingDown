@@ -12,6 +12,10 @@ TagManager:
   - Cloud
   - Item
   - KillBox
+  - Drill
+  - DrillWP1
+  - DrillWP2
+  - WP2
   layers:
   - Default
   - TransparentFX
@@ -49,6 +53,9 @@ TagManager:
   - name: Hidden
     uniqueID: 2144450277
     locked: 0
+  - name: Cat
+    uniqueID: 4028034729
+    locked: 0
   - name: Background
     uniqueID: 3700847763
     locked: 0
@@ -69,9 +76,6 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 2346121343
-    locked: 0
-  - name: Cat
-    uniqueID: 4028034729
     locked: 0
   - name: UI
     uniqueID: 1711906243

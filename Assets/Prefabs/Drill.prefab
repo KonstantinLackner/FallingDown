@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765009500120677103}
-  - component: {fileID: -5980075399196148825}
   - component: {fileID: 4030412672124157990}
   - component: {fileID: 1017332777107681653}
+  - component: {fileID: 4065732988401008061}
   m_Layer: 0
   m_Name: Drill
-  m_TagString: Item
+  m_TagString: Drill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5980075399196148825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8333158966950122511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91684f5702e920242a00b79f5724645e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemName: Drill
-  ItemSprite: {fileID: 21300000, guid: 8129fe0c1817b864daf688ad2d047157, type: 3}
-  ItemText: Drill into walls, shoot out again towards your mouse pointer!
 --- !u!212 &4030412672124157990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,3 +112,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9827962}
   m_EdgeRadius: 0
+--- !u!114 &4065732988401008061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333158966950122511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538dceb5ca8a9694497e0a8dac40c04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WP1: {x: 0, y: 0, z: 0}
+  WP2: {x: 0, y: 0, z: 0}

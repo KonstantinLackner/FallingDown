@@ -4,10 +4,15 @@ using UnityEngine;
 public class Cat : MonoBehaviour
 {
     private bool fallingDown;
+    private bool inDrill;
+    private bool hitDrillWP1;
+    private bool hitDrillWP2;
+    private Vector3 drillWP1;
+    private Vector3 drillWP2;
+    public AudioSource drillAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public ItemManager itemManager;
-    public ItemSpawner itemSpawner;
     public List<Sprite> sprites;
     public Transform spawnPoint;
 
@@ -44,6 +49,11 @@ public class Cat : MonoBehaviour
         else
         {
             mySpriteRenderer.sprite = sprites[2];
+        }
+
+        if (inDrill)
+        {
+            MovementInDrill();
         }
     }
 
@@ -88,18 +98,31 @@ public class Cat : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Star"))
         {
-            itemSpawner.DestroyCurrentItem();
             GSM.CollectStar();
+            Destroy(col.gameObject);
         }
 
         if (col.gameObject.CompareTag("Item"))
         {
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
-            itemSpawner.DestroyCurrentItem();
             itemManager.PickupItem(itemToPickUp);
             GSM.startQuip(itemToPickUp);
+            Destroy(col.gameObject);
         }
 
+        if (col.gameObject.CompareTag("Drill"))
+        {
+            drillAudioSource.Play();
+            myRigidbody.simulated = false;
+            myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+            myRigidbody.velocity = Vector2.zero;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            inDrill = true;
+            drillWP1 = col.GetComponent<Drill>().WP1.transform.position;
+            drillWP2 = col.GetComponent<Drill>().WP2.transform.position;
+            Destroy(col.gameObject);
+        }
+        
         if (col.gameObject.CompareTag("Cloud"))
         {
             myRigidbody.velocity += new Vector2(0, 10);
@@ -115,6 +138,40 @@ public class Cat : MonoBehaviour
             {
                 GSM.GameOver();
             }
+        }
+    }
+
+    void MovementInDrill()
+    {
+        if (transform.position == drillWP1)
+        {
+            hitDrillWP1 = true;
+        }
+
+        if (transform.position == drillWP2)
+        {
+            hitDrillWP2 = true;
+        }
+        
+        float step = 5 * Time.deltaTime;
+        if (!hitDrillWP1)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, drillWP1, step);
+        }
+        else if (!hitDrillWP2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, drillWP2, step);
+        }
+        else
+        {
+            myRigidbody.simulated = true;
+            myRigidbody.bodyType = RigidbodyType2D.Dynamic;
+            gameObject.GetComponent<CircleCollider2D>().enabled = true;
+            inDrill = false;
+            hitDrillWP1 = false;
+            hitDrillWP2 = false;
+            Vector2 velocity = (transform.position - drillWP1).normalized * 10;
+            myRigidbody.velocity = velocity;
         }
     }
 }
