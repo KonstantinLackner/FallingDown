@@ -61,7 +61,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.0004222393, y: -0.0047508813}
-      - {x: -8.498125, y: -0.000070322305}
+      - {x: -8.474211, y: -0.17544393}
       - {x: -8.4895935, y: -22.65366}
       - {x: -0.04059674, y: -30.07482}
       - {x: -0.0011539459, y: -27.018167}
@@ -232,8 +232,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -594119533
-  m_SortingLayer: -3
+  m_SortingLayerID: 1975712765
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 52f9a52ed58ec234f9a4a9f7bdd87cf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
