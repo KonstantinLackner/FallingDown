@@ -80,6 +80,10 @@ public class ItemManager : MonoBehaviour
         {
             GSM.currentTimeScale = 0.5f;
         }
+        else
+        {
+            GSM.currentTimeScale = 1;
+        }
 
         cat.inClaws = ItemExistsInQueueByName("Claws");
         cat.inParachute = ItemExistsInQueueByName("Parachute");

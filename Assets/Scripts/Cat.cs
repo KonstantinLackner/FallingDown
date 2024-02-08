@@ -116,9 +116,9 @@ public class Cat : MonoBehaviour
                 myRigidbody.simulated = true;
             }
 
-            if (inRubberWalls)
+            if (inRubberWalls) // TODO: this must work programmatically somehow - material doesn't change anything. Read through and understand the bounce again!
             {
-                // myRigidbody.velocity *= 5; TODO: This doesn't work - the bounciness has to be changed (i.e. the material)
+                bounceAudioSource.Play();
             }
         }
 
