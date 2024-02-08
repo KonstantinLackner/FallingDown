@@ -8,8 +8,10 @@ public class Cat : MonoBehaviour
     private bool fallingDown;
     private bool inDrill;
     public bool inClaws;
-    public ParticleSystem clawsParticleSystem;
     public bool inParachute;
+    public bool inRubberLines;
+    public bool inRubberWalls;
+    public ParticleSystem clawsParticleSystem;
     private bool hitDrillWP1;
     private bool hitDrillWP2;
     private Vector3 drillWP1;
@@ -96,24 +98,28 @@ public class Cat : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("CollisionWall"))
         {
             Vector2 velocity = myRigidbody.velocity;
             float xVelocity = velocity.x;
             float yVelocity = velocity.y;
             Vector2 newVelocity = new Vector2(0, 0);
 
+            // Wall jump TODO: I have no idea what this does, it needs to be fixed
             if (yVelocity > 0 && xVelocity != 0)
             {
                 myRigidbody.simulated = false;
                 newVelocity = new Vector2(xVelocity,
-                    Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity * 0.5f, 2), 0.5f)));
+                    Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity * 0.5f, 5), 0.5f)));
                 myRigidbody.velocity = newVelocity;
 
                 myRigidbody.simulated = true;
             }
 
-            Debug.Log("velocity: " + velocity + "| velocity after: " + newVelocity);
+            if (inRubberWalls)
+            {
+                // myRigidbody.velocity *= 5; TODO: This doesn't work - the bounciness has to be changed (i.e. the material)
+            }
         }
 
         if (collision.gameObject.CompareTag("Line"))
@@ -129,6 +135,11 @@ public class Cat : MonoBehaviour
                 newVelocity *= multiplier * favourVertical;
             }
             if (inParachute || (inClaws && atWall)) // This is to mitigate the effect of being slow on the bounce TODO: Check if !inGravityBoots
+            {
+                newVelocity *= 2;
+            }
+
+            if (inRubberLines)
             {
                 newVelocity *= 2;
             }

@@ -16,6 +16,7 @@ TagManager:
   - DrillWP1
   - DrillWP2
   - WP2
+  - CollisionWall
   layers:
   - Default
   - TransparentFX
