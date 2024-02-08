@@ -6967,6 +6967,7 @@ MonoBehaviour:
   currentStars: 0
   gameOverAudioSource: {fileID: 588049539}
   starCollectAudioSource: {fileID: 626619264}
+  starCountAudioSource: {fileID: 959599429}
 --- !u!4 &957936824
 Transform:
   m_ObjectHideFlags: 0

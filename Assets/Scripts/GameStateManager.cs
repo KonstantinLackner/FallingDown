@@ -12,11 +12,13 @@ public class GameStateManager : MonoBehaviour
     public Rigidbody2D cat;
     public TMP_Text bigText;
     public TMP_Text heightScore;
+    private int lastHeight;
     public GameObject menuButton;
     public GameObject camera;
     public int currentStars = 0;
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
+    public AudioSource starCountAudioSource;
 
     void Start()
     {
@@ -66,7 +68,12 @@ public class GameStateManager : MonoBehaviour
     private void UpdateScore()
     {
         int height = (int) (camera.transform.position.y / 2);
+        if (height > lastHeight)
+        {
+            starCountAudioSource.Play();
+        }
         heightScore.text = height + " meters \u00d7 " + currentStars;
+        lastHeight = height;
     }
 
     public void CollectStar()
