@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour
     private List<Item> currentItems = new List<Item>(); // The items the cat currently has equipped
     public int maxItems = 3;
     public GameStateManager GSM;
+    public Cat cat;
     private int currentPriceStarLifeConverter = 10;
     public List<Item> items = new List<Item>(); // All items in the game (they are prefabs and collected here)
     public Image item1;
@@ -77,7 +78,15 @@ public class ItemManager : MonoBehaviour
         {
             GSM.currentTimeScale = 0.5f;
         }
+
+        cat.inClaws = ItemExistsInQueueByName("Claws");
+        cat.inParachute = ItemExistsInQueueByName("Parachute");
         
         GSM.ApplyAllItemChanges();
+    }
+
+    public bool hasItem(string itemName)
+    {
+        return ItemExistsInQueueByName(itemName);
     }
 }

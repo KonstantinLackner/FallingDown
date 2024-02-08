@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,11 +6,16 @@ public class Cat : MonoBehaviour
 {
     private bool fallingDown;
     private bool inDrill;
+    public bool inClaws;
+    public ParticleSystem clawsParticleSystem;
+    public bool inParachute;
     private bool hitDrillWP1;
     private bool hitDrillWP2;
     private Vector3 drillWP1;
     private Vector3 drillWP2;
+    private bool atWall;
     public AudioSource drillAudioSource;
+    public AudioSource clawAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public ItemManager itemManager;
@@ -27,8 +33,10 @@ public class Cat : MonoBehaviour
 
 
 
+
     void Start()
     {
+        clawsParticleSystem.Stop();
         transform.position = spawnPoint.position;
     }
 
@@ -54,6 +62,19 @@ public class Cat : MonoBehaviour
         if (inDrill)
         {
             MovementInDrill();
+        }
+
+        if (inClaws)
+        {
+            MovementClaws();
+        }
+    }
+
+    private void MovementClaws()
+    {
+        if (myRigidbody.velocity.y < -2 && atWall)
+        {
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -2);
         }
     }
 
@@ -122,6 +143,14 @@ public class Cat : MonoBehaviour
             drillWP2 = col.GetComponent<Drill>().WP2.transform.position;
             Destroy(col.gameObject);
         }
+
+        if (inClaws && col.gameObject.CompareTag("Wall"))
+        {
+            clawsParticleSystem.Play();
+            clawAudioSource.Play();
+            atWall = true;
+            myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
+        }
         
         if (col.gameObject.CompareTag("Cloud"))
         {
@@ -138,6 +167,16 @@ public class Cat : MonoBehaviour
             {
                 GSM.GameOver();
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (inClaws && col.gameObject.CompareTag("Wall"))
+        {
+            clawsParticleSystem.Stop();
+            clawAudioSource.Stop();
+            atWall = false;
         }
     }
 
