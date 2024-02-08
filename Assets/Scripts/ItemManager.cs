@@ -18,6 +18,10 @@ public class ItemManager : MonoBehaviour
     
     public void PickupItem(Item item)
     {
+        if (ItemExistsInQueueByName(item.ItemName))
+        {
+            return;
+        }
         if (currentItems.Count >= maxItems)
         {
             // Drop the first item (mimicking queue behavior)
@@ -52,7 +56,7 @@ public class ItemManager : MonoBehaviour
         return false;
     }
     
-    private bool ItemExistsInQueueByName(string itemNameToCheck)
+    public bool ItemExistsInQueueByName(string itemNameToCheck)
     {
         return Enumerable.Any(currentItems, item => item.ItemName == itemNameToCheck);
     }
@@ -81,10 +85,5 @@ public class ItemManager : MonoBehaviour
         cat.inParachute = ItemExistsInQueueByName("Parachute");
         
         GSM.ApplyAllItemChanges();
-    }
-
-    public bool hasItem(string itemName)
-    {
-        return ItemExistsInQueueByName(itemName);
     }
 }

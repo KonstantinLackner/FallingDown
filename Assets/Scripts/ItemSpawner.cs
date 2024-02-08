@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class ItemSpawner : MonoBehaviour
 {
     public List<GameObject> items = new List<GameObject>();
+    public ItemManager itemManager;
     private bool isExpertLevel;
     private float timer = 8f;
     public int secondsToSpawnNewItem = 0;
@@ -34,13 +35,26 @@ public class ItemSpawner : MonoBehaviour
     private GameObject GetRandomItem()
     {
         float randomNumber = Random.Range(0.0f, 1.0f);
-
+        
         if (randomNumber < chanceForStars)
         {
             return items[0]; // 70% chance to pick the first item
         }
 
         int index = Random.Range(1, items.Count); // Random index among the remaining items
+
+        while (itemManager.ItemExistsInQueueByName(items[index].name))
+        {
+            randomNumber = Random.Range(0.0f, 1.0f);
+        
+            if (randomNumber < chanceForStars)
+            {
+                return items[0]; // 70% chance to pick the first item
+            }
+
+            index = Random.Range(1, items.Count);
+        }
+        
         return items[index];
     }
 
