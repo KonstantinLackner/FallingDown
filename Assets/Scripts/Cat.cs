@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class Cat : MonoBehaviour
     private bool atWall;
     public AudioSource drillAudioSource;
     public AudioSource clawAudioSource;
+    public AudioSource respawnAudioSource;
+    public AudioSource starCountAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public ItemManager itemManager;
@@ -161,11 +164,12 @@ public class Cat : MonoBehaviour
         {
             if (itemManager.CanRespawnWithConverter())
             {
-                // TODO: RespawnMethod maybe with a timer and a nice animation or at least particle system with star sprite shooting out?
+                StartCoroutine(Respawn());
             }
             else
             {
                 GSM.GameOver();
+                Destroy(gameObject);
             }
         }
     }
@@ -212,5 +216,27 @@ public class Cat : MonoBehaviour
             Vector2 velocity = (transform.position - drillWP1).normalized * 10;
             myRigidbody.velocity = velocity;
         }
+    }
+
+    private IEnumerator Respawn()
+    {
+        myRigidbody.velocity = Vector2.zero;
+        myRigidbody.simulated = false;
+        myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+        for (int i = itemManager.currentPriceStarLifeConverter; i > 0; i--)
+        {
+            yield return new WaitForSeconds(0.3f + (i * 0.02f));
+            starCountAudioSource.Play();
+            GSM.currentStars--;
+        }
+        itemManager.currentPriceStarLifeConverter += 5;
+        respawnAudioSource.Play();
+        clawsParticleSystem.Play();
+        gameObject.SetActive(true);
+        transform.position = spawnPoint.position;
+        yield return new WaitForSeconds(1);
+        clawsParticleSystem.Stop();
+        myRigidbody.simulated = true;
+        myRigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
 }

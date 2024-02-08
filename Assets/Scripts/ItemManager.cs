@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
     public int maxItems = 3;
     public GameStateManager GSM;
     public Cat cat;
-    private int currentPriceStarLifeConverter = 10;
+    public int currentPriceStarLifeConverter = 10;
     public List<Item> items = new List<Item>(); // All items in the game (they are prefabs and collected here)
     public Image item1;
     public Image item2;
@@ -44,10 +44,8 @@ public class ItemManager : MonoBehaviour
 
     public bool CanRespawnWithConverter()
     {
-        if (ItemExistsInQueueByName("StarToLifeConverter") && GSM.currentStars >= currentPriceStarLifeConverter)
+        if (ItemExistsInQueueByName("StarsToLifeConverter") && GSM.currentStars >= currentPriceStarLifeConverter)
         {
-            GSM.currentStars -= currentPriceStarLifeConverter;
-            currentPriceStarLifeConverter += 5;
             return true;
         }
 

@@ -50,6 +50,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: 47beba6b836f5014aae65e64777d4521, type: 3}
   ItemText: It does what the name says - don't overuse it! Inflation is crayz! Starts
     at 10 s/h.
+  camera: {fileID: 0}
 --- !u!212 &4030412672124157990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1711906243
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47beba6b836f5014aae65e64777d4521, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

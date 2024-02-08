@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
@@ -11,16 +10,11 @@ public class GameStateManager : MonoBehaviour
     public TMP_Text quipWindowText;
     public Image quipWindowSprite;
     public Rigidbody2D cat;
-    public TMP_Text starsCollectedText;
-    public TMP_Text starsMissedText;
-    public TMP_Text scoreText;
     public TMP_Text bigText;
     public TMP_Text heightScore;
     public GameObject menuButton;
     public GameObject camera;
     public int currentStars = 0;
-    public int starsMissed = 0;
-    private int score = 0;
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
 
@@ -66,18 +60,13 @@ public class GameStateManager : MonoBehaviour
     {
         bigText.text = "GAME OVER";
         gameOverAudioSource.Play();
-        scoreText.fontSize = 16;
         menuButton.SetActive(true);
     }
 
     private void UpdateScore()
     {
-        starsCollectedText.text = "Stars collected: " + currentStars.ToString();
-        starsMissedText.text = "Stars missed: " + starsMissed.ToString();
-        score = currentStars * 50 - starsMissed * 20;
-        scoreText.text = "Score: " + score;
         int height = (int) (camera.transform.position.y / 2);
-        heightScore.text = height + " meters";
+        heightScore.text = height + " meters \u00d7 " + currentStars;
     }
 
     public void CollectStar()

@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target.position.y > highPoint)
+        if (target != null && target.position.y > highPoint)
         {
             highPoint = target.position.y;
         }
