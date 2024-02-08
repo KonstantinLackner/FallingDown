@@ -71,11 +71,24 @@ public class Cat : MonoBehaviour
         {
             MovementClaws();
         }
+
+        if (inParachute)
+        {
+            MovementParachute();
+        }
     }
 
     private void MovementClaws()
     {
         if (myRigidbody.velocity.y < -2 && atWall)
+        {
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -2);
+        }
+    }
+    
+    private void MovementParachute()
+    {
+        if (myRigidbody.velocity.y < -2)
         {
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -2);
         }
@@ -106,13 +119,21 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Line"))
         {
             bounceAudioSource.Play();
-
+            
+            Vector2 newVelocity = myRigidbody.velocity;
+            Vector2 favourVertical = new Vector2(0.5f, 1);
             float currentSpeed = myRigidbody.velocity.magnitude;
             float multiplier = 1 + (maxMultiplier - 1) * (1 - Mathf.Clamp01(currentSpeed / maxSpeedForMultiplier));
             if (multiplier > 1)
             {
-                myRigidbody.velocity *= multiplier;
+                newVelocity *= multiplier * favourVertical;
             }
+            if (inParachute || (inClaws && atWall)) // This is to mitigate the effect of being slow on the bounce TODO: Check if !inGravityBoots
+            {
+                newVelocity *= 2;
+            }
+
+            myRigidbody.velocity = newVelocity;
         }
     }
 
