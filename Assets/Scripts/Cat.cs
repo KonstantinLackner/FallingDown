@@ -10,6 +10,7 @@ public class Cat : MonoBehaviour
     public bool inParachute;
     public bool inRubberLines;
     public bool inRubberWalls;
+    public bool inWallJump;
     public ParticleSystem clawsParticleSystem;
     private bool hitDrillWP1;
     private bool hitDrillWP2;
@@ -102,6 +103,12 @@ public class Cat : MonoBehaviour
             if (inRubberWalls)
             {
                 myRigidbody.velocity += myRigidbody.velocity.x > 0 ? new Vector2(3.5f, 0) : new Vector2(-3.5f,0);
+            }
+
+            if (inWallJump)
+            {
+                bounceAudioSource.Play();
+                myRigidbody.velocity = myRigidbody.velocity.x > 0 ? new Vector2(2, 10) : new Vector2(-2,10);
             }
             /*
             Vector2 velocity = myRigidbody.velocity;

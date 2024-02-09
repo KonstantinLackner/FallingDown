@@ -1547,6 +1547,7 @@ MonoBehaviour:
   inParachute: 0
   inRubberLines: 0
   inRubberWalls: 0
+  inWallJump: 0
   clawsParticleSystem: {fileID: 611573653}
   drillAudioSource: {fileID: 1454352919}
   clawAudioSource: {fileID: 517321281}
