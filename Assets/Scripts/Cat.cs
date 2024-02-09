@@ -100,6 +100,7 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CollisionWall"))
         {
+            /*
             Vector2 velocity = myRigidbody.velocity;
             float xVelocity = velocity.x;
             float yVelocity = velocity.y;
@@ -120,6 +121,7 @@ public class Cat : MonoBehaviour
             {
                 bounceAudioSource.Play();
             }
+            */
         }
 
         if (collision.gameObject.CompareTag("Line"))

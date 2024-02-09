@@ -792,7 +792,7 @@ MonoBehaviour:
   - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
   - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
   - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
-  itemManager: {fileID: 790345409}
+  itemManager: {fileID: 0}
   secondsToSpawnNewItem: 4
   chanceForStars: 0.5
 --- !u!4 &248215456
@@ -1607,8 +1607,8 @@ MonoBehaviour:
   clawsParticleSystem: {fileID: 611573653}
   drillAudioSource: {fileID: 1454352919}
   clawAudioSource: {fileID: 517321281}
-  respawnAudioSource: {fileID: 936029020}
-  starCountAudioSource: {fileID: 959599429}
+  respawnAudioSource: {fileID: 0}
+  starCountAudioSource: {fileID: 0}
   myRigidbody: {fileID: 611573646}
   mySpriteRenderer: {fileID: 1723401668}
   itemManager: {fileID: 790345409}
