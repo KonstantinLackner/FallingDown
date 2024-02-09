@@ -99,6 +99,10 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CollisionWall"))
         {
+            if (inRubberWalls)
+            {
+                myRigidbody.velocity += myRigidbody.velocity.x > 0 ? new Vector2(3.5f, 0) : new Vector2(-3.5f,0);
+            }
             /*
             Vector2 velocity = myRigidbody.velocity;
             float xVelocity = velocity.x;

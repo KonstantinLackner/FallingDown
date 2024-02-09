@@ -87,6 +87,7 @@ public class ItemManager : MonoBehaviour
         cat.inClaws = ItemExistsInQueueByName("Claws");
         cat.inParachute = ItemExistsInQueueByName("Parachute");
         cat.inRubberLines = ItemExistsInQueueByName("RubberLines");
+        cat.inRubberWalls = ItemExistsInQueueByName("RubberWalls");
         
         GSM.ApplyAllItemChanges();
     }
