@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
@@ -19,6 +20,7 @@ public class GameStateManager : MonoBehaviour
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
     public AudioSource starCountAudioSource;
+    public SpriteRenderer UIStar;
 
     void Start()
     {
@@ -85,5 +87,22 @@ public class GameStateManager : MonoBehaviour
     public void ApplyAllItemChanges()
     {
         Time.timeScale = currentTimeScale;
+    }
+    
+    
+    public void removeStar()
+    {
+        if (currentStars > 0)
+        {
+            currentStars--;
+            StartCoroutine(removeStarRedFlash());
+        }
+    }
+
+    private IEnumerator removeStarRedFlash()
+    {
+        UIStar.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        UIStar.color = Color.white;
     }
 }

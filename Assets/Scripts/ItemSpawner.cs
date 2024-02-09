@@ -64,9 +64,8 @@ public class ItemSpawner : MonoBehaviour
             ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f}
             : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =
-            new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(- 1.5f, 3.5f), 0);
+            new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(- 2.5f, 4.5f), 0);
         GameObject newItem = GetRandomItem();
-        Debug.Log("Spawning " + newItem + "at position: " + spawnPosition);
         Instantiate(newItem, spawnPosition, Quaternion.identity);
     }
 

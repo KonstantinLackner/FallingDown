@@ -249,7 +249,7 @@ public class Cat : MonoBehaviour
         {
             yield return new WaitForSeconds(0.3f + (i * 0.02f));
             starCountAudioSource.Play();
-            GSM.currentStars--;
+            GSM.removeStar();
         }
         itemManager.currentPriceStarLifeConverter += 5;
         respawnAudioSource.Play();
