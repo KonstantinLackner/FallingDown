@@ -110,28 +110,6 @@ public class Cat : MonoBehaviour
                 bounceAudioSource.Play();
                 myRigidbody.velocity = myRigidbody.velocity.x > 0 ? new Vector2(2, 10) : new Vector2(-2,10);
             }
-            /*
-            Vector2 velocity = myRigidbody.velocity;
-            float xVelocity = velocity.x;
-            float yVelocity = velocity.y;
-            Vector2 newVelocity = new Vector2(0, 0);
-
-            // Wall jump TODO: I have no idea what this does, it needs to be fixed
-            if (yVelocity > 0 && xVelocity != 0)
-            {
-                myRigidbody.simulated = false;
-                newVelocity = new Vector2(xVelocity,
-                    Mathf.Abs(yVelocity + Mathf.Max(Mathf.Min(xVelocity * 0.5f, 5), 0.5f)));
-                myRigidbody.velocity = newVelocity;
-
-                myRigidbody.simulated = true;
-            }
-
-            if (inRubberWalls) // TODO: this must work programmatically somehow - material doesn't change anything. Read through and understand the bounce again!
-            {
-                bounceAudioSource.Play();
-            }
-            */
         }
 
         if (collision.gameObject.CompareTag("Line"))
