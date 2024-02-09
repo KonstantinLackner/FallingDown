@@ -7,18 +7,10 @@ public class ItemSpawner : MonoBehaviour
 {
     public List<GameObject> items = new List<GameObject>();
     public ItemManager itemManager;
-    private bool isExpertLevel;
+    public GameStateManager GSM;
     private float timer = 8f;
     public int secondsToSpawnNewItem = 0;
     public float chanceForStars;
-
-    void Start()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        isExpertLevel = sceneName == "ExpertLevel";
-    }
-
     private void Update()
     {
         if (timer < secondsToSpawnNewItem)
@@ -60,7 +52,7 @@ public class ItemSpawner : MonoBehaviour
 
     private void SpawnNew()
     {
-        float[] xPositions = isExpertLevel
+        float[] xPositions = GSM.isExpertMode
             ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f}
             : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =

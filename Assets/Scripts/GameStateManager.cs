@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 
 public class GameStateManager : MonoBehaviour
@@ -21,10 +22,15 @@ public class GameStateManager : MonoBehaviour
     public AudioSource starCollectAudioSource;
     public AudioSource starCountAudioSource;
     public SpriteRenderer UIStar;
+    public bool isExpertMode = false;
 
     void Start()
     {
         quipWindow.SetActive(false);
+        
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        isExpertMode = sceneName == "ExpertLevel";
     }
 
     // Update is called once per frame
