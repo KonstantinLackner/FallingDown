@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Enumerable = System.Linq.Enumerable;
 using Image = UnityEngine.UI.Image;
 
@@ -87,6 +86,7 @@ public class ItemManager : MonoBehaviour
 
         cat.inClaws = ItemExistsInQueueByName("Claws");
         cat.inParachute = ItemExistsInQueueByName("Parachute");
+        cat.inRubberLines = ItemExistsInQueueByName("RubberLines");
         
         GSM.ApplyAllItemChanges();
     }
