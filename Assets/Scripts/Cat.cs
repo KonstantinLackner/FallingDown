@@ -124,7 +124,7 @@ public class Cat : MonoBehaviour
             {
                 newVelocity *= multiplier * favourVertical;
             }
-            if (inParachute || (inClaws && atWall)) // This is to mitigate the effect of being slow on the bounce TODO: Check if !inGravityBoots
+            if (inParachute || (inClaws && atWall)) // This is to mitigate the effect of being slow on the bounce
             {
                 newVelocity *= 2;
             }
