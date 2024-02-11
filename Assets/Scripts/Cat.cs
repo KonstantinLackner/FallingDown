@@ -131,7 +131,7 @@ public class Cat : MonoBehaviour
 
             if (inRubberLines)
             {
-                newVelocity *= 2;
+                newVelocity *= 1.5f;
             }
 
             myRigidbody.velocity = newVelocity;

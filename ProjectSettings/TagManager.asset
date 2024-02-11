@@ -51,33 +51,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Hidden
-    uniqueID: 2144450277
+  - name: Background
+    uniqueID: 3445663251
     locked: 0
   - name: Cat
-    uniqueID: 4028034729
+    uniqueID: 1902582179
     locked: 0
-  - name: Background
-    uniqueID: 3700847763
+  - name: Cloud
+    uniqueID: 2436204055
     locked: 0
-  - name: BackgroundFront
-    uniqueID: 1975712765
-    locked: 0
-  - name: back
-    uniqueID: 3399251991
+  - name: Item
+    uniqueID: 3771962029
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bird
-    uniqueID: 402280289
+  - name: BuildingBack
+    uniqueID: 1950352177
     locked: 0
-  - name: Scene
-    uniqueID: 4284161265
-    locked: 0
-  - name: Front
-    uniqueID: 2346121343
+  - name: BuildingFront
+    uniqueID: 2906406409
     locked: 0
   - name: UI
-    uniqueID: 1711906243
+    uniqueID: 244011613
+    locked: 0
+  - name: Quip
+    uniqueID: 1373158737
     locked: 0
