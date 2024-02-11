@@ -7,3 +7,17 @@ DrillMode - This doesn't work with the othe wall stuff but we could make it work
 RubberWall - just change the wall material on pickup and switch it out again on drop
 RubberBoots - change the platform material on pickup and switch it out again on drop
 
+
+Für Claws vl. on collision bei wall einschalten und dann permanent checken, ob man noch an eine wall ist?
+Häuser nie zwei gleiche nebeneinander und einfach die chance verringern, dass die großen kommen1
+
+
+Bouncy lines zu stark und man kann beim spawnen einfach checken, ob sie mit was colliden und falls ja, einfach destroyen, oder?
+
+man braucht einen shine um die items herum, das wäre iwie wichtig, um sie zu erkennen
+
+StarToLife sollte anzeigen, wie viel er kostet grad
+
+Items freischalten und nur eines auf einmal - in eigenem branch
+
+intro video
