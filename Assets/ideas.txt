@@ -14,10 +14,12 @@ Häuser nie zwei gleiche nebeneinander und einfach die chance verringern, dass d
 
 Bouncy lines zu stark und man kann beim spawnen einfach checken, ob sie mit was colliden und falls ja, einfach destroyen, oder?
 
-man braucht einen shine um die items herum, das wäre iwie wichtig, um sie zu erkennen
+X man braucht einen shine um die items herum, das wäre iwie wichtig, um sie zu erkennen
 
 StarToLife sollte anzeigen, wie viel er kostet grad
 
 Items freischalten und nur eines auf einmal - in eigenem branch
 
 intro video
+
+Progress bar muss raufrechnen mit den Sternen, die man hat (progress manager, der dann items verwaltet und insgesamte Sterne und highscore
