@@ -179,7 +179,14 @@ public class Cat : MonoBehaviour
         
         if (col.gameObject.CompareTag("Cloud"))
         {
-            myRigidbody.velocity += new Vector2(0, 10);
+            if (myRigidbody.velocity.y > 0)
+            {
+                myRigidbody.velocity += new Vector2(0, 10);
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(-myRigidbody.velocity.x, 10);
+            }
         }
         
         if (col.gameObject.CompareTag("KillBox"))
