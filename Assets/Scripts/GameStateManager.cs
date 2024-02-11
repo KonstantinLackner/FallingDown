@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour
     public TMP_Text bigText;
     public TMP_Text heightScore;
     private int lastHeight;
+    private int height;
     public GameObject menuButton;
     public GameObject camera;
     public int currentStars = 0;
@@ -25,6 +26,7 @@ public class GameStateManager : MonoBehaviour
     public bool isExpertMode = false;
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
+    public ProgressTracker progressTracker;
 
     void Start()
     {
@@ -70,14 +72,20 @@ public class GameStateManager : MonoBehaviour
 
     public void GameOver()
     {
+        progressTracker.IncreaseStarCount(currentStars);
+        if (progressTracker.maxHeight < height)
+        {
+            progressTracker.maxHeight = height;
+        }
         bigText.text = "GAME OVER";
         gameOverAudioSource.Play();
         menuButton.SetActive(true);
+        SceneManager.LoadScene(2);
     }
 
     private void UpdateScore()
     {
-        int height = (int) (camera.transform.position.y / 2);
+        height = (int) (camera.transform.position.y / 2);
         if (height > lastHeight)
         {
             starCountAudioSource.Play();

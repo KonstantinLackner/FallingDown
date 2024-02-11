@@ -35,10 +35,7 @@ public class Cat : MonoBehaviour
     
     public float maxMultiplier = 3f; // The maximum velocity multiplier at low speeds
     public float maxSpeedForMultiplier = 15f; // Speed at which the multiplier becomes 1
-
-
-
-
+    
     void Start()
     {
         clawsParticleSystem.Stop();
