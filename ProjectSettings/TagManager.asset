@@ -54,6 +54,12 @@ TagManager:
   - name: Background
     uniqueID: 3445663251
     locked: 0
+  - name: SB1
+    uniqueID: 2272608709
+    locked: 0
+  - name: SB2
+    uniqueID: 2048726359
+    locked: 0
   - name: Cat
     uniqueID: 1902582179
     locked: 0

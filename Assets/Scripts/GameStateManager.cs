@@ -23,6 +23,8 @@ public class GameStateManager : MonoBehaviour
     public AudioSource starCountAudioSource;
     public SpriteRenderer UIStar;
     public bool isExpertMode = false;
+    public SpriteRenderer SkyBox2;
+    public SpriteRenderer SkyBox3;
 
     void Start()
     {
@@ -82,6 +84,16 @@ public class GameStateManager : MonoBehaviour
         }
         heightScore.text = height + " meters \u00d7 " + currentStars;
         lastHeight = height;
+
+        if (height is > 300 and < 500)
+        {
+            float opacity = Mathf.Clamp01((height - 300f) / (200f));
+            SkyBox2.color = new Color(1, 1, 1, opacity);
+        } else if (height > 500)
+        {
+            float opacity = Mathf.Clamp01((height - 500f) / (300f));
+            SkyBox3.color = new Color(1, 1, 1, opacity);
+        }
     }
 
     public void CollectStar()

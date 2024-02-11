@@ -6,14 +6,11 @@ using Image = UnityEngine.UI.Image;
 public class ItemManager : MonoBehaviour
 {
     private List<Item> currentItems = new List<Item>(); // The items the cat currently has equipped
-    public int maxItems = 3;
+    public int maxItems = 1;
     public GameStateManager GSM;
     public Cat cat;
-    public int currentPriceStarLifeConverter = 10;
-    public List<Item> items = new List<Item>(); // All items in the game (they are prefabs and collected here)
+    public int currentPriceStarLifeConverter = 10;// All items in the game (they are prefabs and collected here)
     public Image item1;
-    public Image item2;
-    public Image item3;
     
     public void PickupItem(Item item)
     {
@@ -65,14 +62,6 @@ public class ItemManager : MonoBehaviour
         if (currentItems.Count >= 1)
         {
             item1.sprite = currentItems[0].ItemSprite;
-        }
-        if (currentItems.Count >= 2)
-        {
-            item2.sprite = currentItems[1].ItemSprite;
-        }
-        if (currentItems.Count >= 3)
-        {
-            item3.sprite = currentItems[2].ItemSprite;
         }
         
         if (ItemExistsInQueueByName("GravityBoots"))
