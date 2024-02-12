@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91684f5702e920242a00b79f5724645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: Rubber Lines
+  ItemName: RubberLines
   ItemSprite: {fileID: 21300000, guid: 8266013a429e8794db4de47216066433, type: 3}
   ItemText: Makes lines more bouncy.
   camera: {fileID: 0}
