@@ -12,10 +12,11 @@ public class ItemSpawner : MonoBehaviour
     public int secondsToSpawnNewItem = 0;
     public float chanceForStars;
     public List<GameObject> items = new List<GameObject>();
-    public ProgressTracker progressTracker;
+    private ProgressTracker progressTracker;
 
     private void Start()
     {
+        progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         items = progressTracker.GetAvailableItems();
     }
 

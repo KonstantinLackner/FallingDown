@@ -26,12 +26,12 @@ public class GameStateManager : MonoBehaviour
     public bool isExpertMode = false;
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
-    public ProgressTracker progressTracker;
+    private ProgressTracker progressTracker;
 
     void Start()
     {
         quipWindow.SetActive(false);
-        
+        progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         isExpertMode = sceneName == "ExpertLevel";
@@ -79,7 +79,7 @@ public class GameStateManager : MonoBehaviour
         }
         bigText.text = "GAME OVER";
         gameOverAudioSource.Play();
-        menuButton.SetActive(true);
+        //menuButton.SetActive(true);
         SceneManager.LoadScene(2);
     }
 
