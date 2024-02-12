@@ -27,6 +27,7 @@ public class GameStateManager : MonoBehaviour
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
     private ProgressTracker progressTracker;
+    public TMP_Text quipWindowTitle;
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class GameStateManager : MonoBehaviour
 
     public void startQuip(Item item)
     {
+        quipWindowTitle.text = item.ItemName;
         quipWindow.SetActive(true);
         quipWindowText.text = item.ItemText;
         quipWindowSprite.sprite = item.ItemSprite;

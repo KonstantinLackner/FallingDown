@@ -402,7 +402,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -0.0029010829}
+  m_margin: {x: 0, y: 0, z: -68.09711, w: -0.0029010829}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2926,7 +2926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e398cb5b092e44daa7099b7d3d098a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressTracker: {fileID: 195335520}
   countAudioSource: {fileID: 1049461097}
   scoreText: {fileID: 1931241430}
   currentStarText: {fileID: 318322092}

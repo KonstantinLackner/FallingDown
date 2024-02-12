@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91684f5702e920242a00b79f5724645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemName: RubberWalls
+  ItemName: Rubber Walls
   ItemSprite: {fileID: 21300000, guid: dc453457754bf744784d9297c8cb992e, type: 3}
   ItemText: Makes walls more bouncy.
   camera: {fileID: 0}

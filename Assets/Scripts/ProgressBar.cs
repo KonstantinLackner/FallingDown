@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ProgressBar : MonoBehaviour
 {
-    public ProgressTracker progressTracker;
+    private ProgressTracker progressTracker;
     public AudioSource countAudioSource;
     public TMP_Text scoreText;
     public TMP_Text currentStarText;
