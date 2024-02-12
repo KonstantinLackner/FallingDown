@@ -19,7 +19,7 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateProgress()
     {
-        float newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 14.5f);
+        float newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 17f);
         StartCoroutine(GrowBar(newValue));
     }
 

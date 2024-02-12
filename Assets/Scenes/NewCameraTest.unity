@@ -783,6 +783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985a5779e526e43f2ad5209b1eaa931a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemManager: {fileID: 790345409}
+  GSM: {fileID: 957936823}
+  secondsToSpawnNewItem: 4
+  chanceForStars: 0.5
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
@@ -792,10 +796,7 @@ MonoBehaviour:
   - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
   - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
   - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
-  itemManager: {fileID: 790345409}
-  GSM: {fileID: 957936823}
-  secondsToSpawnNewItem: 4
-  chanceForStars: 0.5
+  progressTracker: {fileID: 1202969090}
 --- !u!4 &248215456
 Transform:
   m_ObjectHideFlags: 0
@@ -7606,7 +7607,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf29b51109156e47956ff4ea4451baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockableItems:
+  - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
+  - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
+  - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
+  - {fileID: 8333158966950122511, guid: d459af9ad8799db4080a25080aa472ab, type: 3}
+  - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
+  - {fileID: 8333158966950122511, guid: 66447273fa4d6d24ba733de51860ad58, type: 3}
+  - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
+  - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
   starCount: 0
+  maxHeight: 0
 --- !u!4 &1202969091
 Transform:
   m_ObjectHideFlags: 0

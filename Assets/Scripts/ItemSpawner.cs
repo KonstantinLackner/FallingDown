@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,12 +6,19 @@ using Random = UnityEngine.Random;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public List<GameObject> items = new List<GameObject>();
     public ItemManager itemManager;
     public GameStateManager GSM;
     private float timer = 8f;
     public int secondsToSpawnNewItem = 0;
     public float chanceForStars;
+    public List<GameObject> items = new List<GameObject>();
+    public ProgressTracker progressTracker;
+
+    private void Start()
+    {
+        items = progressTracker.GetAvailableItems();
+    }
+
     private void Update()
     {
         if (timer < secondsToSpawnNewItem)
