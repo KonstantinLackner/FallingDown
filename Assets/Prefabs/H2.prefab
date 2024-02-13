@@ -1699,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414487205697818062, guid: 215881f4f30982f41a678ac340047db0, type: 3}
       propertyPath: m_TagString
-      value: GustToRight
+      value: Gust
       objectReference: {fileID: 0}
     - target: {fileID: 8783441810485434219, guid: 215881f4f30982f41a678ac340047db0, type: 3}
       propertyPath: m_Name
