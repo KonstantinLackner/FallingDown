@@ -124,7 +124,7 @@ public class Cat : MonoBehaviour
             LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
             Vector3[] linePositions = new Vector3[lineComponent.positionCount];
             lineComponent.GetPositions(linePositions);
-            if (linePositions[0].y == linePositions[1].y)
+            if (Mathf.Abs(linePositions[0].y - linePositions[1].y) < 0.1f)
             {
                 if (Mathf.Abs(oldVelocity.x) < 0.75f)
                 {
