@@ -8,10 +8,10 @@ progress bar deutlicher
 
 
 Konsti:
-Video,
+X Video,
 Gebäude Einheiten,
 X Star2Life costs,
-Intro menu
+X Intro menu
 
 Shuyin:
 Nicht perfect bounce DONE
