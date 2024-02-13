@@ -94,7 +94,7 @@ public class GameStateManager : MonoBehaviour
         {
             starCountAudioSource.Play();
         }
-        heightScore.text = height + " meters \u00d7 " + currentStars;
+        heightScore.text = height + " meters | " + currentStars;
         lastHeight = height;
 
         if (height is > 100 and < 200)
