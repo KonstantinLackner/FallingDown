@@ -20,3 +20,6 @@ Nicht inside buildings items spawnen DONE
 progress bar update usw.
 Highscore: meter + stars, geordnet nach meter und dann stars
 Sound für Tshirt
+Font?
+Intro button in rot?
+
