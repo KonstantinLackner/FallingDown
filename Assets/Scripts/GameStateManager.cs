@@ -24,7 +24,6 @@ public class GameStateManager : MonoBehaviour
     public AudioSource starCountAudioSource;
     public AudioSource backingTrackAudioSource;
     public SpriteRenderer UIStar;
-    public bool isExpertMode = false;
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
     private ProgressTracker progressTracker;
@@ -36,7 +35,6 @@ public class GameStateManager : MonoBehaviour
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        isExpertMode = sceneName == "ExpertLevel";
         backingTrackAudioSource.Play();
     }
 

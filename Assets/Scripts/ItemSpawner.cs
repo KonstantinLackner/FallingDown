@@ -61,13 +61,41 @@ public class ItemSpawner : MonoBehaviour
 
     private void SpawnNew()
     {
-        float[] xPositions = GSM.isExpertMode
-            ? new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f, 2, 2.5f, 3, 3.5f}
-            : new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
+        float[] xPositions = new float[] {-3.5f, -3, -2.5f, -2, -1.5f, -1, -0.5f, 0, 0.5f, 1, 1.5f};
         Vector3 spawnPosition =
-            new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(- 2.5f, 4.5f), 0);
-        GameObject newItem = GetRandomItem();
-        Instantiate(newItem, spawnPosition, Quaternion.identity);
+            new Vector3(xPositions[Random.Range(0, xPositions.Length)], transform.position.y + Random.Range(-0.5f, 7.5f), 0);
+        if (!isWallOrItemHere(spawnPosition))
+        {
+            GameObject newItem = GetRandomItem();
+            Debug.Log("Spawning new Item: " + newItem + " at position: " + spawnPosition);
+            Instantiate(newItem, spawnPosition, Quaternion.identity);
+        }
+    }
+
+    private bool isWallOrItemHere(Vector3 position)
+    {
+
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.NoFilter();
+        Physics2D.OverlapBox(position, new Vector2(0.75f, 0.75f), 0, filter, results);
+
+        if (results.Count == 0)
+        {
+            return false;
+        }
+        else
+        {
+            foreach (Collider2D c in results)
+            {
+                if (c.gameObject.CompareTag("CollisionWall") || c.gameObject.CompareTag("Item"))
+                {
+                    // Debug.Log("Wall/Item is here! at " + position);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
 }
