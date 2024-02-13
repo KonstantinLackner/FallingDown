@@ -21,7 +21,7 @@ public class ProgressBar : MonoBehaviour
         scoreText.text = "HIGHSCORE:\n " + progressTracker.maxHeight + " meters";
         currentStarText.text = progressTracker.starCount + "/60";
 
-        newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 17f);
+        newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 14.5f);
     }
 
     void Update()
