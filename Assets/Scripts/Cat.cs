@@ -160,12 +160,10 @@ public class Cat : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("GustToLeft"))
+        if (other.CompareTag("Gust"))
         {
-            myRigidbody.velocity = new Vector2(-2, myRigidbody.velocity.y);
-        } else if (other.CompareTag("GustToRight"))
-        {
-            myRigidbody.velocity = new Vector2(2, myRigidbody.velocity.y);
+            Vector2 newVelocity = other.gameObject.GetComponent<Gust>().GetGustDirection();
+            myRigidbody.velocity = new Vector2(newVelocity.x * 2, myRigidbody.velocity.y + (newVelocity.y * 2));
         }
     }
 
