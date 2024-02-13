@@ -10,7 +10,7 @@ progress bar deutlicher
 Konsti:
 Video,
 Gebäude Einheiten,
-Star2Life costs,
+X Star2Life costs,
 Intro menu
 
 Shuyin:
