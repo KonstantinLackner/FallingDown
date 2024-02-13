@@ -164,6 +164,10 @@ public class Cat : MonoBehaviour
         {
             Vector2 newVelocity = other.gameObject.GetComponent<Gust>().GetGustDirection();
             myRigidbody.velocity += newVelocity * 0.5f;
+            if (newVelocity.y >= -0.1f)
+            {
+                myRigidbody.velocity += new Vector2(0, 0.1f);
+            }
         }
     }
 
