@@ -163,7 +163,7 @@ public class Cat : MonoBehaviour
         if (other.CompareTag("Gust"))
         {
             Vector2 newVelocity = other.gameObject.GetComponent<Gust>().GetGustDirection();
-            myRigidbody.velocity = new Vector2(newVelocity.x * 2, myRigidbody.velocity.y + (newVelocity.y * 2));
+            myRigidbody.velocity += newVelocity * 0.5f;
         }
     }
 
