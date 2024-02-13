@@ -267,8 +267,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.00718908, y: 0.010404959}
       - {x: -8.463525, y: -7.2907124}
-      - {x: -8.484857, y: -142.8121}
-      - {x: 0.030681074, y: -148.77452}
+      - {x: -8.447573, y: -29.919973}
+      - {x: -0.100124896, y: -29.764278}
       - {x: -0.027074471, y: -6.5819244}
       - {x: -0.027935386, y: -4.462367}
 --- !u!114 &3266935003499617201
@@ -1217,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: H6
       objectReference: {fileID: 0}
+    - target: {fileID: 1462771568583155020, guid: 5df73b6ca0cf41d4f87d699b4c9c326c, type: 3}
+      propertyPath: m_TagString
+      value: CollisionWall
+      objectReference: {fileID: 0}
     - target: {fileID: 4243465447132840390, guid: 5df73b6ca0cf41d4f87d699b4c9c326c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1338,6 +1342,10 @@ PrefabInstance:
     - target: {fileID: 1619044581023047907, guid: 0a75f448e819b1b40a57fe234ff854b6, type: 3}
       propertyPath: m_Name
       value: H1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619044581023047907, guid: 0a75f448e819b1b40a57fe234ff854b6, type: 3}
+      propertyPath: m_TagString
+      value: CollisionWall
       objectReference: {fileID: 0}
     - target: {fileID: 2170555105339971282, guid: 0a75f448e819b1b40a57fe234ff854b6, type: 3}
       propertyPath: m_SortingLayer
