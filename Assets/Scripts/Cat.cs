@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Cat : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class Cat : MonoBehaviour
     public AudioSource starCountAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
+    public SpriteRenderer ShirtCoverSpriteRenderer;
     public ItemManager itemManager;
     public List<Sprite> sprites;
     public Transform spawnPoint;
@@ -40,6 +43,7 @@ public class Cat : MonoBehaviour
     {
         clawsParticleSystem.Stop();
         transform.position = spawnPoint.position;
+        ShirtCoverSpriteRenderer.color = new Color(1, 1, 1, 0);
     }
 
     void Update()
@@ -154,10 +158,25 @@ public class Cat : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("GustToLeft"))
+        {
+            myRigidbody.velocity = new Vector2(-2, myRigidbody.velocity.y);
+        } else if (other.CompareTag("GustToRight"))
+        {
+            myRigidbody.velocity = new Vector2(2, myRigidbody.velocity.y);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("Shirt"))
+        {
+            ShirtCoverSpriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+            StartCoroutine(ResolveShirt());
+            Destroy(col.gameObject);
+        }
         if (col.gameObject.CompareTag("Star"))
         {
             GSM.CollectStar();
@@ -217,6 +236,22 @@ public class Cat : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private IEnumerator ResolveShirt()
+    {
+        yield return new WaitForSeconds(3);
+        float currentTime = Time.deltaTime;
+        Color startColour = ShirtCoverSpriteRenderer.color;
+        while (currentTime < 3)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / 3);
+            ShirtCoverSpriteRenderer.color = new Color(startColour.r, startColour.g, startColour.b, alpha);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
+        ShirtCoverSpriteRenderer.color = new Color(1, 1, 1, 0);
     }
 
     private void OnTriggerExit2D(Collider2D col)

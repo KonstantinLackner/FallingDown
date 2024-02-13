@@ -17,6 +17,10 @@ TagManager:
   - DrillWP2
   - WP2
   - CollisionWall
+  - GustToLeft
+  - GustToRight
+  - Gust
+  - Shirt
   layers:
   - Default
   - TransparentFX
