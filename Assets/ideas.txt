@@ -14,7 +14,7 @@ X Star2Life costs,
 Intro menu
 
 Shuyin:
-Nicht perfect bounce,
+Nicht perfect bounce DONE
 Nicht inside buildings items spawnen,
-progress bar update usw. (also add sound),
+progress bar update usw. (also add sound): einerseits sollte sie einen sound machen - andererseits sollte das echt ned in einer coroutine sein, glaub ich, sondern einfach im update (außerdem sollte sie ned immer von 0 beginnen)
 leaderboard

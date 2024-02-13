@@ -112,8 +112,27 @@ public class Cat : MonoBehaviour
         if (collision.gameObject.CompareTag("Line"))
         {
             bounceAudioSource.Play();
-            
-            Vector2 newVelocity = myRigidbody.velocity;
+
+            Vector2 oldVelocity = myRigidbody.velocity;
+            Vector2 newVelocity = oldVelocity;
+
+            // no more perfectly straight bounces
+            LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
+            Vector3[] linePositions = new Vector3[lineComponent.positionCount];
+            lineComponent.GetPositions(linePositions);
+            if (linePositions[0].y == linePositions[1].y)
+            {
+                if (Mathf.Abs(oldVelocity.x) < 0.75f)
+                {
+                    float[] xOffsets = new float[] {-0.75f, -0.5f, 0.5f, 0.75f};
+                    newVelocity += new Vector2(xOffsets[Random.Range(0, xOffsets.Length)], 0);
+                    if (Mathf.Abs(newVelocity.x) < 0.5f)
+                    {
+                        newVelocity *= new Vector2(2.5f, 1);
+                    }
+                }
+            }
+
             Vector2 favourVertical = new Vector2(0.5f, 1);
             float currentSpeed = myRigidbody.velocity.magnitude;
             float multiplier = 1 + (maxMultiplier - 1) * (1 - Mathf.Clamp01(currentSpeed / maxSpeedForMultiplier));
