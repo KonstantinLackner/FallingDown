@@ -1,25 +1,7 @@
-Gravity boots - just change time scale of game to .5
-WallJump - set a varaible somewhere that allows the walljump inside the cat
-WallClaws - set a variable somewhere that allows the wallClaws (wallClaws are on the way down, walljump only on the way up
-Parachute - set a variable in the cat that enables the parachute when in free fall (not touching wall too to prevent issues with the two above)
-Star To Life Converter - set a variable in ... maybe it needs an item variable script
-DrillMode - This doesn't work with the othe wall stuff but we could make it work if we set a speed threshold
-RubberWall - just change the wall material on pickup and switch it out again on drop
-RubberBoots - change the platform material on pickup and switch it out again on drop
-
-
-Für Claws vl. on collision bei wall einschalten und dann permanent checken, ob man noch an eine wall ist?
-Häuser nie zwei gleiche nebeneinander und einfach die chance verringern, dass die großen kommen1
-
-
-Bouncy lines zu stark und man kann beim spawnen einfach checken, ob sie mit was colliden und falls ja, einfach destroyen, oder?
-
-X man braucht einen shine um die items herum, das wäre iwie wichtig, um sie zu erkennen
+Items werden noch in Gebäuden gespawnt - man könnte testen, ob sie colliden und das dann verhindern
 
 StarToLife sollte anzeigen, wie viel er kostet grad
 
-Items freischalten und nur eines auf einmal - in eigenem branch
-
 intro video
 
-Progress bar muss raufrechnen mit den Sternen, die man hat (progress manager, der dann items verwaltet und insgesamte Sterne und highscore
+progress bar deutlicher
