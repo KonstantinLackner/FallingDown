@@ -5,3 +5,16 @@ StarToLife sollte anzeigen, wie viel er kostet grad
 intro video
 
 progress bar deutlicher
+
+
+Konsti:
+Video,
+Gebäude Einheiten,
+Star2Life costs,
+Intro menu
+
+Shuyin:
+Nicht perfect bounce,
+Nicht inside buildings items spawnen,
+progress bar update usw.,
+leaderboard
