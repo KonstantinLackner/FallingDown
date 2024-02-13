@@ -6,6 +6,7 @@ public class ProgressTracker : MonoBehaviour
 {
     public static ProgressTracker Instance { get; private set; }
     public List<GameObject> unlockableItems = new List<GameObject>();
+    public int previousStarCount = 0;
     public int starCount = 0;
     public int maxHeight;
 
@@ -24,6 +25,7 @@ public class ProgressTracker : MonoBehaviour
 
     public void IncreaseStarCount(int starsCollected)
     {
+        previousStarCount = starCount;
         starCount += starsCollected;
     }
 

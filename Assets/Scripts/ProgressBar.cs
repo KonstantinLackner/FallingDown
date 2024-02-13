@@ -13,6 +13,7 @@ public class ProgressBar : MonoBehaviour
     public TMP_Text currentStarText;
     public List<GameObject> unlockableItems;
     private float updateTick = 0;
+    private float oldValue;
     private float newValue;
 
     private void Start()
@@ -28,6 +29,9 @@ public class ProgressBar : MonoBehaviour
             item.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
             item.transform.GetChild(0).gameObject.SetActive(true);
         }
+
+        oldValue = MapValue(progressTracker.previousStarCount, 0f, 60f, 0f, 14.5f);
+        transform.localScale = new Vector3(oldValue, transform.localScale.y, 1);
 
         newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 14.5f);
     }
