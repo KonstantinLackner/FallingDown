@@ -16,5 +16,5 @@ Intro menu
 Shuyin:
 Nicht perfect bounce,
 Nicht inside buildings items spawnen,
-progress bar update usw.,
+progress bar update usw. (also add sound),
 leaderboard
