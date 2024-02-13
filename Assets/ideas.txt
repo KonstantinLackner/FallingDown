@@ -12,6 +12,7 @@ X Video,
 Gebäude Einheiten,
 X Star2Life costs,
 X Intro menu
+Start game with video and activate Intro button only when going back to the main menu
 
 Shuyin:
 Nicht perfect bounce DONE
