@@ -11,6 +11,8 @@ public class ProgressBar : MonoBehaviour
     public AudioSource progressBackingTrackAudioSource;
     public TMP_Text scoreText;
     public TMP_Text currentStarText;
+    private float updateTick = 0;
+    private float newValue;
 
     private void Start()
     {
@@ -18,28 +20,32 @@ public class ProgressBar : MonoBehaviour
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         scoreText.text = "HIGHSCORE:\n " + progressTracker.maxHeight + " meters";
         currentStarText.text = progressTracker.starCount + "/60";
-        UpdateProgress();
+
+        newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 17f);
     }
 
-    void UpdateProgress()
+    void Update()
     {
-        float newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 17f);
-        StartCoroutine(GrowBar(newValue));
+        if (updateTick > 0.15f) 
+        {
+            float yValue = transform.localScale.y;
+            if (transform.localScale.x <= newValue)
+            {
+                countAudioSource.Play();
+                transform.localScale = new Vector3(transform.localScale.x + 0.15f, yValue, 1);
+            }
+            updateTick = 0;
+        }
+        else 
+        {
+            updateTick += Time.deltaTime;
+        }
+        
+
     }
 
     private float MapValue(float oldValue, float oldMin, float oldMax, float newMin, float newMax)
     {
         return ((oldValue - oldMin) / (oldMax - oldMin)) * (newMax - newMin) + newMin;
-    }
-
-    private IEnumerator GrowBar(float sizeToGrowTo)
-    {
-        float yValue = transform.localScale.y;
-        while (transform.localScale.x <= sizeToGrowTo)
-        {
-            transform.localScale = new Vector3(transform.localScale.x + 0.1f, yValue, 1);
-            yield return new WaitForSeconds(0.05f);
-            countAudioSource.Play();
-        }
     }
 }

@@ -17,5 +17,6 @@ Start game with video and activate Intro button only when going back to the main
 Shuyin:
 Nicht perfect bounce DONE
 Nicht inside buildings items spawnen DONE
-progress bar update usw. (also add sound): einerseits sollte sie einen sound machen - andererseits sollte das echt ned in einer coroutine sein, glaub ich, sondern einfach im update (außerdem sollte sie ned immer von 0 beginnen)
-leaderboard
+progress bar update usw.
+Highscore: meter + stars, geordnet nach meter und dann stars
+Sound für Tshirt
