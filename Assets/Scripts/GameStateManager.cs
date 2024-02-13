@@ -22,6 +22,7 @@ public class GameStateManager : MonoBehaviour
     public AudioSource gameOverAudioSource;
     public AudioSource starCollectAudioSource;
     public AudioSource starCountAudioSource;
+    public AudioSource backingTrackAudioSource;
     public SpriteRenderer UIStar;
     public bool isExpertMode = false;
     public SpriteRenderer SkyBox2;
@@ -36,6 +37,7 @@ public class GameStateManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         isExpertMode = sceneName == "ExpertLevel";
+        backingTrackAudioSource.Play();
     }
 
     // Update is called once per frame
