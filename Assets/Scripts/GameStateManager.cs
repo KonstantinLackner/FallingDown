@@ -97,13 +97,13 @@ public class GameStateManager : MonoBehaviour
         heightScore.text = height + " meters \u00d7 " + currentStars;
         lastHeight = height;
 
-        if (height is > 300 and < 500)
+        if (height is > 100 and < 200)
         {
-            float opacity = Mathf.Clamp01((height - 300f) / (200f));
+            float opacity = Mathf.Clamp01((height - 100f) / (100));
             SkyBox2.color = new Color(1, 1, 1, opacity);
-        } else if (height > 500)
+        } else if (height > 200)
         {
-            float opacity = Mathf.Clamp01((height - 500f) / (300f));
+            float opacity = Mathf.Clamp01((height - 200f) / (100f));
             SkyBox3.color = new Color(1, 1, 1, opacity);
         }
     }
