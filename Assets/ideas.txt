@@ -17,7 +17,8 @@ Start game with video and activate Intro button only when going back to the main
 Shuyin:
 Nicht perfect bounce DONE
 Nicht inside buildings items spawnen DONE
-progress bar update usw.
+progress bar update: locked items dunkel, unlocked items hell
+Stars von vorher mitnehmen -> bar füllt sich vom letzten Punkt auf
 Highscore: meter + stars, geordnet nach meter und dann stars
 Sound für Tshirt
 Font?

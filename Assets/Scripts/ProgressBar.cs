@@ -11,6 +11,7 @@ public class ProgressBar : MonoBehaviour
     public AudioSource progressBackingTrackAudioSource;
     public TMP_Text scoreText;
     public TMP_Text currentStarText;
+    public List<GameObject> unlockableItems;
     private float updateTick = 0;
     private float newValue;
 
@@ -20,6 +21,13 @@ public class ProgressBar : MonoBehaviour
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         scoreText.text = "HIGHSCORE:\n " + progressTracker.maxHeight + " meters";
         currentStarText.text = progressTracker.starCount + "/60";
+
+        List<GameObject> unlockedItems = GetUnlockedItems(progressTracker.starCount);
+        foreach (GameObject item in unlockedItems)
+        {   
+            item.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            item.transform.GetChild(0).gameObject.SetActive(true);
+        }
 
         newValue = MapValue(progressTracker.starCount, 0f, 60f, 0f, 14.5f);
     }
@@ -47,5 +55,19 @@ public class ProgressBar : MonoBehaviour
     private float MapValue(float oldValue, float oldMin, float oldMax, float newMin, float newMax)
     {
         return ((oldValue - oldMin) / (oldMax - oldMin)) * (newMax - newMin) + newMin;
+    }
+
+    private List<GameObject> GetUnlockedItems(int points)
+    {
+        return points switch
+        {
+            < 10 => new List<GameObject>(),
+            >= 10 and < 20 => unlockableItems.GetRange(0, 2),
+            >= 20 and < 30 => unlockableItems.GetRange(0, 3),
+            >= 30 and < 40 => unlockableItems.GetRange(0, 4),
+            >= 40 and < 50 => unlockableItems.GetRange(0, 5),
+            >= 50 and < 60 => unlockableItems.GetRange(0, 6),
+            _ => unlockableItems
+        };
     }
 }
