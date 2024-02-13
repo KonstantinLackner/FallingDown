@@ -8,11 +8,13 @@ public class ProgressBar : MonoBehaviour
 {
     private ProgressTracker progressTracker;
     public AudioSource countAudioSource;
+    public AudioSource progressBackingTrackAudioSource;
     public TMP_Text scoreText;
     public TMP_Text currentStarText;
 
     private void Start()
     {
+        progressBackingTrackAudioSource.Play();
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         scoreText.text = "HIGHSCORE:\n " + progressTracker.maxHeight + " meters";
         currentStarText.text = progressTracker.starCount + "/60";

@@ -255,7 +255,7 @@ public class Cat : MonoBehaviour
             starCountAudioSource.Play();
             GSM.removeStar();
         }
-        itemManager.currentPriceStarLifeConverter += 5;
+        itemManager.IncreaseStarsToLifeConverterCost();
         respawnAudioSource.Play();
         clawsParticleSystem.Play();
         gameObject.SetActive(true);

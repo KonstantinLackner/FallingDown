@@ -82,8 +82,14 @@ public class GameStateManager : MonoBehaviour
             progressTracker.maxHeight = height;
         }
         bigText.text = "GAME OVER";
+        StartCoroutine(loadNextScene());
+    }
+
+    private IEnumerator loadNextScene()
+    {
+        backingTrackAudioSource.Stop();
         gameOverAudioSource.Play();
-        //menuButton.SetActive(true);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(2);
     }
 

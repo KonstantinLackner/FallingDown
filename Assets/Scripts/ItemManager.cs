@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Enumerable = System.Linq.Enumerable;
 using Image = UnityEngine.UI.Image;
@@ -11,6 +12,7 @@ public class ItemManager : MonoBehaviour
     public Cat cat;
     public int currentPriceStarLifeConverter = 10;// All items in the game (they are prefabs and collected here)
     public Image item1;
+    public TMP_Text StarsTolifeConverterCost;
     
     public void PickupItem(Item item)
     {
@@ -26,6 +28,14 @@ public class ItemManager : MonoBehaviour
         }
 
         currentItems.Add(item); // Add new item to the end of the list
+        if (item.ItemName == "StarsToLifeConverter")
+        {
+            StarsTolifeConverterCost.text = currentPriceStarLifeConverter.ToString();
+        }
+        else
+        {
+            StarsTolifeConverterCost.text = "";
+        }
         Debug.Log($"Picked up {item.ItemName}");
 
         CheckCurrentItems();
@@ -80,5 +90,11 @@ public class ItemManager : MonoBehaviour
         cat.inWallJump = ItemExistsInQueueByName("WallJump");
         
         GSM.ApplyAllItemChanges();
+    }
+
+    public void IncreaseStarsToLifeConverterCost()
+    {
+        currentPriceStarLifeConverter += 5;
+        StarsTolifeConverterCost.text = currentPriceStarLifeConverter.ToString();
     }
 }
