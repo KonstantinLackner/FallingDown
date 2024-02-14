@@ -190,8 +190,11 @@ public class Cat : MonoBehaviour
         if (col.gameObject.CompareTag("Item"))
         {
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
-            itemManager.PickupItem(itemToPickUp);
-            GSM.startQuip(itemToPickUp);
+            if (itemManager.PickupItem(itemToPickUp))
+            {
+                GSM.startQuip(itemToPickUp);
+            }
+
             Destroy(col.gameObject);
         }
 

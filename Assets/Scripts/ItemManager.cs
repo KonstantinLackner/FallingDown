@@ -14,11 +14,11 @@ public class ItemManager : MonoBehaviour
     public Image item1;
     public TMP_Text StarsTolifeConverterCost;
     
-    public void PickupItem(Item item)
+    public bool PickupItem(Item item)
     {
         if (ItemExistsInQueueByName(item.ItemName))
         {
-            return;
+            return false;
         }
         if (currentItems.Count >= maxItems)
         {
@@ -39,6 +39,7 @@ public class ItemManager : MonoBehaviour
         Debug.Log($"Picked up {item.ItemName}");
 
         CheckCurrentItems();
+        return true;
     }
 
     public Item DropItem()
