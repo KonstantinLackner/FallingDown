@@ -78,7 +78,7 @@ public class ItemSpawner : MonoBehaviour
         List<Collider2D> results = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
         filter.NoFilter();
-        Physics2D.OverlapBox(position, new Vector2(0.75f, 0.75f), 0, filter, results);
+        Physics2D.OverlapBox(position, new Vector2(1, 1), 0, filter, results);
 
         if (results.Count == 0)
         {
