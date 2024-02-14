@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemManager: {fileID: 790345409}
   GSM: {fileID: 957936823}
-  secondsToSpawnNewItem: 4
+  secondsToSpawnNewItem: 3
   chanceForStars: 0.5
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
@@ -935,8 +935,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ItemNameLong
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
+  m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7562,8 +7562,9 @@ MonoBehaviour:
   - {fileID: 8333158966950122511, guid: 66447273fa4d6d24ba733de51860ad58, type: 3}
   - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
   - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
+  previousStarCount: 0
   starCount: 0
-  maxHeight: 0
+  newHighscore: 0
 --- !u!4 &1202969091
 Transform:
   m_ObjectHideFlags: 0
@@ -7891,8 +7892,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
+  m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8083,8 +8084,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press SPACE to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
+  m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8515,8 +8516,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10 meters | 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
+  m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8656,7 +8657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767506550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 4.43, z: 1}
+  m_LocalPosition: {x: 2, y: 4.4, z: 1}
   m_LocalScale: {x: 0.7209, y: 0.6986, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9253,8 +9254,8 @@ MonoBehaviour:
   m_text: There should definitely be text here, I am sure of this. Really very sure,
     I swear!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
+  m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

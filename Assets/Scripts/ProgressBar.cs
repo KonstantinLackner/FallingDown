@@ -27,7 +27,7 @@ public class ProgressBar : MonoBehaviour
         scoreText.text = progressTracker.latestScore.Item1 + " meters | " + progressTracker.latestScore.Item2 + " stars";
         if (progressTracker.newHighscore)
         {
-            highscoreText.color = new Color(255, 0, 255, 255);
+            highscoreText.color = new Color(0.83f, 0.31f, 0.6f, 1);
             highscoreText.text = " NEW HIGHSCORE\n " + progressTracker.highscore.Item1 + " meters" + " | " + progressTracker.highscore.Item2 + " stars";
         } 
         else 
@@ -46,7 +46,7 @@ public class ProgressBar : MonoBehaviour
         List<GameObject> unlockedItems = GetUnlockedItems(progressTracker.previousStarCount);
         foreach (GameObject item in unlockedItems)
         {   
-            item.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            item.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             item.transform.GetChild(0).gameObject.SetActive(true);
         }
 
@@ -108,7 +108,7 @@ public class ProgressBar : MonoBehaviour
         if (itemToUnlock != null)
         {
             unlockAudioSource.Play();
-            itemToUnlock.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            itemToUnlock.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             itemToUnlock.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
