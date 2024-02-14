@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class BuildingGenerator : MonoBehaviour
 {
     public Camera camera;
-    private Vector3 currentPoint = new Vector3(10.73f, 90, 1);
+    private Vector3 currentPoint = new Vector3(11.83f, 90, 1);
     public List<GameObject> buildings = new List<GameObject>();
     private List<GameObject> currentBuildings = new List<GameObject>();
 
