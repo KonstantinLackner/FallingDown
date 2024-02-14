@@ -8,7 +8,9 @@ public class ProgressTracker : MonoBehaviour
     public List<GameObject> unlockableItems = new List<GameObject>();
     public int previousStarCount = 0;
     public int starCount = 0;
-    public int maxHeight;
+    public (int, int) highscore = (0, 0);
+    public (int, int) latestScore = (0, 0);
+    public bool newHighscore = false;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class ProgressTracker : MonoBehaviour
         }
     }
 
-    public void IncreaseStarCount(int starsCollected)
+    private void IncreaseStarCount(int starsCollected)
     {
         previousStarCount = starCount;
         starCount += starsCollected;
@@ -41,5 +43,30 @@ public class ProgressTracker : MonoBehaviour
             >= 50 and < 60 => unlockableItems.GetRange(0, 7),
             _ => unlockableItems
         };
+    }
+
+    public void EnterScore(int height, int stars)
+    {
+        IncreaseStarCount(stars);
+        
+        if (height > highscore.Item1)
+        {
+            SetHighscore(height, stars);
+        }
+        else if (height == highscore.Item1 && stars > highscore.Item2)
+        {
+            SetHighscore(height, stars);
+        }
+        else 
+        {
+            newHighscore = false;
+        }
+        latestScore = (height, stars);
+    }
+
+    private void SetHighscore(int height, int stars)
+    {
+        highscore = (height, stars);
+        newHighscore = true;
     }
 }

@@ -10,6 +10,7 @@ public class ProgressBar : MonoBehaviour
     public AudioSource countAudioSource;
     public AudioSource progressBackingTrackAudioSource;
     public TMP_Text scoreText;
+    public TMP_Text highscoreText;
     public TMP_Text currentStarText;
     public List<GameObject> unlockableItems;
     private float updateTick = 0;
@@ -19,8 +20,20 @@ public class ProgressBar : MonoBehaviour
     private void Start()
     {
         progressBackingTrackAudioSource.Play();
+
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
-        scoreText.text = "HIGHSCORE:\n " + progressTracker.maxHeight + " meters";
+
+        scoreText.text = progressTracker.latestScore.Item1 + " meters | " + progressTracker.latestScore.Item2 + " stars";
+        if (progressTracker.newHighscore)
+        {
+            highscoreText.color = new Color(255, 0, 255, 255);
+            highscoreText.text = " NEW HIGHSCORE\n " + progressTracker.highscore.Item1 + " meters" + " | " + progressTracker.highscore.Item2 + " stars";
+        } 
+        else 
+        {
+            highscoreText.text = " highscore\n" + progressTracker.highscore.Item1 + " meters" + " | " + progressTracker.highscore.Item2 + " stars";
+        }
+
         currentStarText.text = progressTracker.starCount + "/60";
 
         List<GameObject> unlockedItems = GetUnlockedItems(progressTracker.starCount);

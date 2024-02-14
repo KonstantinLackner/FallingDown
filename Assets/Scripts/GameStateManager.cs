@@ -74,11 +74,7 @@ public class GameStateManager : MonoBehaviour
 
     public void GameOver()
     {
-        progressTracker.IncreaseStarCount(currentStars);
-        if (progressTracker.maxHeight < height)
-        {
-            progressTracker.maxHeight = height;
-        }
+        progressTracker.EnterScore(height, currentStars);
         bigText.text = "GAME OVER";
         StartCoroutine(loadNextScene());
     }
