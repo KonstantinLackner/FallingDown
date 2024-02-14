@@ -44,14 +44,7 @@ public class BuildingGenerator : MonoBehaviour
 
     private GameObject GetRandomBuilding()
     {
-        float randomNumber = Random.Range(0.0f, 1.0f);
-
-        if (randomNumber < 0.33)
-        {
-            return buildings[0];
-        }
-
-        int index = Random.Range(1, buildings.Count); // Random index among the remaining items
+        int index = Random.Range(1, buildings.Count);
         return buildings[index];
     }
 

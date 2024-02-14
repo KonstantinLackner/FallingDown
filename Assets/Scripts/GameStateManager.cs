@@ -31,11 +31,11 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-        quipWindow.SetActive(false);
         progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         backingTrackAudioSource.Play();
+        pauseGame();
     }
 
     // Update is called once per frame

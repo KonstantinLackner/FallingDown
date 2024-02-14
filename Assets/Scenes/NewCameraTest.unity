@@ -302,7 +302,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &114239840
 LineRenderer:
@@ -836,7 +836,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1263824745475925194, guid: b0298d862fa05db458a1e572db9e2055, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1263824745475925194, guid: b0298d862fa05db458a1e572db9e2055, type: 3}
       propertyPath: m_LocalPosition.x
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f5e77bada67927d43864c41a9c75a225, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ItemNameLong
+  m_text: Get ready!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
@@ -1232,7 +1232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1263824745475925194, guid: b0298d862fa05db458a1e572db9e2055, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1263824745475925194, guid: b0298d862fa05db458a1e572db9e2055, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9255,7 +9255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829438588
 GameObject:
@@ -9596,8 +9596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: There should definitely be text here, I am sure of this. Really very sure,
-    I swear!
+  m_text: Catch your cat using the 1,2,3,4 buttons and your mouse for height adjustments.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
