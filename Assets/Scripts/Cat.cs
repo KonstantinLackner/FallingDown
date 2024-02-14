@@ -23,6 +23,7 @@ public class Cat : MonoBehaviour
     public AudioSource clawAudioSource;
     public AudioSource respawnAudioSource;
     public AudioSource starCountAudioSource;
+    public AudioSource shirtAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public SpriteRenderer ShirtCoverSpriteRenderer;
@@ -175,6 +176,7 @@ public class Cat : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Shirt"))
         {
+            shirtAudioSource.Play();
             ShirtCoverSpriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
             StartCoroutine(ResolveShirt());
             Destroy(col.gameObject);
