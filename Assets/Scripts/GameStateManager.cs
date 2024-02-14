@@ -84,7 +84,7 @@ public class GameStateManager : MonoBehaviour
         backingTrackAudioSource.Stop();
         gameOverAudioSource.Play();
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("ProgressScene");
     }
 
     private void UpdateScore()
