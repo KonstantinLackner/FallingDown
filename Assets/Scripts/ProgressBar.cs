@@ -39,7 +39,7 @@ public class ProgressBar : MonoBehaviour
         // progressTracker.previousStarCount = 23;
         // progressTracker.starCount = 42;
 
-        currentStarText.text = progressTracker.starCount + "/60";
+        currentStarText.text = progressTracker.starCount + "/60 stars collected";
 
         oldValue = MapValue(progressTracker.previousStarCount);
         transform.localScale = new Vector3(oldValue, transform.localScale.y, 1);
