@@ -92,7 +92,7 @@ public class LineDrawer : MonoBehaviour
         else if (pressedButtons.Count > 2)
         {
             // More than two buttons are pressed
-            Debug.Log("Error: More than two buttons are pressed.");
+            // Debug.Log("Error: More than two buttons are pressed.");
         }
     }
 }

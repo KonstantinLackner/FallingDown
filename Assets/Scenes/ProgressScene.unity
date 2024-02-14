@@ -504,7 +504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/60 stars collected
+  m_text: 60/60 stars collected
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
@@ -599,7 +599,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.654, y: -5.56}
-  m_SizeDelta: {x: 18, y: 20}
+  m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &331935267
 PrefabInstance:
@@ -4565,7 +4565,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 244011613
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.3254902}

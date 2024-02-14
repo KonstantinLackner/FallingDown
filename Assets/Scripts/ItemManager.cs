@@ -24,7 +24,7 @@ public class ItemManager : MonoBehaviour
         {
             // Drop the first item (mimicking queue behavior)
             Item droppedItem = DropItem();
-            Debug.Log($"Dropped {droppedItem.ItemName}");
+            // Debug.Log($"Dropped {droppedItem.ItemName}");
         }
 
         currentItems.Add(item); // Add new item to the end of the list
@@ -36,7 +36,7 @@ public class ItemManager : MonoBehaviour
         {
             StarsTolifeConverterCost.text = "";
         }
-        Debug.Log($"Picked up {item.ItemName}");
+        // Debug.Log($"Picked up {item.ItemName}");
 
         CheckCurrentItems();
         return true;
