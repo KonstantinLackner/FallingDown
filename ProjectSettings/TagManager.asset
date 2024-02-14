@@ -81,9 +81,15 @@ TagManager:
   - name: BuildingFront
     uniqueID: 2906406409
     locked: 0
+  - name: ShirtInner
+    uniqueID: 1242768503
+    locked: 0
+  - name: ShirtOuter
+    uniqueID: 1373158737
+    locked: 0
   - name: UI
     uniqueID: 244011613
     locked: 0
-  - name: Quip
-    uniqueID: 1373158737
+  - name: New Layer 12
+    uniqueID: 230000301
     locked: 0

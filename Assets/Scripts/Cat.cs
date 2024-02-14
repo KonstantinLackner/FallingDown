@@ -27,6 +27,7 @@ public class Cat : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public SpriteRenderer ShirtCoverSpriteRenderer;
+    public SpriteRenderer ShirtCoverSpriteRendererOuter;
     public ItemManager itemManager;
     public List<Sprite> sprites;
     public Transform spawnPoint;
@@ -45,6 +46,7 @@ public class Cat : MonoBehaviour
         clawsParticleSystem.Stop();
         transform.position = spawnPoint.position;
         ShirtCoverSpriteRenderer.color = new Color(1, 1, 1, 0);
+        ShirtCoverSpriteRendererOuter.color = new Color(0, 0, 0, 0);
     }
 
     void Update()
@@ -178,6 +180,7 @@ public class Cat : MonoBehaviour
         {
             shirtAudioSource.Play();
             ShirtCoverSpriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
+            ShirtCoverSpriteRendererOuter.color = Color.black;
             StartCoroutine(ResolveShirt());
             Destroy(col.gameObject);
         }
@@ -254,11 +257,13 @@ public class Cat : MonoBehaviour
         {
             float alpha = Mathf.Lerp(1f, 0f, currentTime / 3);
             ShirtCoverSpriteRenderer.color = new Color(startColour.r, startColour.g, startColour.b, alpha);
+            ShirtCoverSpriteRendererOuter.color = new Color(0, 0, 0, alpha);
             currentTime += Time.deltaTime;
             yield return null;
         }
 
         ShirtCoverSpriteRenderer.color = new Color(1, 1, 1, 0);
+        ShirtCoverSpriteRendererOuter.color = new Color(0, 0, 0, 0);
     }
 
     private void OnTriggerExit2D(Collider2D col)
