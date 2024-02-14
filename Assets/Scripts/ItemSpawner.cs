@@ -67,17 +67,28 @@ public class ItemSpawner : MonoBehaviour
         if (!isWallOrItemHere(spawnPosition))
         {
             GameObject newItem = GetRandomItem();
-            Debug.Log("Spawning new Item: " + newItem + " at position: " + spawnPosition);
+            // Debug.Log("Spawning new Item: " + newItem + " at position: " + spawnPosition);
             Instantiate(newItem, spawnPosition, Quaternion.identity);
         }
     }
 
     private bool isWallOrItemHere(Vector3 position)
     {
-
+        // item
         List<Collider2D> results = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
         filter.NoFilter();
+        Physics2D.OverlapBox(position, new Vector2(5, 5), 0, filter, results);
+
+        foreach (Collider2D c in results)
+        {
+            if (c.gameObject.CompareTag("Item") || c.gameObject.CompareTag("Star") )
+            {
+                return true;
+            }
+        }
+
+        // wall
         Physics2D.OverlapBox(position, new Vector2(1, 1), 0, filter, results);
 
         if (results.Count == 0)
@@ -88,14 +99,12 @@ public class ItemSpawner : MonoBehaviour
         {
             foreach (Collider2D c in results)
             {
-                if (c.gameObject.CompareTag("CollisionWall") || c.gameObject.CompareTag("Item"))
+                if (c.gameObject.CompareTag("CollisionWall"))
                 {
-                    // Debug.Log("Wall/Item is here! at " + position);
                     return true;
                 }
             }
             return false;
         }
     }
-
 }
