@@ -24,6 +24,9 @@ public class Cat : MonoBehaviour
     public AudioSource respawnAudioSource;
     public AudioSource starCountAudioSource;
     public AudioSource shirtAudioSource;
+    public AudioSource weeeAudioSource;
+    public AudioSource ooohAudioSource;
+    public AudioSource ngahAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public SpriteRenderer ShirtCoverSpriteRenderer;
@@ -51,7 +54,7 @@ public class Cat : MonoBehaviour
 
     void Update()
     {
-        // Sprite stuff
+        // Sprite & sound stuff
         float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? -1 : 1;
         transform.localScale = new Vector3(1, yFlip, 1);
         if (Mathf.Abs(myRigidbody.velocity.y) <= spriteChangeSpeed1)
@@ -65,6 +68,7 @@ public class Cat : MonoBehaviour
         }
         else
         {
+            if (mySpriteRenderer.sprite != sprites[2] && myRigidbody.velocity.y > 14) weeeAudioSource.Play();
             mySpriteRenderer.sprite = sprites[2];
         }
 
@@ -118,10 +122,13 @@ public class Cat : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Line"))
         {
+
             bounceAudioSource.Play();
 
             Vector2 oldVelocity = myRigidbody.velocity;
             Vector2 newVelocity = oldVelocity;
+            Debug.Log("oldvelocity: " + oldVelocity);
+            if (oldVelocity.y < 7) ngahAudioSource.Play();
 
             // no more perfectly straight bounces
             LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
@@ -192,6 +199,7 @@ public class Cat : MonoBehaviour
 
         if (col.gameObject.CompareTag("Item"))
         {
+            ooohAudioSource.Play();
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
             if (itemManager.PickupItem(itemToPickUp))
             {
