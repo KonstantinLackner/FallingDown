@@ -27,6 +27,7 @@ public class Cat : MonoBehaviour
     public AudioSource weeeAudioSource;
     public AudioSource ooohAudioSource;
     public AudioSource ngahAudioSource;
+    public AudioSource wowAudioSource;
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySpriteRenderer;
     public SpriteRenderer ShirtCoverSpriteRenderer;
@@ -43,6 +44,8 @@ public class Cat : MonoBehaviour
     
     public float maxMultiplier = 3f; // The maximum velocity multiplier at low speeds
     public float maxSpeedForMultiplier = 15f; // Speed at which the multiplier becomes 1
+
+    private Vector2[] bounceSpeedMemory = new Vector2[3] {new Vector2(0,0), new Vector2(0,0), new Vector2(0,0)};
     
     void Start()
     {
@@ -127,8 +130,8 @@ public class Cat : MonoBehaviour
 
             Vector2 oldVelocity = myRigidbody.velocity;
             Vector2 newVelocity = oldVelocity;
+
             Debug.Log("oldvelocity: " + oldVelocity);
-            if (oldVelocity.y < 7) ngahAudioSource.Play();
 
             // no more perfectly straight bounces
             LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
@@ -165,6 +168,19 @@ public class Cat : MonoBehaviour
             }
 
             myRigidbody.velocity = newVelocity;
+
+            bounceSpeedMemory[0] = bounceSpeedMemory[1];
+            bounceSpeedMemory[1] = bounceSpeedMemory[2];
+            bounceSpeedMemory[2] = newVelocity;
+            if (bounceSpeedMemory[0].y < 7 && bounceSpeedMemory[1].y < 7 && newVelocity.y < 7)
+            {
+                ngahAudioSource.Play();
+            }
+            if (bounceSpeedMemory[0].y > 7 && bounceSpeedMemory[1].y > 7 && newVelocity.y > 7)
+            {
+                wowAudioSource.Play();
+                GSM.UnlockSecret();
+            }
         }
     }
 

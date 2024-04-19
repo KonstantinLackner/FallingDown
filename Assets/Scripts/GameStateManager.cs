@@ -14,6 +14,7 @@ public class GameStateManager : MonoBehaviour
     public Rigidbody2D cat;
     public TMP_Text bigText;
     public TMP_Text heightScore;
+    public TMP_Text secretText;
     private int lastHeight;
     private int height;
     public GameObject menuButton;
@@ -28,6 +29,7 @@ public class GameStateManager : MonoBehaviour
     public SpriteRenderer SkyBox3;
     private ProgressTracker progressTracker;
     public TMP_Text quipWindowTitle;
+    private int hiddenSecrets = 1;
 
     void Start()
     {
@@ -77,6 +79,15 @@ public class GameStateManager : MonoBehaviour
         progressTracker.EnterScore(height, currentStars);
         bigText.text = "GAME OVER";
         StartCoroutine(loadNextScene());
+    }
+
+    public void UnlockSecret()
+    {
+        if (hiddenSecrets > 0)
+        {
+            hiddenSecrets--;
+            StartCoroutine(flashSecretText());
+        }
     }
 
     private IEnumerator loadNextScene()
@@ -135,4 +146,22 @@ public class GameStateManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         UIStar.color = Color.white;
     }
+    
+    private IEnumerator flashSecretText()
+    {
+        secretText.text = "Secrects unlocked: " + "1/3";
+        secretText.fontSize = 13;
+        secretText.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.5f);
+        secretText.fontSize = 12;
+        secretText.color = new Color(1, 1, 1);
+        yield return new WaitForSeconds(0.5f);
+        secretText.fontSize = 13;
+        secretText.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.5f);
+        secretText.fontSize = 12;
+        secretText.color = new Color(1, 1, 1);
+    }
+
+
 }
