@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/ClassicLevel.unity
     guid: 648741cc0d7dc4a58994ef501230d446
   - enabled: 1
+    path: Assets/Scenes/LevelSelectScene.unity
+    guid: c3a10cafb005047b48d9ff14edb008f8
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 907942f7de5434f57a896fbcbb248657
+  - enabled: 1
     path: Assets/Scenes/NewCameraTest.unity
     guid: 22ff3bc64b851d1478bc6974f76aee05
   - enabled: 1

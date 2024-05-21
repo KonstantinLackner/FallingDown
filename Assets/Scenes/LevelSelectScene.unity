@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 131450857}
   - component: {fileID: 131450856}
   m_Layer: 5
-  m_Name: LastScore
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 140944117}
   - component: {fileID: 140944116}
   m_Layer: 5
-  m_Name: HighScore (4)
+  m_Name: lvl1highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 182961860}
   - component: {fileID: 182961859}
   m_Layer: 5
-  m_Name: HighScore (6)
+  m_Name: lvl2highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,38 +740,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 195335521}
-  - component: {fileID: 195335520}
+  - component: {fileID: 195335522}
   m_Layer: 0
-  m_Name: ProgressTracker
+  m_Name: LevelProgressManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &195335520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195335519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf29b51109156e47956ff4ea4451baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockableItems:
-  - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
-  - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
-  - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
-  - {fileID: 8333158966950122511, guid: d459af9ad8799db4080a25080aa472ab, type: 3}
-  - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
-  - {fileID: 8333158966950122511, guid: 66447273fa4d6d24ba733de51860ad58, type: 3}
-  - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
-  - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
-  previousStarCount: 0
-  starCount: 0
-  newHighscore: 0
 --- !u!4 &195335521
 Transform:
   m_ObjectHideFlags: 0
@@ -787,6 +763,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195335522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195335519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4331124a51b0f470f8a6cce1d0a80b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1Highscore: 0
+  level1Unlocked: 1
+  level1MemoryUnlocked: 0
+  level2Highscore: 0
+  level2Unlocked: 0
+  level2MemoryUnlocked: 0
+  level3Highscore: 0
+  level3Unlocked: 0
+  level3MemoryUnlocked: 0
 --- !u!1 &196397977
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +797,7 @@ GameObject:
   - component: {fileID: 196397980}
   - component: {fileID: 196397979}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: lvl2Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +817,7 @@ RectTransform:
   m_Children:
   - {fileID: 168061888}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -934,7 +931,7 @@ GameObject:
   - component: {fileID: 271724649}
   - component: {fileID: 271724648}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: lvl3Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +951,7 @@ RectTransform:
   m_Children:
   - {fileID: 1226519513}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1068,7 +1065,7 @@ GameObject:
   - component: {fileID: 445714121}
   - component: {fileID: 445714120}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: lvl2Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,7 +1085,7 @@ RectTransform:
   m_Children:
   - {fileID: 1434274182}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1285,7 +1282,7 @@ GameObject:
   - component: {fileID: 651122039}
   - component: {fileID: 651122038}
   m_Layer: 5
-  m_Name: HighScore (1)
+  m_Name: Level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,7 +1301,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 704324666}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1546,14 +1543,14 @@ RectTransform:
   m_Children:
   - {fileID: 131450855}
   - {fileID: 1931241429}
-  - {fileID: 1611273912}
-  - {fileID: 907122843}
   - {fileID: 651122037}
   - {fileID: 876251660}
-  - {fileID: 196397978}
+  - {fileID: 907122843}
+  - {fileID: 1611273912}
   - {fileID: 445714119}
-  - {fileID: 271724647}
+  - {fileID: 196397978}
   - {fileID: 1960279683}
+  - {fileID: 271724647}
   - {fileID: 1743246072}
   - {fileID: 140944115}
   - {fileID: 1561288610}
@@ -1580,7 +1577,7 @@ GameObject:
   - component: {fileID: 876251662}
   - component: {fileID: 876251661}
   m_Layer: 5
-  m_Name: HighScore (2)
+  m_Name: Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1599,7 +1596,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 704324666}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1716,7 +1713,7 @@ GameObject:
   - component: {fileID: 907122845}
   - component: {fileID: 907122844}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: lvl1Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,7 +1733,7 @@ RectTransform:
   m_Children:
   - {fileID: 1026743862}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1796,7 +1793,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: NewCameraTest
+          m_StringArgument: Level1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &907122845
@@ -1849,7 +1846,7 @@ GameObject:
   - component: {fileID: 971872811}
   - component: {fileID: 971872810}
   m_Layer: 5
-  m_Name: HighScore (8)
+  m_Name: lvl3highscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2362,6 +2359,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1187120731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187120733}
+  - component: {fileID: 1187120732}
+  m_Layer: 0
+  m_Name: LevelProgressIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187120732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187120731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ad0e4a01061410ab343fe630c4e262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1SecretText: {fileID: 1743246073}
+  level1HighscoreText: {fileID: 140944116}
+  level1PlayButton: {fileID: 907122842}
+  level1MemoryButton: {fileID: 1611273911}
+  level2SecretText: {fileID: 1561288611}
+  level2HighscoreText: {fileID: 182961859}
+  level2PlayButton: {fileID: 445714118}
+  level2MemoryButton: {fileID: 196397977}
+  level3SecretText: {fileID: 1586904840}
+  level3HighscoreText: {fileID: 971872810}
+  level3PlayButton: {fileID: 1960279682}
+  level3MemoryButton: {fileID: 271724646}
+--- !u!4 &1187120733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187120731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4349681, y: 1.6401079, z: 0.35966584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197072354
 GameObject:
@@ -2992,7 +3045,7 @@ GameObject:
   - component: {fileID: 1561288612}
   - component: {fileID: 1561288611}
   m_Layer: 5
-  m_Name: HighScore (5)
+  m_Name: lvl2secrets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3127,7 +3180,7 @@ GameObject:
   - component: {fileID: 1586904841}
   - component: {fileID: 1586904840}
   m_Layer: 5
-  m_Name: HighScore (7)
+  m_Name: lvl3secrets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3263,7 +3316,7 @@ GameObject:
   - component: {fileID: 1611273914}
   - component: {fileID: 1611273913}
   m_Layer: 5
-  m_Name: Button
+  m_Name: lvl1Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3283,7 +3336,7 @@ RectTransform:
   m_Children:
   - {fileID: 1780358981}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3396,7 +3449,7 @@ GameObject:
   - component: {fileID: 1743246074}
   - component: {fileID: 1743246073}
   m_Layer: 5
-  m_Name: HighScore (3)
+  m_Name: lvl1secrets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3666,7 +3719,7 @@ GameObject:
   - component: {fileID: 1931241431}
   - component: {fileID: 1931241430}
   m_Layer: 5
-  m_Name: HighScore
+  m_Name: Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3886,7 +3939,7 @@ GameObject:
   - component: {fileID: 1960279685}
   - component: {fileID: 1960279684}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: lvl3Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3906,7 +3959,7 @@ RectTransform:
   m_Children:
   - {fileID: 1401078021}
   m_Father: {fileID: 704324666}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
