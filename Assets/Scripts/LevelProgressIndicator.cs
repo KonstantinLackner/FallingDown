@@ -44,7 +44,7 @@ public class LevelProgressIndicator : MonoBehaviour
         level2MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level2MemoryUnlocked;
         level3MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level3MemoryUnlocked;
 
-        bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters | " + levelProgressManager.latestScore.Item2 + " stars ~ highscore = meters + 10*stars";
+        bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars ~ highscore = " + (levelProgressManager.latestScore.Item1 + levelProgressManager.latestScore.Item2 * 10);
     }
 
     private int getUnlockedSecrets(int level)
