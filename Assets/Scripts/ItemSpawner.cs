@@ -14,12 +14,6 @@ public class ItemSpawner : MonoBehaviour
     public List<GameObject> items = new List<GameObject>();
     private ProgressTracker progressTracker;
 
-    private void Start()
-    {
-        progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
-        items = progressTracker.GetAvailableItems();
-    }
-
     private void Update()
     {
         if (timer < secondsToSpawnNewItem)
