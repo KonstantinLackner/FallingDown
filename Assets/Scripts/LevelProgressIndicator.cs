@@ -19,6 +19,7 @@ public class LevelProgressIndicator : MonoBehaviour
     public TMP_Text level3HighscoreText;
     public GameObject level3PlayButton;
     public GameObject level3MemoryButton;
+    public TMP_Text bottomText;
 
     void Start()
     {
@@ -29,8 +30,11 @@ public class LevelProgressIndicator : MonoBehaviour
         level3SecretText.text = getUnlockedSecrets(3) + "/3 secrets";
 
         level1HighscoreText.text = "highscore: " + levelProgressManager.level1Highscore;
+        if (levelProgressManager.level1NewHighscore) level1HighscoreText.color = new Color(0.83f, 0.31f, 0.6f, 1);
         level2HighscoreText.text = "highscore: " + levelProgressManager.level2Highscore;
+        if (levelProgressManager.level2NewHighscore) level2HighscoreText.color = new Color(0.83f, 0.31f, 0.6f, 1);
         level3HighscoreText.text = "highscore: " + levelProgressManager.level3Highscore;
+        if (levelProgressManager.level3NewHighscore) level3HighscoreText.color = new Color(0.83f, 0.31f, 0.6f, 1);
 
         level1PlayButton.GetComponent<Button>().interactable = levelProgressManager.level1Unlocked;
         level2PlayButton.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
@@ -39,6 +43,8 @@ public class LevelProgressIndicator : MonoBehaviour
         level1MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level1MemoryUnlocked;
         level2MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level2MemoryUnlocked;
         level3MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level3MemoryUnlocked;
+
+        bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters | " + levelProgressManager.latestScore.Item2 + " stars ~ highscore = meters + 10*stars";
     }
 
     private int getUnlockedSecrets(int level)

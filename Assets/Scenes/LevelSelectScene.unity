@@ -325,8 +325,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7759104, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -663,8 +663,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7759104, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -784,6 +784,10 @@ MonoBehaviour:
   level3Highscore: 0
   level3Unlocked: 0
   level3MemoryUnlocked: 0
+  highscore: 0
+  level1NewHighscore: 0
+  level2NewHighscore: 0
+  level3NewHighscore: 0
 --- !u!1 &196397977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,8 +1906,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7759104, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2402,6 +2406,7 @@ MonoBehaviour:
   level3HighscoreText: {fileID: 971872810}
   level3PlayButton: {fileID: 1960279682}
   level3MemoryButton: {fileID: 271724646}
+  bottomText: {fileID: 1264714900}
 --- !u!4 &1187120733
 Transform:
   m_ObjectHideFlags: 0
@@ -2799,8 +2804,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -275.3}
-  m_SizeDelta: {x: 240, y: 68.21}
+  m_AnchoredPosition: {x: 0, y: -280}
+  m_SizeDelta: {x: 500, y: 68.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1264714900
 MonoBehaviour:
@@ -2822,7 +2827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: highscore = meters + 10*stars
+  m_text: 'latest score: 2 meters | 0 stars ~ highscore = meters + 10*stars'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
@@ -2849,8 +2854,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3236,8 +3241,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7759104, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3371,8 +3376,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7759104, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3640,8 +3645,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293079551
-  m_fontColor: {r: 1, g: 0.19339621, b: 0.8884102, a: 1}
+    rgba: 4278241023
+  m_fontColor: {r: 1, g: 0.7764706, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

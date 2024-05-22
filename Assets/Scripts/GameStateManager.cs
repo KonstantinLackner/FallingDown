@@ -7,6 +7,7 @@ using Image = UnityEngine.UI.Image;
 public class GameStateManager : MonoBehaviour
 {
     private bool gameIsRunning = true;
+    private LevelProgressManager levelProgressManager;
     public float currentTimeScale = 1; // I added this as the gravity boots could just slow down the time scale
     public GameObject quipWindow;
     public TMP_Text quipWindowText;
@@ -27,15 +28,16 @@ public class GameStateManager : MonoBehaviour
     public SpriteRenderer UIStar;
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
-    private ProgressTracker progressTracker;
     public TMP_Text quipWindowTitle;
     private int hiddenSecrets = 1;
+    private int level = 0;
 
     void Start()
     {
-        progressTracker = GameObject.Find("ProgressTracker").GetComponent<ProgressTracker>();
+        levelProgressManager = GameObject.Find("LevelProgressManager").GetComponent<LevelProgressManager>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        level = int.Parse(sceneName.Substring(sceneName.Length-1));
         backingTrackAudioSource.Play();
         pauseGame();
     }
@@ -76,7 +78,7 @@ public class GameStateManager : MonoBehaviour
 
     public void GameOver()
     {
-        progressTracker.EnterScore(height, currentStars);
+        levelProgressManager.EnterScore(level, height, currentStars);
         bigText.text = "GAME OVER";
         StartCoroutine(loadNextScene());
     }
@@ -95,7 +97,7 @@ public class GameStateManager : MonoBehaviour
         backingTrackAudioSource.Stop();
         gameOverAudioSource.Play();
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("ProgressScene");
+        SceneManager.LoadScene("LevelSelectScene");
     }
 
     private void UpdateScore()
