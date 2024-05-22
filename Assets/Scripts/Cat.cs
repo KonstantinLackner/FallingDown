@@ -44,7 +44,8 @@ public class Cat : MonoBehaviour
     
     public float maxMultiplier = 3f; // The maximum velocity multiplier at low speeds
     public float maxSpeedForMultiplier = 15f; // Speed at which the multiplier becomes 1
-
+    private int shirtCount = 0;
+    private int walljumpCount = 0;
     private Vector2[] bounceSpeedMemory = new Vector2[3] {new Vector2(0,0), new Vector2(0,0), new Vector2(0,0)};
     
     void Start()
@@ -71,7 +72,7 @@ public class Cat : MonoBehaviour
         }
         else
         {
-            if (mySpriteRenderer.sprite != sprites[2] && myRigidbody.velocity.y > 14) weeeAudioSource.Play();
+            if (mySpriteRenderer.sprite != sprites[2] && myRigidbody.velocity.y > 20) weeeAudioSource.Play();
             mySpriteRenderer.sprite = sprites[2];
         }
 
@@ -120,6 +121,8 @@ public class Cat : MonoBehaviour
             {
                 bounceAudioSource.Play();
                 myRigidbody.velocity = myRigidbody.velocity.x > 0 ? new Vector2(2, 10) : new Vector2(-2,10);
+                walljumpCount++;
+                if (walljumpCount == 5 && GSM.UnlockWalljumper()) wowAudioSource.Play();
             }
         }
 
@@ -176,10 +179,9 @@ public class Cat : MonoBehaviour
             {
                 ngahAudioSource.Play();
             }
-            if (bounceSpeedMemory[0].y > 7 && bounceSpeedMemory[1].y > 7 && newVelocity.y > 7)
+            if (bounceSpeedMemory[0].y > 14 && bounceSpeedMemory[1].y > 14 && newVelocity.y > 14)
             {
-                wowAudioSource.Play();
-                GSM.UnlockSecret();
+                if (GSM.UnlockHyperjump()) wowAudioSource.Play();
             }
         }
     }
@@ -204,7 +206,9 @@ public class Cat : MonoBehaviour
             shirtAudioSource.Play();
             ShirtCoverSpriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
             ShirtCoverSpriteRendererOuter.color = Color.black;
+            shirtCount++;
             StartCoroutine(ResolveShirt());
+            if (shirtCount == 5 && GSM.UnlockShirtlover()) wowAudioSource.Play();
             Destroy(col.gameObject);
         }
         if (col.gameObject.CompareTag("Star"))

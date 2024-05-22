@@ -6,15 +6,15 @@ public class LevelProgressManager : MonoBehaviour
 {
     public static LevelProgressManager Instance { get; private set; }
     public Dictionary<string, bool> level1Secrets = new Dictionary<string, bool> 
-        { {"HyperJump", false}, {"TshirtLover", false}, {"Walljumper", false} };
+        { {"Hyperjump", false}, {"ShirtLover", false}, {"Walljumper", false} };
     public int level1Highscore = 0;
     public bool level1Unlocked = true;
-    public bool level1MemoryUnlocked = true;
+    public bool level1MemoryUnlocked = false;
     public Dictionary<string, bool> level2Secrets = new Dictionary<string, bool>
         { {"tbd1", false}, {"tbd2", false}, {"tbd3", false} };
     public int level2Highscore = 0;
     public bool level2Unlocked = false;
-    public bool level2MemoryUnlocked = true;
+    public bool level2MemoryUnlocked = false;
     public Dictionary<string, bool> level3Secrets = new Dictionary<string, bool>
         { {"tbd1", false}, {"tbd2", false}, {"tbd3", false} };
     public int level3Highscore = 0;
@@ -36,6 +36,21 @@ public class LevelProgressManager : MonoBehaviour
         else
         {
             Destroy(gameObject); // Ensure there are no duplicate instances
+        }
+    }
+    public void Unlock(int level, string secret)
+    {
+        switch (level)
+        {
+            case 1:
+            if (level1Secrets.ContainsKey(secret)) level1Secrets[secret] = true;
+            break;
+            case 2:
+            if (level2Secrets.ContainsKey(secret)) level2Secrets[secret] = true;
+            break;
+            case 3:
+            if (level3Secrets.ContainsKey(secret)) level3Secrets[secret] = true;
+            break;
         }
     }
 
@@ -81,5 +96,34 @@ public class LevelProgressManager : MonoBehaviour
             break;
             default: break;
         }
+
+        CheckUnlocks();
+    }
+
+    private void CheckUnlocks()
+    {
+        level2Unlocked = level1Highscore >= 250;
+        level3Unlocked = level2Highscore >= 300;
+
+        int level1UnlockedSecrets = 0;
+        foreach(bool unlocked in level1Secrets.Values)
+        {
+            if (unlocked) level1UnlockedSecrets++;
+        }
+        level1MemoryUnlocked = level1UnlockedSecrets == 3;
+        
+        int level2UnlockedSecrets = 0;
+        foreach(bool unlocked in level2Secrets.Values)
+        {
+            if (unlocked) level2UnlockedSecrets++;
+        }
+        level2MemoryUnlocked = level2UnlockedSecrets == 3;
+        
+        int level3UnlockedSecrets = 0;
+        foreach(bool unlocked in level3Secrets.Values)
+        {
+            if (unlocked) level3UnlockedSecrets++;
+        }
+        level3MemoryUnlocked = level3UnlockedSecrets == 3;
     }
 }

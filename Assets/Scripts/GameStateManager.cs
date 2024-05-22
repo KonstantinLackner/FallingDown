@@ -15,7 +15,6 @@ public class GameStateManager : MonoBehaviour
     public Rigidbody2D cat;
     public TMP_Text bigText;
     public TMP_Text heightScore;
-    public TMP_Text secretText;
     private int lastHeight;
     private int height;
     public GameObject menuButton;
@@ -29,8 +28,10 @@ public class GameStateManager : MonoBehaviour
     public SpriteRenderer SkyBox2;
     public SpriteRenderer SkyBox3;
     public TMP_Text quipWindowTitle;
-    private int hiddenSecrets = 1;
     private int level = 0;
+    public GameObject secret1;
+    public GameObject secret2;
+    public GameObject secret3;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class GameStateManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         level = int.Parse(sceneName.Substring(sceneName.Length-1));
+        UpdateUnlockedSecrets();
         backingTrackAudioSource.Play();
         pauseGame();
     }
@@ -83,12 +85,52 @@ public class GameStateManager : MonoBehaviour
         StartCoroutine(loadNextScene());
     }
 
-    public void UnlockSecret()
+    public bool UnlockHyperjump()
     {
-        if (hiddenSecrets > 0)
+        if (!levelProgressManager.level1Secrets[secret1.name])
         {
-            hiddenSecrets--;
-            StartCoroutine(flashSecretText());
+            secret1.GetComponent<SpriteRenderer>().color = Color.white;
+            levelProgressManager.level1Secrets["Hyperjump"] = true;
+            return true;
+        }
+        return false;
+    }
+
+    public bool UnlockShirtlover()
+    {
+        if (!levelProgressManager.level1Secrets[secret2.name])
+        {
+            secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
+            levelProgressManager.level1Secrets["ShirtLover"] = true;
+            return true;
+        }
+        return false;
+    }
+
+    public bool UnlockWalljumper()
+    {
+        if (!levelProgressManager.level1Secrets[secret3.name])
+        {
+            secret3.GetComponent<SpriteRenderer>().color = Color.white;
+            levelProgressManager.level1Secrets["Walljumper"] = true;
+            return true;
+        }
+        return false;
+    }
+
+    private void UpdateUnlockedSecrets()
+    {
+        if (levelProgressManager.level1Secrets[secret1.name])
+        {
+            secret1.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        if (levelProgressManager.level1Secrets[secret2.name])
+        {
+            secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
+        }
+        if (levelProgressManager.level1Secrets[secret3.name])
+        {
+            secret3.GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
@@ -148,22 +190,4 @@ public class GameStateManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         UIStar.color = Color.white;
     }
-    
-    private IEnumerator flashSecretText()
-    {
-        secretText.text = "Secrects unlocked: " + "1/3";
-        secretText.fontSize = 13;
-        secretText.color = new Color(1, 0, 0);
-        yield return new WaitForSeconds(0.5f);
-        secretText.fontSize = 12;
-        secretText.color = new Color(1, 1, 1);
-        yield return new WaitForSeconds(0.5f);
-        secretText.fontSize = 13;
-        secretText.color = new Color(1, 0, 0);
-        yield return new WaitForSeconds(0.5f);
-        secretText.fontSize = 12;
-        secretText.color = new Color(1, 1, 1);
-    }
-
-
 }
