@@ -11,7 +11,7 @@ public class LevelProgressManager : MonoBehaviour
     public bool level1Unlocked = true;
     public bool level1MemoryUnlocked = false;
     public Dictionary<string, bool> level2Secrets = new Dictionary<string, bool>
-        { {"tbd1", false}, {"tbd2", false}, {"tbd3", false} };
+        { {"HorizontalJump", false}, {"ClawHater", false}, {"DrillLover", false} };
     public int level2Highscore = 0;
     public bool level2Unlocked = false;
     public bool level2MemoryUnlocked = false;

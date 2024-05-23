@@ -87,7 +87,7 @@ public class GameStateManager : MonoBehaviour
 
     public bool UnlockHyperjump()
     {
-        if (!levelProgressManager.level1Secrets[secret1.name])
+        if (level == 1 && !levelProgressManager.level1Secrets[secret1.name])
         {
             secret1.GetComponent<SpriteRenderer>().color = Color.white;
             levelProgressManager.level1Secrets["Hyperjump"] = true;
@@ -98,7 +98,7 @@ public class GameStateManager : MonoBehaviour
 
     public bool UnlockShirtlover()
     {
-        if (!levelProgressManager.level1Secrets[secret2.name])
+        if (level == 1 && !levelProgressManager.level1Secrets[secret2.name])
         {
             secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
             levelProgressManager.level1Secrets["ShirtLover"] = true;
@@ -109,7 +109,7 @@ public class GameStateManager : MonoBehaviour
 
     public bool UnlockWalljumper()
     {
-        if (!levelProgressManager.level1Secrets[secret3.name])
+        if (level == 1 && !levelProgressManager.level1Secrets[secret3.name])
         {
             secret3.GetComponent<SpriteRenderer>().color = Color.white;
             levelProgressManager.level1Secrets["Walljumper"] = true;
@@ -118,19 +118,52 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
+    public bool UnlockHorizontalJump()
+    {
+        return false;
+    }
+
+    public bool UnlockClawhater()
+    {
+        return false;
+    }
+
+    public bool UnlockDrillLover()
+    {
+        return false;
+    }
+
     private void UpdateUnlockedSecrets()
     {
-        if (levelProgressManager.level1Secrets[secret1.name])
+        if (level == 1)
         {
-            secret1.GetComponent<SpriteRenderer>().color = Color.white;
+            if (levelProgressManager.level1Secrets[secret1.name])
+            {
+                secret1.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            if (levelProgressManager.level1Secrets[secret2.name])
+            {
+                secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
+            }
+            if (levelProgressManager.level1Secrets[secret3.name])
+            {
+                secret3.GetComponent<SpriteRenderer>().color = Color.white;
+            }
         }
-        if (levelProgressManager.level1Secrets[secret2.name])
+        if (level == 2)
         {
-            secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
-        }
-        if (levelProgressManager.level1Secrets[secret3.name])
-        {
-            secret3.GetComponent<SpriteRenderer>().color = Color.white;
+            if (levelProgressManager.level2Secrets[secret1.name])
+            {
+                secret1.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            if (levelProgressManager.level2Secrets[secret2.name])
+            {
+                secret1.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            if (levelProgressManager.level2Secrets[secret3.name])
+            {
+                secret3.GetComponent<SpriteRenderer>().color = Color.white;
+            }
         }
     }
 
