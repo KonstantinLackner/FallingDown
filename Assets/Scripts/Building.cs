@@ -8,7 +8,7 @@ public class Building : MonoBehaviour
 
     private void Awake()
     {
-        houseSpriteRenderer.color = new Color(Random.Range(0.0f, 1.0f),
-            Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));;
+        houseSpriteRenderer.color = new Color(Random.Range(0.3f, 0.8f),
+            Random.Range(0.3f, 0.8f), Random.Range(0.3f, 0.8f));;
     }
 }
