@@ -140,7 +140,7 @@ public class Cat : MonoBehaviour
             LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
             Vector3[] linePositions = new Vector3[lineComponent.positionCount];
             lineComponent.GetPositions(linePositions);
-            if (Mathf.Abs(linePositions[0].y - linePositions[1].y) < 0.1f)
+            /*if (Mathf.Abs(linePositions[0].y - linePositions[1].y) < 0.1f)
             {
                 if (Mathf.Abs(oldVelocity.x) < 0.75f)
                 {
@@ -151,7 +151,7 @@ public class Cat : MonoBehaviour
                         newVelocity *= new Vector2(2.5f, 1);
                     }
                 }
-            }
+            }*/ // temp
 
             Vector2 favourVertical = new Vector2(0.5f, 1);
             float currentSpeed = myRigidbody.velocity.magnitude;

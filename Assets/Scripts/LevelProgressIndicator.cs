@@ -10,15 +10,15 @@ public class LevelProgressIndicator : MonoBehaviour
     public TMP_Text level1SecretText;
     public TMP_Text level1HighscoreText;
     public GameObject level1PlayButton;
-    public GameObject level1MemoryButton;
+    public GameObject story1Button;
     public TMP_Text level2SecretText;
     public TMP_Text level2HighscoreText;
     public GameObject level2PlayButton;
-    public GameObject level2MemoryButton;
+    public GameObject story2Button;
     public TMP_Text level3SecretText;
     public TMP_Text level3HighscoreText;
     public GameObject level3PlayButton;
-    public GameObject level3MemoryButton;
+    public GameObject storyEndButton;
     public TMP_Text bottomText;
 
     void Start()
@@ -40,9 +40,13 @@ public class LevelProgressIndicator : MonoBehaviour
         level2PlayButton.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
         level3PlayButton.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
 
-        level1MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level1MemoryUnlocked;
-        level2MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level2MemoryUnlocked;
-        level3MemoryButton.GetComponent<Button>().interactable = levelProgressManager.level3MemoryUnlocked;
+        // story1Button.GetComponent<Button>().interactable = levelProgressManager.level1MemoryUnlocked;
+        // story2Button.GetComponent<Button>().interactable = levelProgressManager.level2MemoryUnlocked;
+        // storyEndButton.GetComponent<Button>().interactable = levelProgressManager.level3MemoryUnlocked;
+
+        story1Button.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
+        story2Button.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
+        storyEndButton.GetComponent<Button>().interactable = false;
 
         bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars = " + (levelProgressManager.latestScore.Item1 + levelProgressManager.latestScore.Item2 * 10);
     }
