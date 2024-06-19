@@ -289,6 +289,7 @@ MonoBehaviour:
   - {fileID: 1480717205}
   - {fileID: 2143517901}
   - {fileID: 0}
+  cat: {fileID: 611573645}
 --- !u!4 &114239839
 Transform:
   m_ObjectHideFlags: 0
@@ -528,8 +529,6 @@ MonoBehaviour:
   chanceForStars: 0.66
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
-  - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
-  - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
 --- !u!4 &248215456
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1854,7 @@ MonoBehaviour:
   spriteChangeSpeed2: 11
   maxMultiplier: 1.5
   maxSpeedForMultiplier: 15
+  isLatestLineSlopey: 0
 --- !u!50 &611573646
 Rigidbody2D:
   serializedVersion: 4

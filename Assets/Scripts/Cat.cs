@@ -47,6 +47,8 @@ public class Cat : MonoBehaviour
     private int shirtCount = 0;
     private int walljumpCount = 0;
     private Vector2[] bounceSpeedMemory = new Vector2[3] {new Vector2(0,0), new Vector2(0,0), new Vector2(0,0)};
+    private float wallCrashCooldown = 5;
+    public bool isLatestLineSlopey = false;
     
     void Start()
     {
@@ -58,6 +60,7 @@ public class Cat : MonoBehaviour
 
     void Update()
     {
+        wallCrashCooldown -= Time.deltaTime;
         // Sprite & sound stuff
         float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? -1 : 1;
         transform.localScale = new Vector3(1, yFlip, 1);
@@ -112,6 +115,21 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CollisionWall"))
         {
+            /*
+            Debug.Log("WallCollision velocity: " + myRigidbody.velocity);
+            Vector2 wallCollisionVelocity = myRigidbody.velocity;
+            if (Mathf.Abs(wallCollisionVelocity.x) > 0.1 && wallCollisionVelocity.y > 5)
+            {
+                //Debug.Log("wallcrashcooldown: " + wallCrashCooldown);
+
+                    Debug.Log("good wallcrash: " + myRigidbody.velocity);
+                    wowAudioSource.Play();
+                    wallCrashCooldown = 3;
+                
+
+            }
+*/
+
             if (inRubberWalls)
             {
                 myRigidbody.velocity += myRigidbody.velocity.x > 0 ? new Vector2(3.5f, 0) : new Vector2(-3.5f,0);
@@ -130,6 +148,7 @@ public class Cat : MonoBehaviour
         {
 
             bounceAudioSource.Play();
+            if (isLatestLineSlopey) ooohAudioSource.Play();
 
             Vector2 oldVelocity = myRigidbody.velocity;
             Vector2 newVelocity = oldVelocity;
