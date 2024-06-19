@@ -529,6 +529,7 @@ MonoBehaviour:
   chanceForStars: 0.66
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
+  redStar: {fileID: 0}
 --- !u!4 &248215456
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1856,7 @@ MonoBehaviour:
   maxMultiplier: 1.5
   maxSpeedForMultiplier: 15
   isLatestLineSlopey: 0
+  itemSpawner: {fileID: 248215455}
 --- !u!50 &611573646
 Rigidbody2D:
   serializedVersion: 4
@@ -10826,7 +10828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2041454537
 RectTransform:
   m_ObjectHideFlags: 0

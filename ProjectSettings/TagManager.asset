@@ -20,6 +20,7 @@ TagManager:
   - Gust
   - Shirt
   - GustToRight
+  - RedStar
   layers:
   - Default
   - TransparentFX

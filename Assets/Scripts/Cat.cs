@@ -76,7 +76,7 @@ public class Cat : MonoBehaviour
         }
         else
         {
-            if (mySpriteRenderer.sprite != sprites[2] && myRigidbody.velocity.y > 20) weeeAudioSource.Play();
+            if (mySpriteRenderer.sprite != sprites[2] && myRigidbody.velocity.y > 17) weeeAudioSource.Play();
             mySpriteRenderer.sprite = sprites[2];
         }
 
@@ -126,7 +126,7 @@ public class Cat : MonoBehaviour
                 bounceAudioSource.Play();
                 myRigidbody.velocity = myRigidbody.velocity.x > 0 ? new Vector2(2, 10) : new Vector2(-2,10);
                 walljumpCount++;
-                if (walljumpCount == 5 && GSM.UnlockWalljumper()) wowAudioSource.Play();
+                // if (walljumpCount == 5 && GSM.UnlockWalljumper()) wowAudioSource.Play();
             }
         }
 
@@ -173,7 +173,7 @@ public class Cat : MonoBehaviour
             }
             if (bounceSpeedMemory[0].y > 14 && bounceSpeedMemory[1].y > 14 && newVelocity.y > 14)
             {
-                if (GSM.UnlockHyperjump()) wowAudioSource.Play();
+                // if (GSM.UnlockHyperjump()) wowAudioSource.Play();
             }
         }
     }
@@ -200,7 +200,7 @@ public class Cat : MonoBehaviour
             ShirtCoverSpriteRendererOuter.color = Color.black;
             shirtCount++;
             StartCoroutine(ResolveShirt());
-            if (shirtCount == 5 && GSM.UnlockShirtlover()) wowAudioSource.Play();
+            // if (shirtCount == 5 && GSM.UnlockShirtlover()) wowAudioSource.Play();
             Destroy(col.gameObject);
         }
         if (col.gameObject.CompareTag("Star"))
@@ -216,7 +216,7 @@ public class Cat : MonoBehaviour
 
         if (col.gameObject.CompareTag("Item"))
         {
-            ooohAudioSource.Play();
+            wowAudioSource.Play();
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
             if (itemManager.PickupItem(itemToPickUp))
             {
