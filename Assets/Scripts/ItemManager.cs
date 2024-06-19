@@ -77,7 +77,7 @@ public class ItemManager : MonoBehaviour
         
         if (ItemExistsInQueueByName("GravityBoots"))
         {
-            GSM.currentTimeScale = 0.5f;
+            GSM.currentTimeScale = 0.8f;
         }
         else
         {

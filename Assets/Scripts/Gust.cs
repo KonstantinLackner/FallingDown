@@ -24,12 +24,12 @@ public class Gust : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer is > 3f and < 4)
+        if (timer is > 2f and < 3)
         {
             gustAudioSource.Stop();
             mySpriteRenderer.color = new Color(1, 1, 1, 0);
             myBoxCollider2D.enabled = false;
-        } else if (timer > 4f)
+        } else if (timer > 3f)
         {
             gustAudioSource.Play();
             mySpriteRenderer.color = new Color(1, 1, 1, 1);

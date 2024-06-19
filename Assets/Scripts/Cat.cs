@@ -106,9 +106,9 @@ public class Cat : MonoBehaviour
     
     private void MovementParachute()
     {
-        if (myRigidbody.velocity.y < -2)
+        if (myRigidbody.velocity.y < -3)
         {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -2);
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -3);
         }
     }
 
