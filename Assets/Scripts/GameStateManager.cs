@@ -202,6 +202,12 @@ public class GameStateManager : MonoBehaviour
         starCollectAudioSource.Play();
     }
 
+    public void CollectRedStar()
+    {
+        currentStars += 2;
+        starCollectAudioSource.Play();
+    }
+
     public void ApplyAllItemChanges()
     {
         Time.timeScale = currentTimeScale;

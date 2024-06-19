@@ -13,6 +13,7 @@ public class ItemSpawner : MonoBehaviour
     public float chanceForStars;
     public List<GameObject> items = new List<GameObject>();
     private ProgressTracker progressTracker;
+    public GameObject redStar;
 
     private void Update()
     {
@@ -64,6 +65,13 @@ public class ItemSpawner : MonoBehaviour
             // Debug.Log("Spawning new Item: " + newItem + " at position: " + spawnPosition);
             Instantiate(newItem, spawnPosition, Quaternion.identity);
         }
+    }
+
+    public void SpawnAhead(Vector3 position)
+    {
+        Vector3 spawnPosition = new Vector3(position.x > 0 ? position.x - Random.Range(0.5f,1) : position.x + Random.Range(0.5f,1), position.y + Random.Range(5,6.5f), position.z);
+        Debug.Log("spawn red star:"+ spawnPosition);
+        Instantiate(redStar, spawnPosition, Quaternion.identity);
     }
 
     private bool isWallOrItemHere(Vector3 position)

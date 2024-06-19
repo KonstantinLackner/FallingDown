@@ -569,6 +569,7 @@ MonoBehaviour:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
   - {fileID: 8333158966950122511, guid: d459af9ad8799db4080a25080aa472ab, type: 3}
+  redStar: {fileID: 8333158966950122511, guid: c7bdf035a17864e14a14f0fff5ae86f7, type: 3}
 --- !u!4 &248215456
 Transform:
   m_ObjectHideFlags: 0
@@ -1979,6 +1980,7 @@ MonoBehaviour:
   maxMultiplier: 1.5
   maxSpeedForMultiplier: 15
   isLatestLineSlopey: 0
+  itemSpawner: {fileID: 248215455}
 --- !u!50 &611573646
 Rigidbody2D:
   serializedVersion: 4

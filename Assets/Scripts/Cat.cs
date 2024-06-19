@@ -49,6 +49,7 @@ public class Cat : MonoBehaviour
     private Vector2[] bounceSpeedMemory = new Vector2[3] {new Vector2(0,0), new Vector2(0,0), new Vector2(0,0)};
     private float wallCrashCooldown = 5;
     public bool isLatestLineSlopey = false;
+    public ItemSpawner itemSpawner;
     
     void Start()
     {
@@ -115,21 +116,6 @@ public class Cat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CollisionWall"))
         {
-            /*
-            Debug.Log("WallCollision velocity: " + myRigidbody.velocity);
-            Vector2 wallCollisionVelocity = myRigidbody.velocity;
-            if (Mathf.Abs(wallCollisionVelocity.x) > 0.1 && wallCollisionVelocity.y > 5)
-            {
-                //Debug.Log("wallcrashcooldown: " + wallCrashCooldown);
-
-                    Debug.Log("good wallcrash: " + myRigidbody.velocity);
-                    wowAudioSource.Play();
-                    wallCrashCooldown = 3;
-                
-
-            }
-*/
-
             if (inRubberWalls)
             {
                 myRigidbody.velocity += myRigidbody.velocity.x > 0 ? new Vector2(3.5f, 0) : new Vector2(-3.5f,0);
@@ -148,29 +134,16 @@ public class Cat : MonoBehaviour
         {
 
             bounceAudioSource.Play();
-            if (isLatestLineSlopey) ooohAudioSource.Play();
+            if (isLatestLineSlopey) 
+            {
+                ooohAudioSource.Play();
+                itemSpawner.SpawnAhead(myRigidbody.position);
+            }
 
             Vector2 oldVelocity = myRigidbody.velocity;
             Vector2 newVelocity = oldVelocity;
 
             Debug.Log("oldvelocity: " + oldVelocity);
-
-            // no more perfectly straight bounces
-            LineRenderer lineComponent = collision.gameObject.GetComponent<LineRenderer>();
-            Vector3[] linePositions = new Vector3[lineComponent.positionCount];
-            lineComponent.GetPositions(linePositions);
-            /*if (Mathf.Abs(linePositions[0].y - linePositions[1].y) < 0.1f)
-            {
-                if (Mathf.Abs(oldVelocity.x) < 0.75f)
-                {
-                    float[] xOffsets = new float[] {-0.75f, -0.5f, 0.5f, 0.75f};
-                    newVelocity += new Vector2(xOffsets[Random.Range(0, xOffsets.Length)], 0);
-                    if (Mathf.Abs(newVelocity.x) < 0.5f)
-                    {
-                        newVelocity *= new Vector2(2.5f, 1);
-                    }
-                }
-            }*/ // temp
 
             Vector2 favourVertical = new Vector2(0.5f, 1);
             float currentSpeed = myRigidbody.velocity.magnitude;
@@ -233,6 +206,11 @@ public class Cat : MonoBehaviour
         if (col.gameObject.CompareTag("Star"))
         {
             GSM.CollectStar();
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.CompareTag("RedStar"))
+        {
+            GSM.CollectRedStar();
             Destroy(col.gameObject);
         }
 
