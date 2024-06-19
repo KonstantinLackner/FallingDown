@@ -8011,9 +8011,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
   buildings:
-  - {fileID: 1002378884743839075, guid: d6e55c06bcc294b71a42747f46b029f5, type: 3}
-  - {fileID: 4005002595262122753, guid: ef53fa9e53d104590b1c8763e75faa1d, type: 3}
-  - {fileID: 6593584560577235869, guid: 089ceb4557aeb4d26ab5683526066eb8, type: 3}
+  - {fileID: 1002378884743839075, guid: d4b58099a9f204d6b9bed2b3bc3f1381, type: 3}
+  - {fileID: 4005002595262122753, guid: 15863d99d38224b32b329a3c2c0051e4, type: 3}
+  - {fileID: 6593584560577235869, guid: cb63be94665e7490e98641e74c088636, type: 3}
 --- !u!1 &1147452597
 GameObject:
   m_ObjectHideFlags: 0
