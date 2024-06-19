@@ -9,17 +9,15 @@ public class LevelProgressManager : MonoBehaviour
         { {"Hyperjump", false}, {"ShirtLover", false}, {"Walljumper", false} };
     public int level1Highscore = 0;
     public bool level1Unlocked = true;
-    public bool level1MemoryUnlocked = false;
     public Dictionary<string, bool> level2Secrets = new Dictionary<string, bool>
         { {"HorizontalJump", false}, {"ClawHater", false}, {"DrillLover", false} };
     public int level2Highscore = 0;
     public bool level2Unlocked = false;
-    public bool level2MemoryUnlocked = false;
     public Dictionary<string, bool> level3Secrets = new Dictionary<string, bool>
         { {"tbd1", false}, {"tbd2", false}, {"tbd3", false} };
     public int level3Highscore = 0;
     public bool level3Unlocked = false;
-    public bool level3MemoryUnlocked = false;
+    public bool endUnlocked = false;
     public int highscore = 0;
     public (int, int) latestScore = (0, 0);
     public bool level1NewHighscore = false;
@@ -103,27 +101,25 @@ public class LevelProgressManager : MonoBehaviour
     private void CheckUnlocks()
     {
         level2Unlocked = level1Highscore >= 250;
-        level3Unlocked = level2Highscore >= 300;
+        level3Unlocked = level2Highscore >= 250;
+        endUnlocked = level1Highscore >= 250 && level2Highscore >= 250 && level3Highscore >= 250 && (level1Highscore+level2Highscore+level3Highscore) >= 1000;
 
         int level1UnlockedSecrets = 0;
         foreach(bool unlocked in level1Secrets.Values)
         {
             if (unlocked) level1UnlockedSecrets++;
         }
-        level1MemoryUnlocked = level1UnlockedSecrets == 3;
         
         int level2UnlockedSecrets = 0;
         foreach(bool unlocked in level2Secrets.Values)
         {
             if (unlocked) level2UnlockedSecrets++;
         }
-        level2MemoryUnlocked = level2UnlockedSecrets == 3;
         
         int level3UnlockedSecrets = 0;
         foreach(bool unlocked in level3Secrets.Values)
         {
             if (unlocked) level3UnlockedSecrets++;
         }
-        level3MemoryUnlocked = level3UnlockedSecrets == 3;
     }
 }

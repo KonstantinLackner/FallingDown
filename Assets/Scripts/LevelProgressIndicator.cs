@@ -20,6 +20,9 @@ public class LevelProgressIndicator : MonoBehaviour
     public GameObject level3PlayButton;
     public GameObject storyEndButton;
     public TMP_Text bottomText;
+    public GameObject lvl1Picture;
+    public GameObject lvl2Picture;
+    public GameObject lvl3Picture;
 
     void Start()
     {
@@ -40,13 +43,18 @@ public class LevelProgressIndicator : MonoBehaviour
         level2PlayButton.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
         level3PlayButton.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
 
-        // story1Button.GetComponent<Button>().interactable = levelProgressManager.level1MemoryUnlocked;
-        // story2Button.GetComponent<Button>().interactable = levelProgressManager.level2MemoryUnlocked;
-        // storyEndButton.GetComponent<Button>().interactable = levelProgressManager.level3MemoryUnlocked;
-
         story1Button.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
         story2Button.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
-        storyEndButton.GetComponent<Button>().interactable = false;
+        storyEndButton.GetComponent<Button>().interactable = levelProgressManager.endUnlocked;
+
+        if (levelProgressManager.level2Unlocked)
+        {
+            lvl2Picture.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        if (levelProgressManager.level3Unlocked)
+        {
+            lvl3Picture.GetComponent<SpriteRenderer>().color = Color.white;
+        }
 
         bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars = " + (levelProgressManager.latestScore.Item1 + levelProgressManager.latestScore.Item2 * 10);
     }
