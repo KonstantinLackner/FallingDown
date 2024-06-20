@@ -468,13 +468,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level1Highscore: 0
   level1Unlocked: 1
-  level1MemoryUnlocked: 0
   level2Highscore: 0
   level2Unlocked: 1
-  level2MemoryUnlocked: 0
   level3Highscore: 0
   level3Unlocked: 0
-  level3MemoryUnlocked: 0
+  endUnlocked: 0
   highscore: 0
   level1NewHighscore: 0
   level2NewHighscore: 0
@@ -530,10 +528,6 @@ MonoBehaviour:
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
-  - {fileID: 8333158966950122511, guid: d459af9ad8799db4080a25080aa472ab, type: 3}
-  - {fileID: 8333158966950122511, guid: fef8a9883da8ee64388a3a080e947c7b, type: 3}
-  - {fileID: 8333158966950122511, guid: 66447273fa4d6d24ba733de51860ad58, type: 3}
-  - {fileID: 8333158966950122511, guid: 39a7a37aa844934449240d8131c6b644, type: 3}
   - {fileID: 8333158966950122511, guid: 8fbc64ed50d247e429f1ca36fe256222, type: 3}
   - {fileID: 8333158966950122511, guid: 6ab1d246c61f2474c8b84727aa4002e4, type: 3}
   redStar: {fileID: 8333158966950122511, guid: c7bdf035a17864e14a14f0fff5ae86f7, type: 3}
