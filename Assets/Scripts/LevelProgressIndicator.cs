@@ -56,7 +56,7 @@ public class LevelProgressIndicator : MonoBehaviour
             lvl3Picture.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
-        bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars = " + (levelProgressManager.latestScore.Item1 + levelProgressManager.latestScore.Item2 * 10);
+        bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars = " + levelProgressManager.CalculateScore(levelProgressManager.latestScore.Item1, levelProgressManager.latestScore.Item2) + "   (1 red star counts as 2 stars)";
     }
 
     private int getUnlockedSecrets(int level)
