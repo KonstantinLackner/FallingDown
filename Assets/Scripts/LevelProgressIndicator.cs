@@ -59,6 +59,34 @@ public class LevelProgressIndicator : MonoBehaviour
         bottomText.text = "latest score: " + levelProgressManager.latestScore.Item1 + " meters + 10 * " + levelProgressManager.latestScore.Item2 + " stars = " + levelProgressManager.CalculateScore(levelProgressManager.latestScore.Item1, levelProgressManager.latestScore.Item2) + "   (1 red star counts as 2 stars)";
     }
 
+    void Update()
+    {
+        bool buttonLPressed = Input.GetKey(KeyCode.L);
+        bool buttonEPressed = Input.GetKey(KeyCode.E);
+        bool buttonVPressed = Input.GetKey(KeyCode.V);
+        if (buttonLPressed && buttonEPressed && buttonVPressed)
+        {
+            Debug.Log("Hi! Unlocking everything.");
+            UnlockEverything();
+        }
+    }
+
+    private void UnlockEverything()
+    {
+        levelProgressManager.level1Unlocked = true;
+        levelProgressManager.level2Unlocked = true;
+        levelProgressManager.level3Unlocked = true;
+        levelProgressManager.endUnlocked = true;
+
+        level1PlayButton.GetComponent<Button>().interactable = levelProgressManager.level1Unlocked;
+        level2PlayButton.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
+        level3PlayButton.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
+
+        story1Button.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
+        story2Button.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
+        storyEndButton.GetComponent<Button>().interactable = levelProgressManager.endUnlocked;
+    }
+
     private int getUnlockedSecrets(int level)
     {
         int unlockedSecrets = 0;
