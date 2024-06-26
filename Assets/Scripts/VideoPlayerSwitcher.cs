@@ -15,7 +15,7 @@ public class VideoPlayerSwitcher : MonoBehaviour
 
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("LevelSelectScene");
     }
     
 }

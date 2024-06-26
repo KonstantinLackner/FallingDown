@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroVideo.unity
     guid: 514e0c47e1e99ec4f9481c69133cda6f
-  - enabled: 0
-    path: Assets/Scenes/ExpertLevel.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/ClassicLevel.unity
-    guid: 648741cc0d7dc4a58994ef501230d446
   - enabled: 1
     path: Assets/Scenes/LevelSelectScene.unity
     guid: c3a10cafb005047b48d9ff14edb008f8
@@ -30,12 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Level3.unity
     guid: a3f1e2bcc1956442f9733d82aac7c377
   - enabled: 1
-    path: Assets/Scenes/ComingSoon.unity
-    guid: 3c78d33d474e2486ca2adb8b7741fe52
-  - enabled: 0
-    path: Assets/Scenes/NewCameraTest.unity
-    guid: 22ff3bc64b851d1478bc6974f76aee05
-  - enabled: 0
-    path: Assets/Scenes/ProgressScene.unity
-    guid: 4b9c303e7d3d73040a927d277356b5c2
+    path: Assets/Scenes/CutScene1.unity
+    guid: c29405bb2c3c34690bdfee7b9d44bb22
+  - enabled: 1
+    path: Assets/Scenes/CutScene2.unity
+    guid: fd14a206df45d439bad8a2faa83415e6
+  - enabled: 1
+    path: Assets/Scenes/CutSceneEnd.unity
+    guid: 32449d5b21c8b42ff88b6d8227cec2c4
   m_configObjects: {}
