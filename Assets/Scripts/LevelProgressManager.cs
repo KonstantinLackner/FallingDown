@@ -52,9 +52,14 @@ public class LevelProgressManager : MonoBehaviour
         }
     }
 
+    public int CalculateScore(int height, int stars)
+    {
+        return height + 10 * stars;
+    }
+
     public void EnterScore(int level, int height, int stars)
     {
-        int score = height + 10 * stars;
+        int score = CalculateScore(height, stars);
         latestScore = (height, stars);
 
         switch (level)

@@ -82,7 +82,6 @@ public class ItemSpawner : MonoBehaviour
         {
             currentStar.transform.position = currentStar.transform.position + trajectory /2/ granularity;
             yield return new WaitForSeconds(0.02f);
-            Debug.Log("move star: " + currentStar.transform.position);
         }
         yield return null;
     }

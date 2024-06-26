@@ -14,7 +14,8 @@ public class GameStateManager : MonoBehaviour
     public Image quipWindowSprite;
     public Rigidbody2D cat;
     public TMP_Text bigText;
-    public TMP_Text heightScore;
+    public TMP_Text fullScore;
+    public TMP_Text detailedScore;
     private int lastHeight;
     private int height;
     public GameObject menuButton;
@@ -182,7 +183,8 @@ public class GameStateManager : MonoBehaviour
         {
             starCountAudioSource.Play();
         }
-        heightScore.text = height + " meters | " + currentStars;
+        fullScore.text = "current score: " +  levelProgressManager.CalculateScore(height, currentStars);
+        detailedScore.text = height + " meters | " + currentStars;
         lastHeight = height;
 
         if (height is > 100 and < 200)
