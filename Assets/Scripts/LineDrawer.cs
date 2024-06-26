@@ -88,7 +88,7 @@ public class LineDrawer : MonoBehaviour
 
             collider.points = linePoints;
             collider.sharedMaterial = bounceMaterial;
-            cat.isLatestLineSlopey = Mathf.Abs(linePoints[0].y - linePoints[1].y) > 0.8f;
+            cat.isLatestLineSlopey = Mathf.Abs(linePoints[0].y - linePoints[1].y) > 0.75f;
             // Debug.Log("Buttons " + pressedButtons[0] + " and " + pressedButtons[1] + " are pressed and adjacent.");
         }
         else if (pressedButtons.Count > 2)

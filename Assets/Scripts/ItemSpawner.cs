@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -69,9 +70,21 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnAhead(Vector3 position)
     {
-        Vector3 spawnPosition = new Vector3(position.x > 0 ? position.x - Random.Range(0.5f,1) : position.x + Random.Range(0.5f,1), position.y + Random.Range(5,6.5f), position.z);
-        Debug.Log("spawn red star:"+ spawnPosition);
-        Instantiate(redStar, spawnPosition, Quaternion.identity);
+        StartCoroutine(MoveObjectAlongPath(position, new Vector3(position.x > 0 ? Random.Range(-0.5f,-1) : Random.Range(0.5f,1), Random.Range(5,6.5f), 0)));
+
+    }
+
+    private IEnumerator MoveObjectAlongPath(Vector3 position, Vector3 trajectory)
+    {
+        GameObject currentStar = Instantiate(redStar, position+trajectory/2, Quaternion.identity);
+        int granularity = 16;
+        for (int i = 0; i < granularity; i++)
+        {
+            currentStar.transform.position = currentStar.transform.position + trajectory /2/ granularity;
+            yield return new WaitForSeconds(0.02f);
+            Debug.Log("move star: " + currentStar.transform.position);
+        }
+        yield return null;
     }
 
     private bool isWallOrItemHere(Vector3 position)
