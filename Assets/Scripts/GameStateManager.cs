@@ -202,12 +202,14 @@ public class GameStateManager : MonoBehaviour
     {
         currentStars++;
         starCollectAudioSource.Play();
+        StartCoroutine(ScoreTextFlash(new Color(0.88f, 0.88f, 0.18f, 1)));
     }
 
     public void CollectRedStar()
     {
         currentStars += 2;
         starCollectAudioSource.Play();
+        StartCoroutine(ScoreTextFlash(Color.red));
     }
 
     public void ApplyAllItemChanges()
@@ -230,5 +232,14 @@ public class GameStateManager : MonoBehaviour
         UIStar.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         UIStar.color = Color.white;
+    }
+    
+    private IEnumerator ScoreTextFlash(Color color)
+    {
+        fullScore.color = color;
+        detailedScore.color = color;
+        yield return new WaitForSeconds(0.35f);
+        fullScore.color = Color.white;
+        detailedScore.color = Color.white;
     }
 }
