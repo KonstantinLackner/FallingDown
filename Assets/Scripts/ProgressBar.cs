@@ -35,10 +35,6 @@ public class ProgressBar : MonoBehaviour
             highscoreText.text = " highscore\n" + progressTracker.highscore.Item1 + " meters" + " | " + progressTracker.highscore.Item2 + " stars";
         }
 
-        // for debugging
-        // progressTracker.previousStarCount = 23;
-        // progressTracker.starCount = 42;
-
         currentStarText.text = progressTracker.starCount + "/60 stars collected";
 
         oldValue = MapValue(progressTracker.previousStarCount);
@@ -72,8 +68,6 @@ public class ProgressBar : MonoBehaviour
         {
             updateTick += Time.deltaTime;
         }
-        
-
     }
 
     private void TryUnlockingItem(float position, float nextPosition)

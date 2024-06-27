@@ -143,8 +143,6 @@ public class Cat : MonoBehaviour
             Vector2 oldVelocity = myRigidbody.velocity;
             Vector2 newVelocity = oldVelocity;
 
-            Debug.Log("oldvelocity: " + oldVelocity);
-
             Vector2 favourVertical = new Vector2(0.5f, 1);
             float currentSpeed = myRigidbody.velocity.magnitude;
             float multiplier = 1 + (maxMultiplier - 1) * (1 - Mathf.Clamp01(currentSpeed / maxSpeedForMultiplier));
@@ -216,6 +214,12 @@ public class Cat : MonoBehaviour
 
         if (col.gameObject.CompareTag("Item"))
         {
+            if (inClaws)
+            {
+                clawsParticleSystem.Stop();
+                clawAudioSource.Stop();
+                atWall = false;
+            }
             wowAudioSource.Play();
             Item itemToPickUp = col.gameObject.GetComponent<Item>();
             if (itemManager.PickupItem(itemToPickUp))

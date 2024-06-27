@@ -17,7 +17,6 @@ public class VidPlayer : MonoBehaviour
         if (videoPlayer)
         {
             string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, videoFileName);
-            // Debug.Log(videoPath);
             videoPlayer.url = videoPath;
             videoPlayer.Play();
         }

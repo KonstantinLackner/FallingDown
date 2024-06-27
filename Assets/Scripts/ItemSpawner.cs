@@ -63,7 +63,6 @@ public class ItemSpawner : MonoBehaviour
         if (!isWallOrItemHere(spawnPosition))
         {
             GameObject newItem = GetRandomItem();
-            // Debug.Log("Spawning new Item: " + newItem + " at position: " + spawnPosition);
             Instantiate(newItem, spawnPosition, Quaternion.identity);
         }
     }

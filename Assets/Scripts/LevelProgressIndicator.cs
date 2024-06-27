@@ -66,7 +66,6 @@ public class LevelProgressIndicator : MonoBehaviour
         bool buttonVPressed = Input.GetKey(KeyCode.V);
         if (buttonLPressed && buttonEPressed && buttonVPressed)
         {
-            Debug.Log("Hi! Unlocking everything.");
             UnlockEverything();
         }
     }
@@ -85,6 +84,9 @@ public class LevelProgressIndicator : MonoBehaviour
         story1Button.GetComponent<Button>().interactable = levelProgressManager.level2Unlocked;
         story2Button.GetComponent<Button>().interactable = levelProgressManager.level3Unlocked;
         storyEndButton.GetComponent<Button>().interactable = levelProgressManager.endUnlocked;
+
+        lvl2Picture.GetComponent<SpriteRenderer>().color = Color.white;
+        lvl3Picture.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private int getUnlockedSecrets(int level)
