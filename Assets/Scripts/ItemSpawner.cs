@@ -36,21 +36,13 @@ public class ItemSpawner : MonoBehaviour
         {
             return items[0]; // % chance to pick the first item
         }
-
         int index = Random.Range(1, items.Count); // Random index among the remaining items
 
-        while (itemManager.ItemExistsInQueueByName(items[index].name))
+        if (itemManager.ItemExistsInQueueByName(items[index].name)) // prevents spawning item that is already active
         {
-            randomNumber = Random.Range(0.0f, 1.0f);
-        
-            if (randomNumber < chanceForStars)
-            {
-                return items[0]; // % chance to pick the first item
-            }
-
-            index = Random.Range(1, items.Count);
+            return items[0];
         }
-        
+
         return items[index];
     }
 
