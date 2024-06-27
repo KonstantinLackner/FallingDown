@@ -9,9 +9,8 @@ public class Gust : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
     private BoxCollider2D myBoxCollider2D;
     public AudioSource gustAudioSource;
-
     private float timer = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         gustAudioSource = GameObject.Find("ACAudioSource").GetComponent<AudioSource>();
@@ -20,7 +19,6 @@ public class Gust : MonoBehaviour
         gustAudioSource.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;

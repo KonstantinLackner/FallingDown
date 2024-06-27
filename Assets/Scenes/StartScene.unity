@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_text: 'this game challenges you to do unusual things with your hands.
 
     prepare
-    your nimble fingers and.. be daring!'
+    your nimble fingers and be daring!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}
   m_sharedMaterial: {fileID: 6760605738223212859, guid: 5381b31c3baec4d1f88d23bd0e3b6f06, type: 2}

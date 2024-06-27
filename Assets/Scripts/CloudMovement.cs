@@ -15,14 +15,12 @@ public class CloudMovement : MonoBehaviour
     private bool headingRight = true;
     private bool alive = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         leftWayPointPosition = leftWayPoint.transform.position;
         rightWayPointPosition = rightWayPoint.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float step = speed * Time.deltaTime;
@@ -55,13 +53,11 @@ public class CloudMovement : MonoBehaviour
 
     private IEnumerator dieAndResurrect()
     {
-        //TODO: Change Sprite
         yield return new WaitForSeconds(0.5f);
         transform.position = leftWayPointPosition;
         alive = false;
         yield return new WaitForSeconds(6);
         alive = true;
-        //TODO: Change Sprite back
         transform.position = leftWayPointPosition + new Vector2(1, 0);
     }
 }

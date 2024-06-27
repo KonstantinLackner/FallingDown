@@ -524,7 +524,7 @@ MonoBehaviour:
   itemManager: {fileID: 790345409}
   GSM: {fileID: 957936823}
   secondsToSpawnNewItem: 3
-  chanceForStars: 0.66
+  chanceForStars: 0.7
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}
@@ -7593,7 +7593,6 @@ MonoBehaviour:
   bigText: {fileID: 1413105769}
   fullScore: {fileID: 1834440026}
   detailedScore: {fileID: 1819689413}
-  menuButton: {fileID: 0}
   camera: {fileID: 519420028}
   currentStars: 0
   gameOverAudioSource: {fileID: 588049539}
@@ -7604,9 +7603,6 @@ MonoBehaviour:
   SkyBox2: {fileID: 1006162849}
   SkyBox3: {fileID: 306127847}
   quipWindowTitle: {fileID: 437138709}
-  secret1: {fileID: 1987808660}
-  secret2: {fileID: 660481020}
-  secret3: {fileID: 1593488710}
 --- !u!4 &957936824
 Transform:
   m_ObjectHideFlags: 0
@@ -10449,7 +10445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Catch your cat using the 1,2,3,4 keys & your mouse for height adjustments.
+  m_text: Did you know you can use the mouse to determine the height of each point?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
     public int maxItems = 1;
     public GameStateManager GSM;
     public Cat cat;
-    public int currentPriceStarLifeConverter = 10;// All items in the game (they are prefabs and collected here)
+    public int currentPriceStarLifeConverter = 10;
     public Image item1;
     public TMP_Text StarsTolifeConverterCost;
     
@@ -57,7 +57,6 @@ public class ItemManager : MonoBehaviour
         {
             return true;
         }
-
         return false;
     }
     

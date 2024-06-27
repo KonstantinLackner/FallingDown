@@ -13,7 +13,6 @@ public class ItemSpawner : MonoBehaviour
     public int secondsToSpawnNewItem = 0;
     public float chanceForStars;
     public List<GameObject> items = new List<GameObject>();
-    private ProgressTracker progressTracker;
     public GameObject redStar;
 
     private void Update()
@@ -35,7 +34,7 @@ public class ItemSpawner : MonoBehaviour
         
         if (randomNumber < chanceForStars)
         {
-            return items[0]; // 70% chance to pick the first item
+            return items[0]; // % chance to pick the first item
         }
 
         int index = Random.Range(1, items.Count); // Random index among the remaining items
@@ -46,7 +45,7 @@ public class ItemSpawner : MonoBehaviour
         
             if (randomNumber < chanceForStars)
             {
-                return items[0]; // 70% chance to pick the first item
+                return items[0]; // % chance to pick the first item
             }
 
             index = Random.Range(1, items.Count);

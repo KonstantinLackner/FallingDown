@@ -562,7 +562,7 @@ MonoBehaviour:
   itemManager: {fileID: 790345409}
   GSM: {fileID: 957936823}
   secondsToSpawnNewItem: 3
-  chanceForStars: 0.66
+  chanceForStars: 0.7
   items:
   - {fileID: 8333158966950122511, guid: 9f136d819914e4ff98e07b6eb62ead00, type: 3}
   - {fileID: 8333158966950122511, guid: 0d13fae16b207164681a69ce9cdad740, type: 3}

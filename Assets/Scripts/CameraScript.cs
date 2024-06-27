@@ -9,7 +9,6 @@ public class CameraScript : MonoBehaviour
     private float highPoint = 0; // It's over, Anakin, I have the high ground!
     
 
-    // Update is called once per frame
     void Update()
     {
         if (target != null && target.position.y > highPoint)

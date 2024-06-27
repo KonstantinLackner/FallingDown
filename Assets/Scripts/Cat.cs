@@ -44,10 +44,7 @@ public class Cat : MonoBehaviour
     
     public float maxMultiplier = 3f; // The maximum velocity multiplier at low speeds
     public float maxSpeedForMultiplier = 15f; // Speed at which the multiplier becomes 1
-    private int shirtCount = 0;
-    private int walljumpCount = 0;
     private Vector2[] bounceSpeedMemory = new Vector2[3] {new Vector2(0,0), new Vector2(0,0), new Vector2(0,0)};
-    private float wallCrashCooldown = 5;
     public bool isLatestLineSlopey = false;
     public ItemSpawner itemSpawner;
     
@@ -61,7 +58,6 @@ public class Cat : MonoBehaviour
 
     void Update()
     {
-        wallCrashCooldown -= Time.deltaTime;
         // Sprite & sound stuff
         float yFlip = 0.15 * myRigidbody.velocity.y > 0 ? -1 : 1;
         transform.localScale = new Vector3(1, yFlip, 1);
@@ -98,9 +94,9 @@ public class Cat : MonoBehaviour
 
     private void MovementClaws()
     {
-        if (myRigidbody.velocity.y < -2 && atWall)
+        if (myRigidbody.velocity.y < -3 && atWall)
         {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -2);
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, -3);
         }
     }
     
@@ -125,8 +121,6 @@ public class Cat : MonoBehaviour
             {
                 bounceAudioSource.Play();
                 myRigidbody.velocity = myRigidbody.velocity.x > 0 ? new Vector2(2, 10) : new Vector2(-2,10);
-                walljumpCount++;
-                // if (walljumpCount == 5 && GSM.UnlockWalljumper()) wowAudioSource.Play();
             }
         }
 
@@ -169,10 +163,6 @@ public class Cat : MonoBehaviour
             {
                 ngahAudioSource.Play();
             }
-            if (bounceSpeedMemory[0].y > 14 && bounceSpeedMemory[1].y > 14 && newVelocity.y > 14)
-            {
-                // if (GSM.UnlockHyperjump()) wowAudioSource.Play();
-            }
         }
     }
 
@@ -196,9 +186,7 @@ public class Cat : MonoBehaviour
             shirtAudioSource.Play();
             ShirtCoverSpriteRenderer.color = col.gameObject.GetComponent<SpriteRenderer>().color;
             ShirtCoverSpriteRendererOuter.color = Color.black;
-            shirtCount++;
             StartCoroutine(ResolveShirt());
-            // if (shirtCount == 5 && GSM.UnlockShirtlover()) wowAudioSource.Play();
             Destroy(col.gameObject);
         }
         if (col.gameObject.CompareTag("Star"))

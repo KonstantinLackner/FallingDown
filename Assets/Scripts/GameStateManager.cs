@@ -18,7 +18,6 @@ public class GameStateManager : MonoBehaviour
     public TMP_Text detailedScore;
     private int lastHeight;
     private int height;
-    public GameObject menuButton;
     public GameObject camera;
     public int currentStars = 0;
     public AudioSource gameOverAudioSource;
@@ -30,9 +29,6 @@ public class GameStateManager : MonoBehaviour
     public SpriteRenderer SkyBox3;
     public TMP_Text quipWindowTitle;
     private int level = 0;
-    public GameObject secret1;
-    public GameObject secret2;
-    public GameObject secret3;
 
     void Start()
     {
@@ -40,19 +36,16 @@ public class GameStateManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         level = int.Parse(sceneName.Substring(sceneName.Length-1));
-        UpdateUnlockedSecrets();
         backingTrackAudioSource.Play();
         pauseGame();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!gameIsRunning && Input.GetKeyDown(KeyCode.Space))
         {
             resumeGame();
         }
-
         UpdateScore();
     }
 
@@ -84,88 +77,6 @@ public class GameStateManager : MonoBehaviour
         levelProgressManager.EnterScore(level, height, currentStars);
         bigText.text = "GAME OVER";
         StartCoroutine(loadNextScene());
-    }
-
-    public bool UnlockHyperjump()
-    {
-        if (level == 1 && !levelProgressManager.level1Secrets[secret1.name])
-        {
-            secret1.GetComponent<SpriteRenderer>().color = Color.white;
-            levelProgressManager.level1Secrets["Hyperjump"] = true;
-            return true;
-        }
-        return false;
-    }
-
-    public bool UnlockShirtlover()
-    {
-        if (level == 1 && !levelProgressManager.level1Secrets[secret2.name])
-        {
-            secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
-            levelProgressManager.level1Secrets["ShirtLover"] = true;
-            return true;
-        }
-        return false;
-    }
-
-    public bool UnlockWalljumper()
-    {
-        if (level == 1 && !levelProgressManager.level1Secrets[secret3.name])
-        {
-            secret3.GetComponent<SpriteRenderer>().color = Color.white;
-            levelProgressManager.level1Secrets["Walljumper"] = true;
-            return true;
-        }
-        return false;
-    }
-
-    public bool UnlockHorizontalJump()
-    {
-        return false;
-    }
-
-    public bool UnlockClawhater()
-    {
-        return false;
-    }
-
-    public bool UnlockDrillLover()
-    {
-        return false;
-    }
-
-    private void UpdateUnlockedSecrets()
-    {
-        if (level == 1)
-        {
-            if (levelProgressManager.level1Secrets[secret1.name])
-            {
-                secret1.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-            if (levelProgressManager.level1Secrets[secret2.name])
-            {
-                secret2.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.75f, 0.5f, 1);
-            }
-            if (levelProgressManager.level1Secrets[secret3.name])
-            {
-                secret3.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-        }
-        if (level == 2)
-        {
-            if (levelProgressManager.level2Secrets[secret1.name])
-            {
-                secret1.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-            if (levelProgressManager.level2Secrets[secret2.name])
-            {
-                secret1.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-            if (levelProgressManager.level2Secrets[secret3.name])
-            {
-                secret3.GetComponent<SpriteRenderer>().color = Color.white;
-            }
-        }
     }
 
     private IEnumerator loadNextScene()
@@ -216,7 +127,7 @@ public class GameStateManager : MonoBehaviour
     {
         Time.timeScale = currentTimeScale;
     }
-    
+
     
     public void removeStar()
     {
